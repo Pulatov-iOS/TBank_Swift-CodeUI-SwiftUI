@@ -1,0 +1,19 @@
+// MARK: - TabBar
+"App.TabBar.CurrencyRatesItemTitle" = "Отделения";
+"App.TabBar.BestCurrencyRatesItemTitle" = "Курс валют";
+
+// MARK: - LocalizedCurrencyRates
+"App.LocalizedCurrencyRates.NavigationItemTitle" = "Отделения";
+
+// MARK: - LocalizedCurrencyRates/BranchDetails
+
+// MARK: - LocalizedCurrencyRates/BranchDetails/ExchangeRates
+
+// MARK: - LocalizedCurrencyRates/BranchDetails/BankLocatorMap
+
+// MARK: - BestCurrencyRates
+"App.BestCurrencyRates.NavigationItemTitle" = "Курс валют";
+
+// MARK: - CurrencyConverter
+
+// MARK: - Settings
