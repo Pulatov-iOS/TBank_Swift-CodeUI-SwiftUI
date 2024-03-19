@@ -1,0 +1,38 @@
+# Ignore caches and temporary files
+*.swp
+*~
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore build directories and files
+build/
+DerivedData/
+
+# Ignore generated Xcode files
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+# Ignore logs and temporary files
+xcuserdata/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# Ignore dependencies, generated files, and working directories
+Pods/
+*.xcodeproj
+*.xcworkspace
+
+# Ignore configuration files
+*.xcuserstate
+
+# Ignore Swift Package Manager configuration files
+/.swiftpm/
