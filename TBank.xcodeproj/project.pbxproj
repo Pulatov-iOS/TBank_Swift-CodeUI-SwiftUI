@@ -34,7 +34,7 @@
 		11DA58852BAA569B00915F6B /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58842BAA569B00915F6B /* CurrencyConverterViewController.swift */; };
 		11DA58872BAA56A600915F6B /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58862BAA56A600915F6B /* CurrencyConverterViewModel.swift */; };
 		11DA58892BAA56DF00915F6B /* CurrencyConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */; };
-		11DA588B2BAAC8B800915F6B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA588A2BAAC8B800915F6B /* APIManager.swift */; };
+		11DA588B2BAAC8B800915F6B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA588A2BAAC8B800915F6B /* Test.swift */; };
 		11DA588D2BAAC8C000915F6B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA588C2BAAC8C000915F6B /* Test.swift */; };
 		11DA588F2BAAC8CC00915F6B /* Test + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA588E2BAAC8CC00915F6B /* Test + Extension.swift */; };
 		11DA58912BAAC8DA00915F6B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58902BAAC8DA00915F6B /* Test.swift */; };
@@ -69,7 +69,7 @@
 		11DA58842BAA569B00915F6B /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		11DA58862BAA56A600915F6B /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
 		11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterCoordinator.swift; sourceTree = "<group>"; };
-		11DA588A2BAAC8B800915F6B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		11DA588A2BAAC8B800915F6B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		11DA588C2BAAC8C000915F6B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		11DA588E2BAAC8CC00915F6B /* Test + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test + Extension.swift"; sourceTree = "<group>"; };
 		11DA58902BAAC8DA00915F6B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		11DA584B2BAA42F900915F6B /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				11DA588A2BAAC8B800915F6B /* APIManager.swift */,
+				11DA588A2BAAC8B800915F6B /* Test.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -363,7 +363,7 @@
 				11DA587B2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift in Sources */,
 				11DA587D2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift in Sources */,
 				11DA58332BAA3E4A00915F6B /* SceneDelegate.swift in Sources */,
-				11DA588B2BAAC8B800915F6B /* APIManager.swift in Sources */,
+				11DA588B2BAAC8B800915F6B /* Test.swift in Sources */,
 				11DA58692BAA4DCB00915F6B /* BranchDetailsViewModel.swift in Sources */,
 				11DA58812BAA562300915F6B /* SettingsViewController.swift in Sources */,
 			);
