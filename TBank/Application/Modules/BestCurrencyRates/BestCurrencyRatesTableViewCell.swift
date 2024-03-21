@@ -5,6 +5,7 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     private let customView = UIView()
     private let nameLabel = UILabel()
     private let priceLabel = UILabel()
+    private let scaleLabel = UILabel()
     private let imageFlag = UIImageView()
     
     // MARK: - Initialization
@@ -26,6 +27,8 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         contentView.addSubview(customView)
         customView.addSubview(nameLabel)
         customView.addSubview(priceLabel)
+        customView.addSubview(scaleLabel)
+        
         //customView.addSubview(imageFlag)
         
         customView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,6 +45,11 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 17).isActive = true
+        
+        
+        scaleLabel.translatesAutoresizingMaskIntoConstraints = false
+        scaleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+        scaleLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 10).isActive = true
         
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
@@ -60,6 +68,10 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         
         priceLabel.textColor = .black
         priceLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        
+        
+        scaleLabel.textColor = .black
+        scaleLabel.font = UIFont.systemFont(ofSize: 25, weight: .light)
     }
     
     // MARK: - Configuration
@@ -67,6 +79,7 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     func configure(with rate: CurrencyRate) {
         nameLabel.text = rate.abbreviation
         priceLabel.text = String(format: "%.2f" + " BYN", rate.rate)
+        scaleLabel.text = String(format: "%.0f", rate.scale)
         
         if let currencyImage = UIImage(named: rate.abbreviation) {
             imageFlag.image = currencyImage
