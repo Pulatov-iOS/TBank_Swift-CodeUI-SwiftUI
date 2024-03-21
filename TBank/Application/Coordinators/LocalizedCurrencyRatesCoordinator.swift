@@ -13,8 +13,8 @@ final class LocalizedCurrencyRatesCoordinator {
     }
     
     private func showLocalizedCurrencyRatesScreen() {
-        let view = LocalizedCurrencyRatesViewController()
-        let viewModel = LocalizedCurrencyRatesViewModel()
+        let view = ExchangeRatesView()
+        let viewModel = ExchangeRatesViewModel()
         view.viewModel = viewModel
         navigationController.setViewControllers([view], animated: false)
     }

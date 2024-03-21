@@ -36,6 +36,9 @@
 		11DA58892BAA56DF00915F6B /* CurrencyConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */; };
 		11DA588F2BAAC8CC00915F6B /* Test + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA588E2BAAC8CC00915F6B /* Test + Extension.swift */; };
 		11DA58912BAAC8DA00915F6B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58902BAAC8DA00915F6B /* Test.swift */; };
+		2D1BBD782BAC1EBF0001D2C2 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1BBD772BAC1EBF0001D2C2 /* UIView + Extension.swift */; };
+		2D1BBD7A2BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1BBD792BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift */; };
+		2D1BBD7C2BAC2DCE0001D2C2 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1BBD7B2BAC2DCE0001D2C2 /* UIStackView + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +72,9 @@
 		11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterCoordinator.swift; sourceTree = "<group>"; };
 		11DA588E2BAAC8CC00915F6B /* Test + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test + Extension.swift"; sourceTree = "<group>"; };
 		11DA58902BAAC8DA00915F6B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		2D1BBD772BAC1EBF0001D2C2 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		2D1BBD792BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesTableViewCell.swift; sourceTree = "<group>"; };
+		2D1BBD7B2BAC2DCE0001D2C2 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				11DA588E2BAAC8CC00915F6B /* Test + Extension.swift */,
+				2D1BBD772BAC1EBF0001D2C2 /* UIView + Extension.swift */,
+				2D1BBD7B2BAC2DCE0001D2C2 /* UIStackView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				11DA586C2BAA4E2600915F6B /* ExchangeRatesViewController.swift */,
+				2D1BBD792BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift */,
 				11DA586E2BAA4E2F00915F6B /* ExchangeRatesViewModel.swift */,
 			);
 			path = ExchangeRates;
@@ -340,6 +349,7 @@
 				11DA586D2BAA4E2600915F6B /* ExchangeRatesViewController.swift in Sources */,
 				11DA58732BAA4E4B00915F6B /* BankLocatorMapViewModel.swift in Sources */,
 				11DA58792BAA54A600915F6B /* BestCurrencyRatesViewController.swift in Sources */,
+				2D1BBD7C2BAC2DCE0001D2C2 /* UIStackView + Extension.swift in Sources */,
 				11DA58582BAA484D00915F6B /* LocalizedCurrencyRatesViewModel.swift in Sources */,
 				11DA58892BAA56DF00915F6B /* CurrencyConverterCoordinator.swift in Sources */,
 				11DA58492BAA3E6500915F6B /* RootCoordinator.swift in Sources */,
@@ -350,8 +360,10 @@
 				11DA58852BAA569B00915F6B /* CurrencyConverterViewController.swift in Sources */,
 				11DA58772BAA52EE00915F6B /* LocalizedCurrencyRatesCoordinator.swift in Sources */,
 				11DA583B2BAA3E4A00915F6B /* TBank.xcdatamodeld in Sources */,
+				2D1BBD7A2BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift in Sources */,
 				11DA58672BAA4DBF00915F6B /* BranchDetailsViewController.swift in Sources */,
 				11DA587F2BAA55D800915F6B /* SettingsCoordinator.swift in Sources */,
+				2D1BBD782BAC1EBF0001D2C2 /* UIView + Extension.swift in Sources */,
 				11DA58912BAAC8DA00915F6B /* Test.swift in Sources */,
 				11DA587B2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift in Sources */,
 				11DA587D2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift in Sources */,
