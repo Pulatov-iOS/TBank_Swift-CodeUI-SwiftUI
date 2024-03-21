@@ -1,6 +1,7 @@
 import Alamofire
+import Foundation
 
-final class NetworkManagerCurrency {
+final class NetworkManagerCurrency: NSCopying {
     
     static let shared = NetworkManagerCurrency()
     
@@ -19,8 +20,8 @@ final class NetworkManagerCurrency {
             }
         }
     }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        return NetworkManagerCurrency.shared
+    }
 }
-
-
-
-
