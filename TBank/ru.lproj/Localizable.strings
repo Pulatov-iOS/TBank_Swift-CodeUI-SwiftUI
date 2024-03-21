@@ -13,6 +13,9 @@
 
 // MARK: - BestCurrencyRates
 "App.BestCurrencyRates.NavigationItemTitle" = "Курс валют";
+"App.BestCurrencyRates.lastUpdatedLabel" = "Последнее обновление: ";
+"App.BestCurrencyRates.searchTextField" = "Поиск валюты";
+
 
 // MARK: - CurrencyConverter
 

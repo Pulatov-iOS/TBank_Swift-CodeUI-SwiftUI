@@ -69,7 +69,6 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         priceLabel.textColor = .black
         priceLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         
-        
         scaleLabel.textColor = .black
         scaleLabel.font = UIFont.systemFont(ofSize: 25, weight: .light)
     }
