@@ -6,13 +6,14 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     private let nameLabel = UILabel()
     private let priceLabel = UILabel()
     private let scaleLabel = UILabel()
-    private let imageFlag = UIImageView()
     
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
+        addSubviews()
+        configureUI()
+        configureConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -20,27 +21,20 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     }
     
     // MARK: - UI Setup
-    private func setupConstraints() {
-        
-    }
-    private func setupUI() {
+    
+    private func addSubviews() {
         contentView.addSubview(customView)
         customView.addSubview(nameLabel)
         customView.addSubview(priceLabel)
         customView.addSubview(scaleLabel)
-        
-        //customView.addSubview(imageFlag)
-        
+    }
+    
+    private func configureConstraints() {
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         customView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
-        
-        
-        //imageFlag.translatesAutoresizingMaskIntoConstraints = false
-        //imageFlag.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
-        //imageFlag.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 25).isActive = true
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
@@ -54,7 +48,9 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -17).isActive = true
-        
+    }
+    
+    private func configureUI() {
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = .white
     
@@ -79,11 +75,5 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         nameLabel.text = rate.abbreviation
         priceLabel.text = String(format: "%.2f" + " BYN", rate.rate)
         scaleLabel.text = String(format: "%.0f", rate.scale)
-        
-        if let currencyImage = UIImage(named: rate.abbreviation) {
-            imageFlag.image = currencyImage
-        } else {
-            imageFlag.image = UIImage(named: "USD")
-        }
     }
 }

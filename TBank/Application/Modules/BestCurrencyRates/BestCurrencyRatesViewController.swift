@@ -27,7 +27,6 @@ final class BestCurrencyRatesViewController: UIViewController {
         addSubviews()
         configureConstraints()
         configureUI()
-        bindings()
         setupTableView()
         fetchExchangeRates()
         startLoadingAnimation()
@@ -64,10 +63,9 @@ final class BestCurrencyRatesViewController: UIViewController {
                     $0.abbreviation == "CNY"
                 }
                 DispatchQueue.main.async {
-                    self?.currencyRates = rates//filteredRates
+                    self?.currencyRates = rates
                     self?.tableView.reloadData()
                     
-                    // Обновляем текст метки с временем последней загрузки
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                     self?.lastUpdatedLabel.text = NSLocalizedString("App.BestCurrencyRates.lastUpdatedLabel", comment: "") + "\(dateFormatter.string(from: Date()))"
@@ -110,8 +108,6 @@ final class BestCurrencyRatesViewController: UIViewController {
     }
     
     private func configureUI() {
-        //navigationItem.title = NSLocalizedString("App.BestCurrencyRates.NavigationItemTitle", comment: "")
-        
         titleLabel.text = NSLocalizedString("App.BestCurrencyRates.NavigationItemTitle", comment: "")
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -138,7 +134,6 @@ final class BestCurrencyRatesViewController: UIViewController {
     
     
     private func startLoadingAnimation() {
-        // Создаем и добавляем индикатор загрузки на вашу вью
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.color = .black
         activityIndicator.center = view.center
@@ -147,7 +142,6 @@ final class BestCurrencyRatesViewController: UIViewController {
     }
     
     private func stopLoadingAnimation() {
-        // Удаляем индикатор загрузки из вашей вью
         for subview in view.subviews {
             if let activityIndicator = subview as? UIActivityIndicatorView {
                 activityIndicator.stopAnimating()
@@ -181,11 +175,6 @@ final class BestCurrencyRatesViewController: UIViewController {
     @objc private func searchTextFieldDidChange(_ textField: UITextField) {
         filterCurrencyRates(with: textField.text!)
     }
-    
-    private func bindings() {
-        
-    }
-    
 }
 extension BestCurrencyRatesViewController: UITableViewDelegate, UITableViewDataSource {
     
