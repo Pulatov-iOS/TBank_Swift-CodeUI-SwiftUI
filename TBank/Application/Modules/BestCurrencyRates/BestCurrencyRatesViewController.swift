@@ -70,7 +70,7 @@ final class BestCurrencyRatesViewController: UIViewController {
                     // Обновляем текст метки с временем последней загрузки
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                    self?.lastUpdatedLabel.text = "Last updated: \(dateFormatter.string(from: Date())) NBRB.BY"
+                    self?.lastUpdatedLabel.text = NSLocalizedString("App.BestCurrencyRates.lastUpdatedLabel", comment: "") + "\(dateFormatter.string(from: Date()))"
                     
                     self?.stopLoadingAnimation()
                 }
@@ -101,8 +101,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
         deleteButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
         deleteButton.trailingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: -10).isActive = true
-        
-        
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 5).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -123,18 +122,16 @@ final class BestCurrencyRatesViewController: UIViewController {
         addButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)
         addButton.addTarget(self, action: #selector(tapOnAddButton), for: .touchUpInside)
         
-        
         deleteButton.tintColor = .gray
         deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         let symbolConfigurationDelete = UIImage.SymbolConfiguration(pointSize: 20)
         deleteButton.setPreferredSymbolConfiguration(symbolConfigurationDelete, forImageIn: .normal)
         deleteButton.addTarget(self, action: #selector(tapOnDeleteButton), for: .touchUpInside)
         
-        
         lastUpdatedLabel.textColor = .gray
         lastUpdatedLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         
-        searchTextField.placeholder = "Search Currency"
+        searchTextField.placeholder = NSLocalizedString("App.BestCurrencyRates.searchTextField", comment: "")
         searchTextField.borderStyle = .roundedRect
         searchTextField.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
     }

@@ -13,6 +13,8 @@
 
 // MARK: - BestCurrencyRates
 "App.BestCurrencyRates.NavigationItemTitle" = "Currency Rates";
+"App.BestCurrencyRates.lastUpdatedLabel" = "Last updated:";
+"App.BestCurrencyRates.searchTextField" = "Search Currency";
 
 // MARK: - CurrencyConverter
 
