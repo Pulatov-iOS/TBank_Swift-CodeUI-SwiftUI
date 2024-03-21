@@ -6,13 +6,17 @@ final class BestCurrencyRatesViewController: UIViewController {
     // MARK: - Public Properties
     var viewModel: BestCurrencyRatesViewModel!
     
-    
     private let titleLabel = UILabel()
     private let addButton = UIButton()
     private let tableView = UITableView()
     private var currencyRates: [CurrencyRate] = []
     private let lastUpdatedLabel = UILabel()
+    private let searchTextField = UITextField()
     
+    private var filteredCurrencyRates: [CurrencyRate] = []
+    private var isSearching: Bool {
+        return !searchTextField.text!.isEmpty
+    }
     
     
     // MARK: - LyfeCycle
@@ -34,6 +38,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         view.addSubview(addButton)
         view.addSubview(tableView)
         view.addSubview(lastUpdatedLabel)
+        view.addSubview(searchTextField)
     }
     
     private func setupTableView() {
@@ -48,10 +53,16 @@ final class BestCurrencyRatesViewController: UIViewController {
     private func fetchExchangeRates() {
         NetworkManagerCurrency.shared.fetchExchangeRates { [weak self] rates in
             if let rates = rates {
-                // Фильтруем курсы, оставляем только доллар и евро
-                let filteredRates = rates.filter { $0.abbreviation == "USD" || $0.abbreviation == "EUR" || $0.abbreviation == "RUB" || $0.abbreviation == "PLN" || $0.abbreviation == "CNY"}
+ 
+                let filteredRates = rates.filter {
+                    $0.abbreviation == "USD" ||
+                    $0.abbreviation == "EUR" ||
+                    $0.abbreviation == "RUB" ||
+                    $0.abbreviation == "PLN" ||
+                    $0.abbreviation == "CNY"
+                }
                 DispatchQueue.main.async {
-                    self?.currencyRates = filteredRates
+                    self?.currencyRates = rates//filteredRates
                     self?.tableView.reloadData()
                     
                     // Обновляем текст метки с временем последней загрузки
@@ -80,8 +91,13 @@ final class BestCurrencyRatesViewController: UIViewController {
         lastUpdatedLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
         lastUpdatedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
+        searchTextField.translatesAutoresizingMaskIntoConstraints = false
+        searchTextField.topAnchor.constraint(equalTo: lastUpdatedLabel.bottomAnchor, constant: 10).isActive = true
+        searchTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        searchTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: lastUpdatedLabel.bottomAnchor, constant: 5).isActive = true
+        tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 5).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -102,6 +118,10 @@ final class BestCurrencyRatesViewController: UIViewController {
         
         lastUpdatedLabel.textColor = .gray
         lastUpdatedLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        
+        searchTextField.placeholder = "Search Currency"
+        searchTextField.borderStyle = .roundedRect
+        searchTextField.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
     }
     
     
@@ -125,10 +145,23 @@ final class BestCurrencyRatesViewController: UIViewController {
         }
     }
     
+    private func filterCurrencyRates(with searchText: String) {
+        if searchText.isEmpty {
+            filteredCurrencyRates = currencyRates
+        } else {
+            filteredCurrencyRates = currencyRates.filter { $0.abbreviation.lowercased().contains(searchText.lowercased()) }
+        }
+        tableView.reloadData()
+    }
+    
     @objc func tapOnAddButton() {
         fetchExchangeRates()
         startLoadingAnimation()
         print("update")
+    }
+    
+    @objc private func searchTextFieldDidChange(_ textField: UITextField) {
+        filterCurrencyRates(with: textField.text!)
     }
     
     private func bindings() {
@@ -139,7 +172,7 @@ final class BestCurrencyRatesViewController: UIViewController {
 extension BestCurrencyRatesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currencyRates.count
+        return isSearching ? filteredCurrencyRates.count : currencyRates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -147,7 +180,7 @@ extension BestCurrencyRatesViewController: UITableViewDelegate, UITableViewDataS
             return UITableViewCell()
         }
         
-        let rate = currencyRates[indexPath.row]
+        let rate = isSearching ? filteredCurrencyRates[indexPath.row] : currencyRates[indexPath.row]
         cell.configure(with: rate)
         return cell
     }
