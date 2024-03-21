@@ -40,7 +40,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(BestCurrencyRatesTableViewCell.self, forCellReuseIdentifier: "BestCurrencyRatesTableViewCell")
-        tableView.rowHeight = 120
+        tableView.rowHeight = 100
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
@@ -92,7 +92,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         
         titleLabel.text = NSLocalizedString("App.BestCurrencyRates.NavigationItemTitle", comment: "")
         titleLabel.textColor = .black
-        titleLabel.font = UIFont(name: "Rubik-Medium", size: 24)
+        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         
         addButton.tintColor = .black
         addButton.setImage(UIImage(systemName: "goforward"), for: .normal)
@@ -101,7 +101,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         addButton.addTarget(self, action: #selector(tapOnAddButton), for: .touchUpInside)
         
         lastUpdatedLabel.textColor = .gray
-        lastUpdatedLabel.font = UIFont(name: "Rubik-Light", size: 14)
+        lastUpdatedLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
     }
     
     
