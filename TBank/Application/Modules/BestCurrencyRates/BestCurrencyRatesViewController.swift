@@ -12,6 +12,7 @@ final class BestCurrencyRatesViewController: UIViewController {
     private var currencyRates: [CurrencyRate] = []
     private let lastUpdatedLabel = UILabel()
     private let searchTextField = UITextField()
+    private let deleteButton = UIButton()
     
     private var filteredCurrencyRates: [CurrencyRate] = []
     private var isSearching: Bool {
@@ -39,6 +40,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(lastUpdatedLabel)
         view.addSubview(searchTextField)
+        view.addSubview(deleteButton)
     }
     
     private func setupTableView() {
@@ -96,6 +98,11 @@ final class BestCurrencyRatesViewController: UIViewController {
         searchTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         searchTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor).isActive = true
+        deleteButton.trailingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: -10).isActive = true
+        
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 5).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -112,9 +119,17 @@ final class BestCurrencyRatesViewController: UIViewController {
         
         addButton.tintColor = .black
         addButton.setImage(UIImage(systemName: "goforward"), for: .normal)
-        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 25)
-        addButton.setPreferredSymbolConfiguration(symbolConfiguration, forImageIn: .normal)
+        let symbolConfigurationAdd = UIImage.SymbolConfiguration(pointSize: 25)
+        addButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)
         addButton.addTarget(self, action: #selector(tapOnAddButton), for: .touchUpInside)
+        
+        
+        deleteButton.tintColor = .gray
+        deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        let symbolConfigurationDelete = UIImage.SymbolConfiguration(pointSize: 20)
+        deleteButton.setPreferredSymbolConfiguration(symbolConfigurationDelete, forImageIn: .normal)
+        deleteButton.addTarget(self, action: #selector(tapOnDeleteButton), for: .touchUpInside)
+        
         
         lastUpdatedLabel.textColor = .gray
         lastUpdatedLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -159,6 +174,12 @@ final class BestCurrencyRatesViewController: UIViewController {
         startLoadingAnimation()
         print("update")
     }
+    @objc func tapOnDeleteButton() {
+        searchTextField.text = nil
+        filterCurrencyRates(with: "")
+        print("delete")
+    }
+    
     
     @objc private func searchTextFieldDidChange(_ textField: UITextField) {
         filterCurrencyRates(with: textField.text!)

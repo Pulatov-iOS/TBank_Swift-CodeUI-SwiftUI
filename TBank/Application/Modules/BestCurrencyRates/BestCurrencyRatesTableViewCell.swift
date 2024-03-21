@@ -45,7 +45,7 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
-        priceLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -25).isActive = true
+        priceLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -17).isActive = true
         
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = .white
