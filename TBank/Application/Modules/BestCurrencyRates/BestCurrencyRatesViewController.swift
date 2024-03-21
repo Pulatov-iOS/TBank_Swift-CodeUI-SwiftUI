@@ -161,7 +161,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         if searchText.isEmpty {
             filteredCurrencyRates = currencyRates
         } else {
-            filteredCurrencyRates = currencyRates.filter { $0.abbreviation.lowercased().contains(searchText.lowercased()) }
+            filteredCurrencyRates = currencyRates.filter { $0.abbreviation.lowercased().contains(searchText.lowercased()) || $0.curName.lowercased().contains(searchText.lowercased())}
         }
         tableView.reloadData()
     }
