@@ -52,6 +52,7 @@
 		2D250E102BADFD1F002DC479 /* Manrope-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E092BADFD1F002DC479 /* Manrope-SemiBold.ttf */; };
 		2D250E122BADFD36002DC479 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250E112BADFD36002DC479 /* UIFont + Extension.swift */; };
 		2D250E142BAE1F3D002DC479 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250E132BAE1F3D002DC479 /* CoreDataManager.swift */; };
+		2D250E162BAE22E6002DC479 /* ErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250E152BAE22E5002DC479 /* ErrorsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		2D250E092BADFD1F002DC479 /* Manrope-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-SemiBold.ttf"; sourceTree = "<group>"; };
 		2D250E112BADFD36002DC479 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		2D250E132BAE1F3D002DC479 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2D250E152BAE22E5002DC479 /* ErrorsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				2D250E132BAE1F3D002DC479 /* CoreDataManager.swift */,
+				2D250E152BAE22E5002DC479 /* ErrorsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				19F0C6D12BAC386400182B0A /* CurrencyRate.swift in Sources */,
 				11DA586D2BAA4E2600915F6B /* ExchangeRatesViewController.swift in Sources */,
 				2D250DFC2BADF9C2002DC479 /* UIView + Extension.swift in Sources */,
+				2D250E162BAE22E6002DC479 /* ErrorsManager.swift in Sources */,
 				11DA58732BAA4E4B00915F6B /* BankLocatorMapViewModel.swift in Sources */,
 				2D250DFE2BADF9EB002DC479 /* UIStackView + Extension.swift in Sources */,
 				2D250DFA2BADF965002DC479 /* ExchangeRaterTableViewCell.swift in Sources */,

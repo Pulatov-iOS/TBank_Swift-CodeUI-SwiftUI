@@ -93,8 +93,6 @@ extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
         10
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeRatesTableViewCell", for: indexPath) as? ExchangeRatesTableViewCell else { return UITableViewCell() }
@@ -103,7 +101,9 @@ extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(SettingsViewController(), animated: true)
+    }
     
 }
 

@@ -5,11 +5,12 @@ final class SettingsViewController: UIViewController {
     
     // MARK: - Public Properties
     var viewModel: SettingsViewModel!
+
     
     // MARK: - LyfeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         addSubviews()
         configureConstraints()
         configureUI()
