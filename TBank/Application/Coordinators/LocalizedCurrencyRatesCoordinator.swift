@@ -13,10 +13,10 @@ final class LocalizedCurrencyRatesCoordinator {
     }
     
     private func showLocalizedCurrencyRatesScreen() {
-        let view = ExchangeRatesView()
-        let viewModel = ExchangeRatesViewModel()
+        let view = LocalizedCurrencyRatesViewController()
+        let networkManager = NetworkManagerCurrency.shared
+        let viewModel = LocalizedCurrencyRatesViewModel(networkManager: networkManager)
         view.viewModel = viewModel
         navigationController.setViewControllers([view], animated: false)
     }
-    
 }

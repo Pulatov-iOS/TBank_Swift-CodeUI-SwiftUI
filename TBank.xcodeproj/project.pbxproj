@@ -36,9 +36,11 @@
 		11DA58892BAA56DF00915F6B /* CurrencyConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */; };
 		11DA588F2BAAC8CC00915F6B /* Test + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA588E2BAAC8CC00915F6B /* Test + Extension.swift */; };
 		11DA58912BAAC8DA00915F6B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58902BAAC8DA00915F6B /* Test.swift */; };
-		2D1BBD782BAC1EBF0001D2C2 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1BBD772BAC1EBF0001D2C2 /* UIView + Extension.swift */; };
-		2D1BBD7A2BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1BBD792BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift */; };
-		2D1BBD7C2BAC2DCE0001D2C2 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D1BBD7B2BAC2DCE0001D2C2 /* UIStackView + Extension.swift */; };
+		19F0C6D12BAC386400182B0A /* CurrencyRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6D02BAC386400182B0A /* CurrencyRate.swift */; };
+		19F0C6D32BAC38B600182B0A /* NetworkManagerCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */; };
+		19F0C6D62BAC38E200182B0A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 19F0C6D52BAC38E200182B0A /* Alamofire */; };
+		19F0C6D82BAC38E200182B0A /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 19F0C6D72BAC38E200182B0A /* AlamofireDynamic */; };
+		19F0C6EC2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6EB2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,9 +74,9 @@
 		11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterCoordinator.swift; sourceTree = "<group>"; };
 		11DA588E2BAAC8CC00915F6B /* Test + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test + Extension.swift"; sourceTree = "<group>"; };
 		11DA58902BAAC8DA00915F6B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
-		2D1BBD772BAC1EBF0001D2C2 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
-		2D1BBD792BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesTableViewCell.swift; sourceTree = "<group>"; };
-		2D1BBD7B2BAC2DCE0001D2C2 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
+		19F0C6D02BAC386400182B0A /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
+		19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerCurrency.swift; sourceTree = "<group>"; };
+		19F0C6EB2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestCurrencyRatesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19F0C6D62BAC38E200182B0A /* Alamofire in Frameworks */,
+				19F0C6D82BAC38E200182B0A /* AlamofireDynamic in Frameworks */,
 				11DA585B2BAA48D400915F6B /* SnapKit in Frameworks */,
 				11DA585D2BAA48D400915F6B /* SnapKit-Dynamic in Frameworks */,
 			);
@@ -172,8 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				11DA588E2BAAC8CC00915F6B /* Test + Extension.swift */,
-				2D1BBD772BAC1EBF0001D2C2 /* UIView + Extension.swift */,
-				2D1BBD7B2BAC2DCE0001D2C2 /* UIStackView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +222,9 @@
 			children = (
 				11DA58782BAA54A600915F6B /* BestCurrencyRatesViewController.swift */,
 				11DA587A2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift */,
+				19F0C6EB2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift */,
+				19F0C6D02BAC386400182B0A /* CurrencyRate.swift */,
+				19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */,
 			);
 			path = BestCurrencyRates;
 			sourceTree = "<group>";
@@ -258,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				11DA586C2BAA4E2600915F6B /* ExchangeRatesViewController.swift */,
-				2D1BBD792BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift */,
 				11DA586E2BAA4E2F00915F6B /* ExchangeRatesViewModel.swift */,
 			);
 			path = ExchangeRates;
@@ -283,6 +287,8 @@
 			packageProductDependencies = (
 				11DA585A2BAA48D400915F6B /* SnapKit */,
 				11DA585C2BAA48D400915F6B /* SnapKit-Dynamic */,
+				19F0C6D52BAC38E200182B0A /* Alamofire */,
+				19F0C6D72BAC38E200182B0A /* AlamofireDynamic */,
 			);
 			productName = TBank;
 			productReference = 11DA582D2BAA3E4A00915F6B /* TBank.app */;
@@ -315,6 +321,7 @@
 			mainGroup = 11DA58242BAA3E4A00915F6B;
 			packageReferences = (
 				11DA58592BAA48D400915F6B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				19F0C6D42BAC38E200182B0A /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 11DA582E2BAA3E4A00915F6B /* Products */;
 			projectDirPath = "";
@@ -346,28 +353,28 @@
 				11DA588F2BAAC8CC00915F6B /* Test + Extension.swift in Sources */,
 				11DA58312BAA3E4A00915F6B /* AppDelegate.swift in Sources */,
 				11DA58832BAA563100915F6B /* SettingsViewModel.swift in Sources */,
+				19F0C6D12BAC386400182B0A /* CurrencyRate.swift in Sources */,
 				11DA586D2BAA4E2600915F6B /* ExchangeRatesViewController.swift in Sources */,
 				11DA58732BAA4E4B00915F6B /* BankLocatorMapViewModel.swift in Sources */,
 				11DA58792BAA54A600915F6B /* BestCurrencyRatesViewController.swift in Sources */,
-				2D1BBD7C2BAC2DCE0001D2C2 /* UIStackView + Extension.swift in Sources */,
 				11DA58582BAA484D00915F6B /* LocalizedCurrencyRatesViewModel.swift in Sources */,
 				11DA58892BAA56DF00915F6B /* CurrencyConverterCoordinator.swift in Sources */,
 				11DA58492BAA3E6500915F6B /* RootCoordinator.swift in Sources */,
 				11DA58562BAA483F00915F6B /* LocalizedCurrencyRatesViewController.swift in Sources */,
 				11DA58872BAA56A600915F6B /* CurrencyConverterViewModel.swift in Sources */,
 				11DA58712BAA4E3E00915F6B /* BankLocatorMapViewController.swift in Sources */,
+				19F0C6D32BAC38B600182B0A /* NetworkManagerCurrency.swift in Sources */,
 				11DA586F2BAA4E2F00915F6B /* ExchangeRatesViewModel.swift in Sources */,
 				11DA58852BAA569B00915F6B /* CurrencyConverterViewController.swift in Sources */,
 				11DA58772BAA52EE00915F6B /* LocalizedCurrencyRatesCoordinator.swift in Sources */,
 				11DA583B2BAA3E4A00915F6B /* TBank.xcdatamodeld in Sources */,
-				2D1BBD7A2BAC263A0001D2C2 /* ExchangeRatesTableViewCell.swift in Sources */,
 				11DA58672BAA4DBF00915F6B /* BranchDetailsViewController.swift in Sources */,
 				11DA587F2BAA55D800915F6B /* SettingsCoordinator.swift in Sources */,
-				2D1BBD782BAC1EBF0001D2C2 /* UIView + Extension.swift in Sources */,
 				11DA58912BAAC8DA00915F6B /* Test.swift in Sources */,
 				11DA587B2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift in Sources */,
 				11DA587D2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift in Sources */,
 				11DA58332BAA3E4A00915F6B /* SceneDelegate.swift in Sources */,
+				19F0C6EC2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift in Sources */,
 				11DA58692BAA4DCB00915F6B /* BranchDetailsViewModel.swift in Sources */,
 				11DA58812BAA562300915F6B /* SettingsViewController.swift in Sources */,
 			);
@@ -605,6 +612,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		19F0C6D42BAC38E200182B0A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -617,6 +632,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 11DA58592BAA48D400915F6B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
+		};
+		19F0C6D52BAC38E200182B0A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 19F0C6D42BAC38E200182B0A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		19F0C6D72BAC38E200182B0A /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 19F0C6D42BAC38E200182B0A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
 
