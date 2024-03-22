@@ -9,7 +9,6 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     private let titleLabel = UILabel()
     private let setupButton = UIButton()
     private let сurrencyButton = UIButton()
-    private var currencyRates: [CurrencyRate] = []
     
     
     // MARK: - LyfeCycle
@@ -19,7 +18,6 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         addSubviews()
         configureConstraints()
         configureUI()
-        bindings()
         fetchExchangeRates()
     }
     
@@ -28,7 +26,6 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(setupButton)
         view.addSubview(сurrencyButton)
-        
     }
     
     private func configureConstraints() {
@@ -46,7 +43,6 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     }
     
     private func configureUI() {
-        
         titleLabel.text = NSLocalizedString("App.LocalizedCurrencyRates.NavigationItemTitle", comment: "")
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -67,7 +63,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     private func showCurrencySelectionActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        for currencyRate in currencyRates {
+        for currencyRate in viewModel.currencyRates {
             let action = UIAlertAction(title: currencyRate.abbreviation, style: .default) { [weak self] _ in
                 self?.handleCurrencySelection(currencyRate)
             }
@@ -83,19 +79,25 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         }
         present(actionSheet, animated: true, completion: nil)
     }
+
+    private func fetchExchangeRates() {
+        viewModel.fetchExchangeRates { [weak self] error in
+            if let error = error {
+                print("Failed to fetch exchange rates: \(error)")
+            } else {
+                self?.reloadCurrencyButton()
+            }
+        }
+    }
     
     private func handleCurrencySelection(_ currencyRate: CurrencyRate) {
         print("Selected currency abbreviation: \(currencyRate.abbreviation)")
         сurrencyButton.setTitle(currencyRate.abbreviation, for: .normal)
     }
-    
-    private func fetchExchangeRates() {
-        NetworkManagerCurrency.shared.fetchExchangeRates { [weak self] rates in
-            if let rates = rates {
-                self?.currencyRates = rates
-            } else {
-                print("Failed to fetch exchange rates")
-            }
+        
+    private func reloadCurrencyButton() {
+        if let currencyRate = viewModel.currencyRates.first {
+            сurrencyButton.setTitle(currencyRate.abbreviation, for: .normal)
         }
     }
     
@@ -107,9 +109,4 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         print("tapOnCurrencyButton")
         showCurrencySelectionActionSheet()
     }
-
-    private func bindings() {
-        
-    }
-    
 }
