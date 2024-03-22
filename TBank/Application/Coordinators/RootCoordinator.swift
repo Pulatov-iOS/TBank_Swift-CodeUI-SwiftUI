@@ -12,7 +12,7 @@ final class RootCoordinator {
         let tabBarController = UITabBarController()
               
         let LocCurRatesNavigationController = UINavigationController()
-        let LocCurRatesTabCoordinator = LocalizedCurrencyRatesCoordinator(navigationController: LocCurRatesNavigationController)
+        let LocCurRatesTabCoordinator = BranchDetailsCoordinator(navigationController: LocCurRatesNavigationController)
         LocCurRatesNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("App.TabBar.CurrencyRatesItemTitle", comment: ""), image: nil, tag: 0)
         LocCurRatesTabCoordinator.start()
         

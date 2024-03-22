@@ -53,10 +53,10 @@ final class ExchangeRatesView: UIViewController {
     private func setConstraintes() {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -7).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     
@@ -67,8 +67,7 @@ final class ExchangeRatesView: UIViewController {
         
         view.backgroundColor = .white
         
-        tableView.backgroundColor = .systemGray5
-        tableView.layer.cornerRadius = 10
+        tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.rowHeight = 100
     }
@@ -94,8 +93,6 @@ extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
         10
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeRatesTableViewCell", for: indexPath) as? ExchangeRatesTableViewCell else { return UITableViewCell() }
@@ -104,7 +101,9 @@ extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(SettingsViewController(), animated: true)
+    }
     
 }
 

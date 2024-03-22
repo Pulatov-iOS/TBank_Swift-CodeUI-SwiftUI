@@ -1,6 +1,6 @@
 import UIKit
 
-final class ExchangeRatesCoordinator {
+final class BranchDetailsCoordinator {
     
     let navigationController: UINavigationController
     
