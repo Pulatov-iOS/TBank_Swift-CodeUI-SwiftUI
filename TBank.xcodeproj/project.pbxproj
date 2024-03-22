@@ -34,7 +34,6 @@
 		11DA58852BAA569B00915F6B /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58842BAA569B00915F6B /* CurrencyConverterViewController.swift */; };
 		11DA58872BAA56A600915F6B /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58862BAA56A600915F6B /* CurrencyConverterViewModel.swift */; };
 		11DA58892BAA56DF00915F6B /* CurrencyConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */; };
-		11DA58912BAAC8DA00915F6B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58902BAAC8DA00915F6B /* Test.swift */; };
 		19F0C6D12BAC386400182B0A /* CurrencyRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6D02BAC386400182B0A /* CurrencyRate.swift */; };
 		19F0C6D32BAC38B600182B0A /* NetworkManagerCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */; };
 		19F0C6D62BAC38E200182B0A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 19F0C6D52BAC38E200182B0A /* Alamofire */; };
@@ -44,6 +43,14 @@
 		2D250DFC2BADF9C2002DC479 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DFB2BADF9C2002DC479 /* UIView + Extension.swift */; };
 		2D250DFE2BADF9EB002DC479 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DFD2BADF9EB002DC479 /* UIStackView + Extension.swift */; };
 		2D250E002BADFAA2002DC479 /* ExchangeRatesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DFF2BADFAA2002DC479 /* ExchangeRatesCoordinator.swift */; };
+		2D250E0A2BADFD1F002DC479 /* Manrope-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E032BADFD1E002DC479 /* Manrope-ExtraLight.ttf */; };
+		2D250E0B2BADFD1F002DC479 /* Manrope-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E042BADFD1E002DC479 /* Manrope-Light.ttf */; };
+		2D250E0C2BADFD1F002DC479 /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E052BADFD1F002DC479 /* Manrope-Medium.ttf */; };
+		2D250E0D2BADFD1F002DC479 /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E062BADFD1F002DC479 /* Manrope-Bold.ttf */; };
+		2D250E0E2BADFD1F002DC479 /* Manrope-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E072BADFD1F002DC479 /* Manrope-ExtraBold.ttf */; };
+		2D250E0F2BADFD1F002DC479 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E082BADFD1F002DC479 /* Manrope-Regular.ttf */; };
+		2D250E102BADFD1F002DC479 /* Manrope-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E092BADFD1F002DC479 /* Manrope-SemiBold.ttf */; };
+		2D250E122BADFD36002DC479 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250E112BADFD36002DC479 /* UIFont + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +82,6 @@
 		11DA58842BAA569B00915F6B /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		11DA58862BAA56A600915F6B /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
 		11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterCoordinator.swift; sourceTree = "<group>"; };
-		11DA58902BAAC8DA00915F6B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		19F0C6D02BAC386400182B0A /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
 		19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerCurrency.swift; sourceTree = "<group>"; };
 		19F0C6EB2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestCurrencyRatesTableViewCell.swift; sourceTree = "<group>"; };
@@ -83,6 +89,14 @@
 		2D250DFB2BADF9C2002DC479 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		2D250DFD2BADF9EB002DC479 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		2D250DFF2BADFAA2002DC479 /* ExchangeRatesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesCoordinator.swift; sourceTree = "<group>"; };
+		2D250E032BADFD1E002DC479 /* Manrope-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraLight.ttf"; sourceTree = "<group>"; };
+		2D250E042BADFD1E002DC479 /* Manrope-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Light.ttf"; sourceTree = "<group>"; };
+		2D250E052BADFD1F002DC479 /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
+		2D250E062BADFD1F002DC479 /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
+		2D250E072BADFD1F002DC479 /* Manrope-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraBold.ttf"; sourceTree = "<group>"; };
+		2D250E082BADFD1F002DC479 /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
+		2D250E092BADFD1F002DC479 /* Manrope-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-SemiBold.ttf"; sourceTree = "<group>"; };
+		2D250E112BADFD36002DC479 /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,41 +162,28 @@
 				11DA58302BAA3E4A00915F6B /* AppDelegate.swift */,
 				11DA58322BAA3E4A00915F6B /* SceneDelegate.swift */,
 				11DA58472BAA3E5300915F6B /* Coordinators */,
-				11DA584B2BAA42F900915F6B /* Managers */,
+				2D250E022BADFCF0002DC479 /* Managers */,
 				11DA584C2BAA431700915F6B /* Helpers */,
 				11DA58502BAA437C00915F6B /* Modules */,
 			);
 			path = Application;
 			sourceTree = "<group>";
 		};
-		11DA584B2BAA42F900915F6B /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 		11DA584C2BAA431700915F6B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				11DA584D2BAA433F00915F6B /* Models */,
+				2D250E012BADFCDA002DC479 /* Models */,
 				11DA584E2BAA434500915F6B /* Extensions */,
 				11DA584F2BAA436200915F6B /* Fonts */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		11DA584D2BAA433F00915F6B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		11DA584E2BAA434500915F6B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				2D250DFB2BADF9C2002DC479 /* UIView + Extension.swift */,
+				2D250E112BADFD36002DC479 /* UIFont + Extension.swift */,
 				2D250DFD2BADF9EB002DC479 /* UIStackView + Extension.swift */,
 			);
 			path = Extensions;
@@ -191,7 +192,13 @@
 		11DA584F2BAA436200915F6B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				11DA58902BAAC8DA00915F6B /* Test.swift */,
+				2D250E062BADFD1F002DC479 /* Manrope-Bold.ttf */,
+				2D250E072BADFD1F002DC479 /* Manrope-ExtraBold.ttf */,
+				2D250E032BADFD1E002DC479 /* Manrope-ExtraLight.ttf */,
+				2D250E042BADFD1E002DC479 /* Manrope-Light.ttf */,
+				2D250E052BADFD1F002DC479 /* Manrope-Medium.ttf */,
+				2D250E082BADFD1F002DC479 /* Manrope-Regular.ttf */,
+				2D250E092BADFD1F002DC479 /* Manrope-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -277,6 +284,20 @@
 			path = ExchangeRates;
 			sourceTree = "<group>";
 		};
+		2D250E012BADFCDA002DC479 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2D250E022BADFCF0002DC479 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -346,9 +367,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D250E102BADFD1F002DC479 /* Manrope-SemiBold.ttf in Resources */,
+				2D250E0C2BADFD1F002DC479 /* Manrope-Medium.ttf in Resources */,
 				11DA58402BAA3E4C00915F6B /* LaunchScreen.storyboard in Resources */,
+				2D250E0A2BADFD1F002DC479 /* Manrope-ExtraLight.ttf in Resources */,
+				2D250E0D2BADFD1F002DC479 /* Manrope-Bold.ttf in Resources */,
 				11DA58612BAA4B4C00915F6B /* Localizable.strings in Resources */,
+				2D250E0F2BADFD1F002DC479 /* Manrope-Regular.ttf in Resources */,
+				2D250E0E2BADFD1F002DC479 /* Manrope-ExtraBold.ttf in Resources */,
 				11DA583D2BAA3E4C00915F6B /* Assets.xcassets in Resources */,
+				2D250E0B2BADFD1F002DC479 /* Manrope-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D250E122BADFD36002DC479 /* UIFont + Extension.swift in Sources */,
 				11DA58312BAA3E4A00915F6B /* AppDelegate.swift in Sources */,
 				11DA58832BAA563100915F6B /* SettingsViewModel.swift in Sources */,
 				19F0C6D12BAC386400182B0A /* CurrencyRate.swift in Sources */,
@@ -382,7 +411,6 @@
 				2D250E002BADFAA2002DC479 /* ExchangeRatesCoordinator.swift in Sources */,
 				11DA58672BAA4DBF00915F6B /* BranchDetailsViewController.swift in Sources */,
 				11DA587F2BAA55D800915F6B /* SettingsCoordinator.swift in Sources */,
-				11DA58912BAAC8DA00915F6B /* Test.swift in Sources */,
 				11DA587B2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift in Sources */,
 				11DA587D2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift in Sources */,
 				11DA58332BAA3E4A00915F6B /* SceneDelegate.swift in Sources */,
