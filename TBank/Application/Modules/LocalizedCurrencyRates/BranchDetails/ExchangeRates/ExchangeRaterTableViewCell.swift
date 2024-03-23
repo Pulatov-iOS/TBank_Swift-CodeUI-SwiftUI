@@ -1,12 +1,6 @@
 
 import UIKit
 
-enum DynamicType {
-    case positive
-    case negative
-}
-
-
 
 //MARK: - Final class ClassExchangeRatesTableViewCell
 
@@ -14,6 +8,11 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
     
     
 //MARK: - Properties of class
+    
+    private enum DynamicType {
+        case positive
+        case negative
+    }
     
     private let backgroundBaseView = UIView()
     private let currencyStackView = UIStackView()
@@ -24,6 +23,9 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
     private let avrDynamicImageView = UIImageView()
     private let rateLabel = UILabel()
     
+    private var name: String = "No name"
+    private var rateStr: String = "0.0"
+    private var avrStr: String = "0.0"
     private var dynamicStatus: DynamicType = .negative
     
    
@@ -100,29 +102,27 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         
         currencyNameLabel.textAlignment = .left
         currencyNameLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
-        currencyNameLabel.text = "USD"
+        currencyNameLabel.text = name
         
         currencyChangeRatingStackView.axis = .horizontal
         currencyChangeRatingStackView.distribution = .fillEqually
         currencyChangeRatingStackView.spacing = 2
         
         avrLabel.textAlignment = .left
-//        avrLabel.textColor = .black
         avrLabel.font = UIFont.manrope(ofSize: 17, style: .semiBold)
         avrLabel.text = "Avr."
         
         avrCountLabel.textAlignment = .left
         avrCountLabel.textColor = .lightGray
         avrCountLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        avrCountLabel.text = "3.24"
+        avrCountLabel.text = avrStr
         
         avrDynamicImageView.image = dynamicStatus == .positive ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
         avrDynamicImageView.contentMode = .scaleAspectFit
         
         rateLabel.textAlignment = .left
-//        rateLabel.textColor = .black
         rateLabel.font = UIFont.manrope(ofSize: 26, style: .extraBold)
-        rateLabel.attributedText = setAttributedString(with: "3.24 byn", dynamicStatus)
+        rateLabel.attributedText = setAttributedString(with: "\(rateStr) byn", dynamicStatus)
     }
     
     private func setAttributedString(with text: String, _ avrDynamic: DynamicType) -> NSAttributedString {
@@ -131,6 +131,25 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         let rateNumbersColor = avrDynamic == .positive ? UIColor.customGreenER.cgColor : UIColor.red.cgColor
         attributedString.addAttribute(.foregroundColor, value: rateNumbersColor, range: NSRange(location: 0, length: 4))
         return attributedString
+    }
+    
+    private func updateUI() {
+        currencyNameLabel.text = name
+        avrCountLabel.text = avrStr
+        rateLabel.attributedText = setAttributedString(with: "\(rateStr) byn", dynamicStatus)
+        avrDynamicImageView.image = dynamicStatus == .positive ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
+    }
+    
+    
+    
+//MARK: - Grtting of current currency data
+    
+    public func getData(with name: String, _ rate: Double, _ avr: Double, _ dynamic: Double) {
+        self.name = name
+        self.rateStr = String(rate)
+        self.avrStr = String(avr)
+        self.dynamicStatus = dynamic > 0 ? .positive : .negative
+        updateUI()
     }
 }
 

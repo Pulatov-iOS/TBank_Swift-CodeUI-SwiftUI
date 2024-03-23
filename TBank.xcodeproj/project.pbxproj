@@ -15,8 +15,6 @@
 		11DA58492BAA3E6500915F6B /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58482BAA3E6500915F6B /* RootCoordinator.swift */; };
 		11DA58562BAA483F00915F6B /* LocalizedCurrencyRatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58552BAA483F00915F6B /* LocalizedCurrencyRatesViewController.swift */; };
 		11DA58582BAA484D00915F6B /* LocalizedCurrencyRatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58572BAA484D00915F6B /* LocalizedCurrencyRatesViewModel.swift */; };
-		11DA585B2BAA48D400915F6B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 11DA585A2BAA48D400915F6B /* SnapKit */; };
-		11DA585D2BAA48D400915F6B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 11DA585C2BAA48D400915F6B /* SnapKit-Dynamic */; };
 		11DA58612BAA4B4C00915F6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11DA58632BAA4B4C00915F6B /* Localizable.strings */; };
 		11DA58672BAA4DBF00915F6B /* BranchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58662BAA4DBF00915F6B /* BranchDetailsViewController.swift */; };
 		11DA58692BAA4DCB00915F6B /* BranchDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58682BAA4DCB00915F6B /* BranchDetailsViewModel.swift */; };
@@ -36,8 +34,6 @@
 		11DA58892BAA56DF00915F6B /* CurrencyConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */; };
 		19F0C6D12BAC386400182B0A /* CurrencyRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6D02BAC386400182B0A /* CurrencyRate.swift */; };
 		19F0C6D32BAC38B600182B0A /* NetworkManagerCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */; };
-		19F0C6D62BAC38E200182B0A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 19F0C6D52BAC38E200182B0A /* Alamofire */; };
-		19F0C6D82BAC38E200182B0A /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 19F0C6D72BAC38E200182B0A /* AlamofireDynamic */; };
 		19F0C6EC2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6EB2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift */; };
 		2D250DFA2BADF965002DC479 /* ExchangeRaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DF92BADF965002DC479 /* ExchangeRaterTableViewCell.swift */; };
 		2D250DFC2BADF9C2002DC479 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DFB2BADF9C2002DC479 /* UIView + Extension.swift */; };
@@ -53,7 +49,28 @@
 		2D250E122BADFD36002DC479 /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250E112BADFD36002DC479 /* UIFont + Extension.swift */; };
 		2D250E142BAE1F3D002DC479 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250E132BAE1F3D002DC479 /* CoreDataManager.swift */; };
 		2D250E162BAE22E6002DC479 /* ErrorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250E152BAE22E5002DC479 /* ErrorsManager.swift */; };
+		2DF74CD62BAEED5C00FDE30A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF74CD52BAEED5C00FDE30A /* SnapKit */; };
+		2DF74CD82BAEED5C00FDE30A /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF74CD72BAEED5C00FDE30A /* SnapKit-Dynamic */; };
+		2DF74CD92BAEED5C00FDE30A /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 2DF74CD72BAEED5C00FDE30A /* SnapKit-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2DF74CDB2BAEED5C00FDE30A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF74CDA2BAEED5C00FDE30A /* Alamofire */; };
+		2DF74CDD2BAEED5C00FDE30A /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 2DF74CDC2BAEED5C00FDE30A /* AlamofireDynamic */; };
+		2DF74CDE2BAEED5C00FDE30A /* AlamofireDynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 2DF74CDC2BAEED5C00FDE30A /* AlamofireDynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2DF74CDF2BAEED5C00FDE30A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2DF74CD92BAEED5C00FDE30A /* SnapKit-Dynamic in Embed Frameworks */,
+				2DF74CDE2BAEED5C00FDE30A /* AlamofireDynamic in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		11DA582D2BAA3E4A00915F6B /* TBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,10 +125,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19F0C6D62BAC38E200182B0A /* Alamofire in Frameworks */,
-				19F0C6D82BAC38E200182B0A /* AlamofireDynamic in Frameworks */,
-				11DA585B2BAA48D400915F6B /* SnapKit in Frameworks */,
-				11DA585D2BAA48D400915F6B /* SnapKit-Dynamic in Frameworks */,
+				2DF74CDB2BAEED5C00FDE30A /* Alamofire in Frameworks */,
+				2DF74CDD2BAEED5C00FDE30A /* AlamofireDynamic in Frameworks */,
+				2DF74CD62BAEED5C00FDE30A /* SnapKit in Frameworks */,
+				2DF74CD82BAEED5C00FDE30A /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +140,7 @@
 			children = (
 				11DA582F2BAA3E4A00915F6B /* TBank */,
 				11DA582E2BAA3E4A00915F6B /* Products */,
+				2DF74CD42BAEED5C00FDE30A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -304,6 +322,13 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		2DF74CD42BAEED5C00FDE30A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -314,6 +339,7 @@
 				11DA58292BAA3E4A00915F6B /* Sources */,
 				11DA582A2BAA3E4A00915F6B /* Frameworks */,
 				11DA582B2BAA3E4A00915F6B /* Resources */,
+				2DF74CDF2BAEED5C00FDE30A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -321,10 +347,10 @@
 			);
 			name = TBank;
 			packageProductDependencies = (
-				11DA585A2BAA48D400915F6B /* SnapKit */,
-				11DA585C2BAA48D400915F6B /* SnapKit-Dynamic */,
-				19F0C6D52BAC38E200182B0A /* Alamofire */,
-				19F0C6D72BAC38E200182B0A /* AlamofireDynamic */,
+				2DF74CD52BAEED5C00FDE30A /* SnapKit */,
+				2DF74CD72BAEED5C00FDE30A /* SnapKit-Dynamic */,
+				2DF74CDA2BAEED5C00FDE30A /* Alamofire */,
+				2DF74CDC2BAEED5C00FDE30A /* AlamofireDynamic */,
 			);
 			productName = TBank;
 			productReference = 11DA582D2BAA3E4A00915F6B /* TBank.app */;
@@ -671,22 +697,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		11DA585A2BAA48D400915F6B /* SnapKit */ = {
+		2DF74CD52BAEED5C00FDE30A /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 11DA58592BAA48D400915F6B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		11DA585C2BAA48D400915F6B /* SnapKit-Dynamic */ = {
+		2DF74CD72BAEED5C00FDE30A /* SnapKit-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 11DA58592BAA48D400915F6B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
 		};
-		19F0C6D52BAC38E200182B0A /* Alamofire */ = {
+		2DF74CDA2BAEED5C00FDE30A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 19F0C6D42BAC38E200182B0A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		19F0C6D72BAC38E200182B0A /* AlamofireDynamic */ = {
+		2DF74CDC2BAEED5C00FDE30A /* AlamofireDynamic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 19F0C6D42BAC38E200182B0A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;
