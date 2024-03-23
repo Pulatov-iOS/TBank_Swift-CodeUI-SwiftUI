@@ -110,7 +110,6 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         currencyChangeRatingStackView.spacing = 2
         
         avrLabel.textAlignment = .left
-//        avrLabel.textColor = .black
         avrLabel.font = UIFont.manrope(ofSize: 17, style: .semiBold)
         avrLabel.text = "Avr."
         
@@ -123,7 +122,6 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         avrDynamicImageView.contentMode = .scaleAspectFit
         
         rateLabel.textAlignment = .left
-//        rateLabel.textColor = .black
         rateLabel.font = UIFont.manrope(ofSize: 26, style: .extraBold)
         rateLabel.attributedText = setAttributedString(with: "\(rateStr) byn", dynamicStatus)
     }
@@ -136,6 +134,13 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         return attributedString
     }
     
+    private func updateUI() {
+        currencyNameLabel.text = name
+        avrCountLabel.text = avrStr
+        rateLabel.attributedText = setAttributedString(with: "\(rateStr) byn", dynamicStatus)
+        avrDynamicImageView.image = dynamicStatus == .positive ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
+    }
+    
     
     
 //MARK: - Grtting of current currency data
@@ -145,6 +150,7 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         self.rateStr = String(rate)
         self.avrStr = String(avr)
         self.dynamicStatus = dynamic > 0 ? .positive : .negative
+        updateUI()
     }
 }
 

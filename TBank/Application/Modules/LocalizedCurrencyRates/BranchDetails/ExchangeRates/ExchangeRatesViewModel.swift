@@ -4,7 +4,8 @@ import Combine
 
 protocol ExchangeRatesViewModelProtocol: AnyObject {
     func loadData()
-    var loadedCurrentCurrencies: (([Currencies]) -> (Void))? { get set}
+//    var loadedCurrentCurrencies: (([Currencies]) -> (Void))? { get set}
+    var loadCurrencyPublisher: AnyPublisher<[Currencies], Never> { get }
 }
 
 
@@ -16,9 +17,10 @@ final class ExchangeRatesViewModel {
     
 //MARK: - Properties and init of class
     
-    var currencies: [Currencies] = []
+    private let loadCurrensySubject = PassthroughSubject<[Currencies], Never>()
+    private var currencies: [Currencies] = []
     
-    var loadedCurrentCurrencies: (([Currencies]) -> (Void))?
+//    var loadedCurrentCurrencies: (([Currencies]) -> (Void))?
     
 }
     
@@ -28,12 +30,17 @@ final class ExchangeRatesViewModel {
 
 extension ExchangeRatesViewModel: ExchangeRatesViewModelProtocol {
     
+    var loadCurrencyPublisher: AnyPublisher<[Currencies], Never> {
+        return loadCurrensySubject.eraseToAnyPublisher()
+    }
+    
     func loadData() {
         let result = CoreDataManager.instance.loadCurrancies()
         switch result {
         case .success(let data):
             self.currencies = data
-            loadedCurrentCurrencies?(currencies)
+//            loadedCurrentCurrencies?(currencies)
+            loadCurrensySubject.send(currencies)
         case .failure(let failure):
             print(failure.localizedDescription)
         }

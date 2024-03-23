@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 //MARK: - Final class ExchangeRatesViewController
 
@@ -10,6 +11,7 @@ final class ExchangeRatesView: UIViewController {
     var viewModel: ExchangeRatesViewModelProtocol!
     
     private let tableView = UITableView()
+    private var cancellables = Set<AnyCancellable>()
     private var currencies: [Currencies] = []
     
     
@@ -17,6 +19,8 @@ final class ExchangeRatesView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        testPP()
         
         addSubviews()
         setConstraintes()
@@ -28,6 +32,7 @@ final class ExchangeRatesView: UIViewController {
         super.viewWillAppear(animated)
         
         configureNavBar()
+        getCurrensiesBinding()
         viewModel.loadData()
     }
     
@@ -89,10 +94,17 @@ final class ExchangeRatesView: UIViewController {
 //MARK: - Baindings
     
     private func getCurrensiesBinding() {
-        viewModel.loadedCurrentCurrencies = { [weak self] data in
-            self?.currencies = data
-            self?.tableView.reloadData()
-        }
+        //        viewModel.loadedCurrentCurrencies = { [weak self] data in
+        //            self?.currencies = data
+        //            self?.tableView.reloadData()
+        //        }
+        
+        viewModel.loadCurrencyPublisher
+            .sink { [weak self] data in
+                self?.currencies = data
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -124,4 +136,38 @@ extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
+}
+
+
+
+extension ExchangeRatesView {
+    
+    func testPP() {
+        let usd = TestCurrency(name: "USD", rate: 3.24, avr: 3.25, dynamic: -0.01)
+        let eur = TestCurrency(name: "EUR", rate: 3.54, avr: 3.53, dynamic: -0.01)
+        let rur = TestCurrency(name: "RUR", rate: 3.1, avr: 3.0, dynamic: 0.1)
+        
+        var currancyArray = [TestCurrency]()
+        currancyArray.append(usd)
+        currancyArray.append(eur)
+        currancyArray.append(rur)
+        
+        currancyArray.forEach { currancy in
+            let result = CoreDataManager.instance.saveCurrency(name: currancy.name, rate: currancy.rate, avr: currancy.avr, dynamic: currancy.dynamic)
+            switch result {
+            case .success(_):
+                print("save \(currancy.name)")
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
+}
+
+
+struct TestCurrency {
+    let name: String
+    let rate: Double
+    let avr: Double
+    let dynamic: Double
 }
