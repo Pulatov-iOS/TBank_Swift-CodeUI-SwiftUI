@@ -1,12 +1,9 @@
-//MARK: - Enum with errors and there descriptions for CoreData
-
 enum CoreDataError: Error {
     case appDelegateError
     case entityError
     case saveError
     case castError
     case loadError
-    
     
     //Creating the description of the error
     func description() -> String {

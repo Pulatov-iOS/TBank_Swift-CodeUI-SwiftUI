@@ -6,6 +6,8 @@ final class BestCurrencyRatesViewController: UIViewController {
     // MARK: - Public Properties
     var viewModel: BestCurrencyRatesViewModel!
     
+    // MARK: - UI Properties
+    private let tabBar: TabBarItem
     private let titleLabel = UILabel()
     private let addButton = UIButton()
     private let tableView = UITableView()
@@ -13,17 +15,27 @@ final class BestCurrencyRatesViewController: UIViewController {
     private let lastUpdatedLabel = UILabel()
     private let searchTextField = UITextField()
     private let deleteButton = UIButton()
+    private let backgroundTabBarView = UIView()
     
     private var filteredCurrencyRates: [CurrencyRate] = []
     private var isSearching: Bool {
         return !searchTextField.text!.isEmpty
     }
     
-    
     // MARK: - LyfeCycle
+    init(tabBar: TabBarItem) {
+        self.tabBar = tabBar
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+
+        view.addSubview(tabBar)
         addSubviews()
         configureConstraints()
         configureUI()
@@ -40,6 +52,8 @@ final class BestCurrencyRatesViewController: UIViewController {
         view.addSubview(lastUpdatedLabel)
         view.addSubview(searchTextField)
         view.addSubview(deleteButton)
+        view.addSubview(backgroundTabBarView)
+        view.addSubview(tabBar)
     }
     
     private func setupTableView() {
@@ -105,9 +119,21 @@ final class BestCurrencyRatesViewController: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        tabBar.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-2)
+            make.width.equalToSuperview()
+        }
+        
+        backgroundTabBarView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
+        }
     }
     
     private func configureUI() {
+        view.backgroundColor = .white
+        
         titleLabel.text = NSLocalizedString("App.BestCurrencyRates.NavigationItemTitle", comment: "")
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -130,6 +156,8 @@ final class BestCurrencyRatesViewController: UIViewController {
         searchTextField.placeholder = NSLocalizedString("App.BestCurrencyRates.searchTextField", comment: "")
         searchTextField.borderStyle = .roundedRect
         searchTextField.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
+        
+        backgroundTabBarView.backgroundColor = UIColor(resource: .Color.TabBar.background)
     }
     
     
@@ -176,6 +204,8 @@ final class BestCurrencyRatesViewController: UIViewController {
         filterCurrencyRates(with: textField.text!)
     }
 }
+
+//MARK: - Table Delegate/DataSource
 extension BestCurrencyRatesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

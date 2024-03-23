@@ -26,7 +26,7 @@ final class CurrencyConverterViewController: UIViewController {
     }
     
     private func configureUI() {
-       
+        view.backgroundColor = .white
     }
     
     private func bindings() {

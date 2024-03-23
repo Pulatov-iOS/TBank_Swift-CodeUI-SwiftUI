@@ -1,6 +1,7 @@
 import UIKit
 
 final class BestCurrencyRatesTableViewCell: UITableViewCell {
+    
     // MARK: - UI Elements
     private let customView = UIView()
     private let nameLabel = UILabel()
@@ -8,7 +9,6 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     private let scaleLabel = UILabel()
     
     // MARK: - Initialization
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
@@ -21,7 +21,6 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     }
     
     // MARK: - UI Setup
-    
     private func addSubviews() {
         contentView.addSubview(customView)
         customView.addSubview(nameLabel)

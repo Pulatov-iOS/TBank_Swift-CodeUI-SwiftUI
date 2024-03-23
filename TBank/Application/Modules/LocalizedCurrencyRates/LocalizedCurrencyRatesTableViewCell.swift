@@ -1,11 +1,6 @@
 import UIKit
 
-enum DynamicType {
-    case positive
-    case negative
-}
-
-final class ExchangeRatesTableViewCell: UITableViewCell {
+final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
     
     //MARK: - Privat Properties
     private let backgroundBaseView = UIView()
@@ -31,7 +26,7 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Adding of subViews
+    //MARK: - Methods
     private func addSubviews() {
         contentView.addSubviews(with: backgroundBaseView)
         backgroundBaseView.addSubviews(with: currencyStackView, rateLabel)
@@ -39,7 +34,6 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         currencyChangeRatingStackView.addArrangedSubviews(with: avrLabel, avrCountLabel, avrDynamicImageView)
     }
 
-    //MARK: - Setting of constraintes
     private func setConstraintes() {
         backgroundBaseView.translatesAutoresizingMaskIntoConstraints = false
         backgroundBaseView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
@@ -64,7 +58,6 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         rateLabel.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.32).isActive = true
     }
     
-    //MARK: - Configuration of User Interface
     private func configureUI() {
         backgroundBaseView.backgroundColor = .systemGray6
         backgroundBaseView.layer.cornerRadius = 10
