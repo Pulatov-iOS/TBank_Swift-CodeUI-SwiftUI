@@ -110,7 +110,7 @@ final class ExchangeRatesView: UIViewController {
 //MARK: - Actions
     
     @objc private func mapButtonTapped() {
-        
+        viewModel.moveToMapScreen()
     }
 }
 

@@ -4,6 +4,7 @@ import Combine
 
 protocol ExchangeRatesViewModelProtocol: AnyObject {
     func loadData()
+    func moveToMapScreen()
     var loadCurrencyPublisher: AnyPublisher<[Currencies], Never> { get }
 }
 
@@ -25,6 +26,10 @@ final class ExchangeRatesViewModel {
 //MARK: - Implemendation of the LoadingScreenPresenterProtocol
 
 extension ExchangeRatesViewModel: ExchangeRatesViewModelProtocol {
+    
+    func moveToMapScreen() {
+        
+    }
     
     var loadCurrencyPublisher: AnyPublisher<[Currencies], Never> {
         return loadCurrensySubject.eraseToAnyPublisher()
