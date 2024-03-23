@@ -65,7 +65,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         tabBar.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-2)
+            make.bottom.equalToSuperview().inset(30)
             make.width.equalToSuperview()
         }
         

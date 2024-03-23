@@ -45,7 +45,6 @@ final class CoreDataManager: NSCopying {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return .failure(.appDelegateError) }
         
         let managedContext  = appDelegate.persistentContainer.viewContext
-        
         let feetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Currencies")
         
         var currancies = [Currencies]()
