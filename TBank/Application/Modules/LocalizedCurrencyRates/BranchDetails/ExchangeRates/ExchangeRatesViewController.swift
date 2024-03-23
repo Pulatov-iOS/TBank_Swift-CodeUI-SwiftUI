@@ -10,13 +10,14 @@ final class ExchangeRatesView: UIViewController {
     var viewModel: ExchangeRatesViewModelProtocol!
     
     private let tableView = UITableView()
-    
+    private var currencies: [Currencies] = []
     
     
     //MARK: - Lifecycle of controller
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addSubviews()
         setConstraintes()
         configureUI()
@@ -27,6 +28,7 @@ final class ExchangeRatesView: UIViewController {
         super.viewWillAppear(animated)
         
         configureNavBar()
+        viewModel.loadData()
     }
     
     
@@ -81,6 +83,17 @@ final class ExchangeRatesView: UIViewController {
         tableView.dataSource = self
         tableView.register(ExchangeRatesTableViewCell.self, forCellReuseIdentifier: "ExchangeRatesTableViewCell")
     }
+    
+    
+    
+//MARK: - Baindings
+    
+    private func getCurrensiesBinding() {
+        viewModel.loadedCurrentCurrencies = { [weak self] data in
+            self?.currencies = data
+            self?.tableView.reloadData()
+        }
+    }
 }
 
 
@@ -90,24 +103,25 @@ final class ExchangeRatesView: UIViewController {
 extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        return currencies.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currency = currencies[indexPath.row]
+        let name = currency.name ?? "No name"
+        let rate = currency.rate
+        let avr = currency.avr
+        let dynamic = currency.dynamic
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeRatesTableViewCell", for: indexPath) as? ExchangeRatesTableViewCell else { return UITableViewCell() }
         
         cell.backgroundColor = .clear
+        cell.getData(with: name, rate, avr, dynamic)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
-    
 }
-
-
-
-//MARK: - Implemendation of AddNewInfoInterractorInputProtocol protocol for AddNewInfoInterractor class
-
