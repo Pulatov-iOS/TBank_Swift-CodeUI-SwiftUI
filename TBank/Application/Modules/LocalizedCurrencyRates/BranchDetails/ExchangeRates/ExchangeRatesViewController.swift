@@ -38,11 +38,14 @@ final class ExchangeRatesView: UIViewController {
     
     
     
-    //MARK: - Configurations of Navigation bar
+//MARK: - Configurations of Navigation bar
     
     private func configureNavBar() {
         self.title = "Exchange Rates"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 21, weight: .bold)]
+        let mapButton = UIBarButtonItem(image: UIImage(named: "map"), style: .done, target: nil, action: #selector(mapButtonTapped))
+        mapButton.tintColor = .lightGray
+        navigationItem.rightBarButtonItem = mapButton
     }
     
     
@@ -72,7 +75,7 @@ final class ExchangeRatesView: UIViewController {
     
     private func configureUI() {
         
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundGray
         
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
@@ -100,6 +103,14 @@ final class ExchangeRatesView: UIViewController {
                 self?.tableView.reloadData()
             }
             .store(in: &cancellables)
+    }
+    
+    
+    
+//MARK: - Actions
+    
+    @objc private func mapButtonTapped() {
+        
     }
 }
 

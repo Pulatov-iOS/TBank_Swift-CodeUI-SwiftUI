@@ -40,6 +40,12 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         configureUI()
     }
     
+    override func layoutIfNeeded() {
+        super.layoutIfNeeded()
+        
+        setCornerRadius()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -69,20 +75,20 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         backgroundBaseView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
         currencyStackView.translatesAutoresizingMaskIntoConstraints = false
-        currencyStackView.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 5).isActive = true
-        currencyStackView.leadingAnchor.constraint(equalTo: backgroundBaseView.leadingAnchor, constant: 10).isActive = true
+        currencyStackView.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 15).isActive = true
+        currencyStackView.leadingAnchor.constraint(equalTo: backgroundBaseView.leadingAnchor, constant: 25).isActive = true
         currencyStackView.bottomAnchor.constraint(equalTo: backgroundBaseView.bottomAnchor, constant: -15).isActive = true
         currencyStackView.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.32).isActive = true
         
         avrDynamicImageView.translatesAutoresizingMaskIntoConstraints = false
-        avrDynamicImageView.widthAnchor.constraint(equalToConstant: 5).isActive = true
-        avrDynamicImageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
+        avrDynamicImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        avrDynamicImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
         rateLabel.translatesAutoresizingMaskIntoConstraints = false
-        rateLabel.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 5).isActive = true
-        rateLabel.trailingAnchor.constraint(equalTo: backgroundBaseView.trailingAnchor, constant: -10).isActive = true
-        rateLabel.bottomAnchor.constraint(equalTo: backgroundBaseView.bottomAnchor, constant: -15).isActive = true
-        rateLabel.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.32).isActive = true
+        rateLabel.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 29).isActive = true
+        rateLabel.trailingAnchor.constraint(equalTo: backgroundBaseView.trailingAnchor, constant: -25).isActive = true
+        rateLabel.bottomAnchor.constraint(equalTo: backgroundBaseView.bottomAnchor, constant: -29).isActive = true
+        rateLabel.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.25).isActive = true
     }
     
     
@@ -91,8 +97,7 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
     
     private func configureUI() {
         
-        backgroundBaseView.backgroundColor = .systemGray6
-        backgroundBaseView.layer.cornerRadius = 10
+        backgroundBaseView.backgroundColor = .white
         backgroundBaseView.layer.borderColor = UIColor.black.cgColor
         backgroundBaseView.layer.borderWidth = 1
         
@@ -101,28 +106,28 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         currencyStackView.spacing = 5
         
         currencyNameLabel.textAlignment = .left
-        currencyNameLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
+        currencyNameLabel.font = UIFont.manrope(ofSize: 20, style: .semiBold)
         currencyNameLabel.text = name
         
         currencyChangeRatingStackView.axis = .horizontal
-        currencyChangeRatingStackView.distribution = .fillEqually
+        currencyChangeRatingStackView.distribution = .fillProportionally
         currencyChangeRatingStackView.spacing = 2
         
         avrLabel.textAlignment = .left
-        avrLabel.font = UIFont.manrope(ofSize: 17, style: .semiBold)
+        avrLabel.font = UIFont.manrope(ofSize: 15, style: .medium)
         avrLabel.text = "Avr."
         
         avrCountLabel.textAlignment = .left
         avrCountLabel.textColor = .lightGray
-        avrCountLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        avrCountLabel.text = avrStr
+        avrCountLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        avrCountLabel.text = "\(avrStr) byn"
         
         avrDynamicImageView.image = dynamicStatus == .positive ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
         avrDynamicImageView.contentMode = .scaleAspectFit
         
         rateLabel.textAlignment = .left
-        rateLabel.font = UIFont.manrope(ofSize: 26, style: .extraBold)
-        rateLabel.attributedText = setAttributedString(with: "\(rateStr) byn", dynamicStatus)
+        rateLabel.font = UIFont.manrope(ofSize: 20, style: .bold)
+        rateLabel.attributedText = setAttributedString(with: "\(rateStr) BYN", dynamicStatus)
     }
     
     private func setAttributedString(with text: String, _ avrDynamic: DynamicType) -> NSAttributedString {
@@ -133,10 +138,15 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
         return attributedString
     }
     
+    private func setCornerRadius() {
+        backgroundBaseView.layer.cornerRadius = backgroundBaseView.frame.height / 2
+        backgroundBaseView.clipsToBounds = true
+    }
+    
     private func updateUI() {
         currencyNameLabel.text = name
-        avrCountLabel.text = avrStr
-        rateLabel.attributedText = setAttributedString(with: "\(rateStr) byn", dynamicStatus)
+        avrCountLabel.text = "\(avrStr) byn"
+        rateLabel.attributedText = setAttributedString(with: "\(rateStr) BYN", dynamicStatus)
         avrDynamicImageView.image = dynamicStatus == .positive ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
     }
     
