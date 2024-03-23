@@ -1,6 +1,6 @@
 // MARK: - TabBar
 "App.TabBar.CurrencyRatesItemTitle" = "Отделения";
-"App.TabBar.BestCurrencyRatesItemTitle" = "Курс валют";
+"App.TabBar.BestCurrencyRatesItemTitle" = "Курсы";
 
 // MARK: - LocalizedCurrencyRates
 "App.LocalizedCurrencyRates.NavigationItemTitle" = "Отделения";

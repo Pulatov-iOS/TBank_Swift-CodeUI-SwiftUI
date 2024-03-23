@@ -59,26 +59,26 @@ final class TabBarItem: UIView {
     
     private func configureConstraints() {
         snp.makeConstraints { make in
-            make.height.equalTo(117)
+            make.height.equalTo(75)
         }
         
         leftItem.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(30)
             make.centerY.equalToSuperview()
             make.width.equalTo(150)
-            make.height.equalTo(117)
+            make.height.equalTo(75)
         }
         
         leftImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.leading.equalToSuperview().offset(26)
+            make.top.equalToSuperview().offset(9)
+            make.leading.equalToSuperview().offset(30)
             make.width.equalTo(40)
             make.height.equalTo(40)
         }
         
         centerItem.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(60)
+            make.bottom.equalToSuperview().inset(18)
         }
         
         centerImageView.snp.makeConstraints { make in
@@ -91,29 +91,29 @@ final class TabBarItem: UIView {
             make.trailing.equalToSuperview().offset(-30)
             make.centerY.equalToSuperview()
             make.width.equalTo(150)
-            make.height.equalTo(117)
+            make.height.equalTo(75)
         }
         
         rightImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().inset(26)
+            make.top.equalToSuperview().offset(9)
+            make.trailing.equalToSuperview().inset(30)
             make.width.equalTo(39)
             make.height.equalTo(39)
         }
         
         leftTextLabel.snp.makeConstraints { make in
-            make.top.equalTo(leftItem.snp.top).offset(50)
-            make.leading.equalTo(leftItem.snp.leading).offset(12)
+            make.top.equalTo(leftItem.snp.top).offset(49)
+            make.centerX.equalTo(leftImageView)
         }
         
         rightTextLabel.snp.makeConstraints { make in
-            make.top.equalTo(rightItem.snp.top).offset(50)
-            make.trailing.equalTo(rightItem.snp.trailing).offset(-25)
+            make.top.equalTo(rightItem.snp.top).offset(49)
+            make.centerX.equalTo(rightImageView)
         }
         
         backgroundView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(90)
+            make.height.equalTo(55)
         }
     }
     
@@ -167,13 +167,7 @@ final class TabBarItem: UIView {
         path.move(to: CGPoint(x: 135, y: 0))
         path.addLine(to: CGPoint(x: 80, y: 0))
         path.addQuadCurve(to: CGPoint(x: 55, y: 22), controlPoint: CGPoint(x: 60, y: 5))
-        path.addQuadCurve(to: CGPoint(x: 15, y: 76), controlPoint: CGPoint(x: 40, y: 62))
-        path.addQuadCurve(to: CGPoint(x: 0, y: 90), controlPoint: CGPoint(x: 2, y: 80))
-        path.addLine(to: CGPoint(x: 0, y: 104))
-        path.addQuadCurve(to: CGPoint(x: 10, y: 117), controlPoint: CGPoint(x: 1, y: 116))
-        path.addLine(to: CGPoint(x: 45, y: 117))
-        path.addQuadCurve(to: CGPoint(x: 66, y: 103), controlPoint: CGPoint(x: 61, y: 112))
-        path.addQuadCurve(to: CGPoint(x: 116, y: 75), controlPoint: CGPoint(x: 76, y: 80))
+        path.addQuadCurve(to: CGPoint(x: 15, y: 75), controlPoint: CGPoint(x: 40, y: 62))
         path.addLine(to: CGPoint(x: 132, y: 75))
         path.addQuadCurve(to: CGPoint(x: 150, y: 57), controlPoint: CGPoint(x: 150, y: 75))
         path.addLine(to: CGPoint(x: 150, y: 15))
@@ -194,20 +188,14 @@ final class TabBarItem: UIView {
         path3.move(to: CGPoint(x: 15, y: 0))
         path3.addLine(to: CGPoint(x: 70, y: 0))
         path3.addQuadCurve(to: CGPoint(x: 95, y: 22), controlPoint: CGPoint(x: 90, y: 5))
-        path3.addQuadCurve(to: CGPoint(x: 135, y: 76), controlPoint: CGPoint(x: 110, y: 62))
-        path3.addQuadCurve(to: CGPoint(x: 150, y: 90), controlPoint: CGPoint(x: 148, y: 80))
-        path3.addLine(to: CGPoint(x: 150, y: 104))
-        path3.addQuadCurve(to: CGPoint(x: 140, y: 117), controlPoint: CGPoint(x: 149, y: 116))
-        path3.addLine(to: CGPoint(x: 105, y: 117))
-        path3.addQuadCurve(to: CGPoint(x: 84, y: 103), controlPoint: CGPoint(x: 89, y: 112))
-        path3.addQuadCurve(to: CGPoint(x: 34, y: 75), controlPoint: CGPoint(x: 74, y: 80))
+        path3.addQuadCurve(to: CGPoint(x: 135, y: 75), controlPoint: CGPoint(x: 110, y: 62))
         path3.addLine(to: CGPoint(x: 18, y: 75))
         path3.addQuadCurve(to: CGPoint(x: 0, y: 57), controlPoint: CGPoint(x: 0, y: 75))
         path3.addLine(to: CGPoint(x: 0, y: 15))
         path3.addQuadCurve(to: CGPoint(x: 15, y: 0), controlPoint: CGPoint(x: 0, y: 0))
         path3.close()
         
-        let tabBarItemImage = UIGraphicsImageRenderer(size: CGSize(width: 150, height: 117)).image { context in
+        let tabBarItemImage = UIGraphicsImageRenderer(size: CGSize(width: 150, height: 75)).image { context in
             rightItemColor.setFill()
             path.fill()
         }
@@ -217,7 +205,7 @@ final class TabBarItem: UIView {
             path2.fill()
         }
         
-        let tabBarItemImage3 = UIGraphicsImageRenderer(size: CGSize(width: 150, height: 117)).image { context in
+        let tabBarItemImage3 = UIGraphicsImageRenderer(size: CGSize(width: 150, height: 75)).image { context in
             leftItemColor.setFill()
             path3.fill()
         }
