@@ -1,4 +1,5 @@
 import UIKit
+import Combine
 
 final class ExchangeRatesView: UIViewController {
     
@@ -7,10 +8,15 @@ final class ExchangeRatesView: UIViewController {
     
     //MARK: - UI Properties
     private let tableView = UITableView()
-    
+    private var cancellables = Set<AnyCancellable>()
+    private var currencies: [Currencies] = [
+      
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        testPP()
+        
         addSubviews()
         setConstraintes()
         configureUI()
@@ -21,6 +27,8 @@ final class ExchangeRatesView: UIViewController {
         super.viewWillAppear(animated)
         
         configureNavBar()
+        getCurrensiesBinding()
+        viewModel.loadData()
     }
     
     //MARK: - Configurations of Navigation bar
@@ -58,23 +66,70 @@ final class ExchangeRatesView: UIViewController {
         tableView.dataSource = self
         tableView.register(ExchangeRatesTableViewCell.self, forCellReuseIdentifier: "ExchangeRatesTableViewCell")
     }
+    
+    
+    
+//MARK: - Baindings
+    
+    private func getCurrensiesBinding() {
+        viewModel.loadCurrencyPublisher
+            .sink { [weak self] data in
+                self?.currencies = data
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+    }
 }
 
 //MARK: - Table Delegate/DataSource
 extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        return currencies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currency = currencies[indexPath.row]
+        let name = currency.name ?? "No name"
+        let rate = currency.rate
+        let avr = currency.avr
+        let dynamic = currency.dynamic
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeRatesTableViewCell", for: indexPath) as? ExchangeRatesTableViewCell else { return UITableViewCell() }
         
         cell.backgroundColor = .clear
+        cell.getData(with: name, rate, avr, dynamic)
         return cell
     }
+}
+
+extension ExchangeRatesView {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(SettingsViewController(), animated: true)
+    func testPP() {
+        let usd = TestCurrency(name: "USD", rate: 3.24, avr: 3.25, dynamic: -0.01)
+        let eur = TestCurrency(name: "EUR", rate: 3.54, avr: 3.53, dynamic: -0.01)
+        let rur = TestCurrency(name: "RUR", rate: 3.1, avr: 3.0, dynamic: 0.1)
+        
+        var currancyArray = [TestCurrency]()
+        currancyArray.append(usd)
+        currancyArray.append(eur)
+        currancyArray.append(rur)
+        
+        currancyArray.forEach { currancy in
+            let result = CoreDataManager.instance.saveCurrency(name: currancy.name, rate: currancy.rate, avr: currancy.avr, dynamic: currancy.dynamic)
+            switch result {
+            case .success(_):
+                print("save \(currancy.name)")
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
     }
+}
+
+struct TestCurrency {
+    let name: String
+    let rate: Double
+    let avr: Double
+    let dynamic: Double
 }

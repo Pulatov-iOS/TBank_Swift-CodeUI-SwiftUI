@@ -13,7 +13,7 @@ final class CoreDataManager: NSCopying {
     }
     
     //MARK: - Saving of currancy location
-    func saveCurrency(name: String, rate: Double, dynamic: Double) -> Result<Void, CoreDataError> {
+    func saveCurrency(name: String, rate: Double, avr: Double, dynamic: Double) -> Result<Void, CoreDataError> {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return .failure(.appDelegateError) }
         
@@ -25,6 +25,7 @@ final class CoreDataManager: NSCopying {
         
         currency.setValue(name, forKey: "name")
         currency.setValue(rate, forKey: "rate")
+        currency.setValue(avr, forKey: "avr")
         currency.setValue(dynamic, forKey: "dynamic")
         
         do {
