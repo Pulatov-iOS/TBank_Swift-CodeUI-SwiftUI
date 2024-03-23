@@ -1,22 +1,17 @@
 import UIKit
 import Combine
 
-//MARK: - Final class ExchangeRatesViewController
-
 final class ExchangeRatesView: UIViewController {
     
-    
-    //MARK: - Properties of class
-    
+    //MARK: - Public Properties
     var viewModel: ExchangeRatesViewModelProtocol!
     
+    //MARK: - UI Properties
     private let tableView = UITableView()
     private var cancellables = Set<AnyCancellable>()
-    private var currencies: [Currencies] = []
-    
-    
-    //MARK: - Lifecycle of controller
-    
+    private var currencies: [Currencies] = [
+      
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,29 +31,19 @@ final class ExchangeRatesView: UIViewController {
         viewModel.loadData()
     }
     
-    
-    
     //MARK: - Configurations of Navigation bar
-    
     private func configureNavBar() {
         self.title = "Exchange Rates"
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 21, weight: .bold)]
     }
     
-    
-    
-//MARK: - Adding of subViews
-    
+    //MARK: - Adding of subViews
     private func addSubviews() {
         view.addSubviews(with: tableView)
     }
     
-    
-    
     //MARK: - Setting of constraintes
-    
     private func setConstraintes() {
-        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
@@ -66,12 +51,8 @@ final class ExchangeRatesView: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
-    
-    
     //MARK: - Configuration of User Interface
-    
     private func configureUI() {
-        
         view.backgroundColor = .white
         
         tableView.backgroundColor = .clear
@@ -79,10 +60,7 @@ final class ExchangeRatesView: UIViewController {
         tableView.rowHeight = 100
     }
     
-    
-    
-//MARK: - TableView configuration
-    
+    //MARK: - TableView configuration
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -103,16 +81,12 @@ final class ExchangeRatesView: UIViewController {
     }
 }
 
-
-
-//MARK: - Extention to get UITableView protocol's methods
-
+//MARK: - Table Delegate/DataSource
 extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currencies.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currency = currencies[indexPath.row]
@@ -128,8 +102,6 @@ extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
-
-
 
 extension ExchangeRatesView {
     

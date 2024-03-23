@@ -18,5 +18,4 @@ final class SettingsCoordinator {
         view.viewModel = viewModel
         navigationController.pushViewController(view, animated: true)
     }
-    
 }

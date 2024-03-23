@@ -3,21 +3,16 @@ import UIKit
 
 
 //MARK: - Final class CoreDataManager
-
 final class CoreDataManager: NSCopying {
     
     static let instance = CoreDataManager()
-    
     private init() { }
     
     func copy(with zone: NSZone? = nil) -> Any {
         self
     }
     
-    
-    
-//MARK: - Saving of currancy location
-    
+    //MARK: - Saving of currancy location
     func saveCurrency(name: String, rate: Double, avr: Double, dynamic: Double) -> Result<Void, CoreDataError> {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return .failure(.appDelegateError) }
@@ -43,11 +38,8 @@ final class CoreDataManager: NSCopying {
         
         return .success(())
     }
-
-    
   
-//MARK: - Loading of Currencies array
-    
+    //MARK: - Loading of Currencies array
     func loadCurrancies() -> Result<[Currencies], CoreDataError> {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return .failure(.appDelegateError) }
@@ -69,10 +61,7 @@ final class CoreDataManager: NSCopying {
         return .success(currancies)
     }
     
-    
-    
-//MARK: - Delete data method
-        
+    //MARK: - Delete data method
     func deleteData(of object: Currencies) -> Result<Void, CoreDataError> {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return .failure(.appDelegateError) }

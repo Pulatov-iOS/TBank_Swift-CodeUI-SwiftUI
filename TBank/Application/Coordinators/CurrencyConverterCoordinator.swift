@@ -16,7 +16,8 @@ final class CurrencyConverterCoordinator {
         let view = CurrencyConverterViewController()
         let viewModel = CurrencyConverterViewModel()
         view.viewModel = viewModel
-        navigationController.popToViewController(view, animated: true)
+        
+        navigationController.modalPresentationStyle = .formSheet
+        navigationController.present(view, animated: true)
     }
-    
 }

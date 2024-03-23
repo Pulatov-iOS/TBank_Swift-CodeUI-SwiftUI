@@ -6,26 +6,43 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     // MARK: - Public Properties
     var viewModel: LocalizedCurrencyRatesViewModel!
     
+    // MARK: - UI Properties
     private let titleLabel = UILabel()
-    private let setupButton = UIButton()
+    private let settingsButton = UIButton()
     private let сurrencyButton = UIButton()
+    private let tableView = UITableView()
+    private let tabBar: TabBarItem
+    private let backgroundTabBarView = UIView()
     
+    // MARK: - Init
+    init(tabBar: TabBarItem) {
+        self.tabBar = tabBar
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - LyfeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
         addSubviews()
         configureConstraints()
         configureUI()
+        configureTableView()
         fetchExchangeRates()
     }
     
     // MARK: - Methods
     private func addSubviews() {
         view.addSubview(titleLabel)
-        view.addSubview(setupButton)
+        view.addSubview(settingsButton)
         view.addSubview(сurrencyButton)
+        view.addSubview(tableView)
+        view.addSubview(backgroundTabBarView)
+        view.addSubview(tabBar)
     }
     
     private func configureConstraints() {
@@ -33,31 +50,61 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        setupButton.translatesAutoresizingMaskIntoConstraints = false
-        setupButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        setupButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        settingsButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        settingsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
 
         сurrencyButton.translatesAutoresizingMaskIntoConstraints = false
         сurrencyButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
         сurrencyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26).isActive = true
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        tabBar.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-2)
+            make.width.equalToSuperview()
+        }
+        
+        backgroundTabBarView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
+        }
     }
     
     private func configureUI() {
+        view.backgroundColor = .white
+        
         titleLabel.text = NSLocalizedString("App.LocalizedCurrencyRates.NavigationItemTitle", comment: "")
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         
-        setupButton.tintColor = .black
-        setupButton.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        settingsButton.tintColor = .black
+        settingsButton.setImage(UIImage(systemName: "gearshape"), for: .normal)
         let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 25)
-        setupButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
-        setupButton.addTarget(self, action: #selector(tapOnSetupButton), for: .touchUpInside)
+        settingsButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
+        settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         
         сurrencyButton.tintColor = .black
         сurrencyButton.setTitle("USD", for: .normal)
         сurrencyButton.setTitleColor(.black, for: .normal)
         сurrencyButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
-        сurrencyButton.addTarget(self, action: #selector(tapOnCurrencyButton), for: .touchUpInside)
+        сurrencyButton.addTarget(self, action: #selector(currencyButtonTapped), for: .touchUpInside)
+        
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 100
+        
+        backgroundTabBarView.backgroundColor = UIColor(resource: .Color.TabBar.background)
+    }
+    
+    private func configureTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ExchangeRatesTableViewCell.self, forCellReuseIdentifier: "LocalizedCurrencyRatesTableViewCell")
     }
     
     private func showCurrencySelectionActionSheet() {
@@ -101,12 +148,31 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         }
     }
     
-    @objc func tapOnSetupButton() {
-        print("update")
+    @objc func settingsButtonTapped() {
+        viewModel.settingsButtonTapped()
     }
     
-    @objc func tapOnCurrencyButton() {
+    @objc func currencyButtonTapped() {
         print("tapOnCurrencyButton")
         showCurrencySelectionActionSheet()
+    }
+}
+
+//MARK: - Table Delegate/DataSource
+extension LocalizedCurrencyRatesViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocalizedCurrencyRatesTableViewCell", for: indexPath) as? LocalizedCurrencyRatesTableViewCell else { return UITableViewCell() }
+        
+        cell.backgroundColor = .clear
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
 }

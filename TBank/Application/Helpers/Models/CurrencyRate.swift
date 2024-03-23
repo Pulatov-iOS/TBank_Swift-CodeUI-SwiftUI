@@ -6,7 +6,6 @@ struct CurrencyRate: Decodable {
     let rate: Double
     let scale: Double
     
-    
     enum CodingKeys: String, CodingKey {
         case abbreviation = "Cur_Abbreviation"
         case curName = "Cur_Name"
