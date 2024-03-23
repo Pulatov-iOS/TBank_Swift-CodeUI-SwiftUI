@@ -94,11 +94,6 @@ final class ExchangeRatesView: UIViewController {
 //MARK: - Baindings
     
     private func getCurrensiesBinding() {
-        //        viewModel.loadedCurrentCurrencies = { [weak self] data in
-        //            self?.currencies = data
-        //            self?.tableView.reloadData()
-        //        }
-        
         viewModel.loadCurrencyPublisher
             .sink { [weak self] data in
                 self?.currencies = data
@@ -132,10 +127,6 @@ extension ExchangeRatesView: UITableViewDelegate, UITableViewDataSource {
         cell.getData(with: name, rate, avr, dynamic)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(SettingsViewController(), animated: true)
-    }
 }
 
 
@@ -163,7 +154,6 @@ extension ExchangeRatesView {
         }
     }
 }
-
 
 struct TestCurrency {
     let name: String

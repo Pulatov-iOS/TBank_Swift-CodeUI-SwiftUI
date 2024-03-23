@@ -1,12 +1,6 @@
 
 import UIKit
 
-enum DynamicType {
-    case positive
-    case negative
-}
-
-
 
 //MARK: - Final class ClassExchangeRatesTableViewCell
 
@@ -14,6 +8,11 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
     
     
 //MARK: - Properties of class
+    
+    private enum DynamicType {
+        case positive
+        case negative
+    }
     
     private let backgroundBaseView = UIView()
     private let currencyStackView = UIStackView()

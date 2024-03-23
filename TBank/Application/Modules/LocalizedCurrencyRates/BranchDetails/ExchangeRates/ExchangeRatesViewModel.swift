@@ -4,7 +4,6 @@ import Combine
 
 protocol ExchangeRatesViewModelProtocol: AnyObject {
     func loadData()
-//    var loadedCurrentCurrencies: (([Currencies]) -> (Void))? { get set}
     var loadCurrencyPublisher: AnyPublisher<[Currencies], Never> { get }
 }
 
@@ -19,9 +18,6 @@ final class ExchangeRatesViewModel {
     
     private let loadCurrensySubject = PassthroughSubject<[Currencies], Never>()
     private var currencies: [Currencies] = []
-    
-//    var loadedCurrentCurrencies: (([Currencies]) -> (Void))?
-    
 }
     
     
@@ -39,7 +35,6 @@ extension ExchangeRatesViewModel: ExchangeRatesViewModelProtocol {
         switch result {
         case .success(let data):
             self.currencies = data
-//            loadedCurrentCurrencies?(currencies)
             loadCurrensySubject.send(currencies)
         case .failure(let failure):
             print(failure.localizedDescription)
