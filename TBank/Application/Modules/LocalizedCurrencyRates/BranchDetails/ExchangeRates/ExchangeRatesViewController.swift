@@ -9,7 +9,7 @@ final class ExchangeRatesView: UIViewController {
     //MARK: - UI Properties
     private let tableView = UITableView()
     private var cancellables = Set<AnyCancellable>()
-    private var currencies: [Currencies] = [
+    private var currencies: [Currencies] = []
       
     //MARK: - Lifecycle
     override func viewDidLoad() {

@@ -3,6 +3,11 @@ import UIKit
 final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
     
     //MARK: - Privat Properties
+    private enum DynamicType {
+        case positive
+        case negative
+    }
+
     private let backgroundBaseView = UIView()
     private let currencyStackView = UIStackView()
     private let currencyNameLabel = UILabel()
