@@ -50,22 +50,22 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     
     private func configureUI() {
         contentView.layer.masksToBounds = true
-        contentView.backgroundColor = UIColor(red: 240/255, green: 241/255, blue: 243/255, alpha: 1.0)
+        contentView.backgroundColor = UIColor(resource: .Color.backgroundColorView)
     
         customView.layer.cornerRadius = 40
-        customView.backgroundColor = .white
+        customView.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         customView.layer.shadowColor = UIColor.black.cgColor
         customView.layer.shadowOffset = CGSize(width: 0, height: 2)
         customView.layer.shadowRadius = 5
         customView.layer.shadowOpacity = 0.20
 
-        nameLabel.textColor = .black
+        nameLabel.textColor = UIColor(resource: .Color.textColorTitel)
         nameLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
         
-        priceLabel.textColor = .black
+        priceLabel.textColor = UIColor(resource: .Color.textColorTitel)
         priceLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
         
-        scaleLabel.textColor = .black
+        scaleLabel.textColor = UIColor(resource: .Color.textColorTitel)
         scaleLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
     }
     

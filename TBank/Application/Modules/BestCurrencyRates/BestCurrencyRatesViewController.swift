@@ -107,28 +107,27 @@ final class BestCurrencyRatesViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = UIColor(red: 240/255, green: 241/255, blue: 243/255, alpha: 1.0)
-        
+        view.backgroundColor = UIColor(resource: .Color.backgroundColorView)
         tableView.showsVerticalScrollIndicator = false
         
         titleLabel.text = NSLocalizedString("App.BestCurrencyRates.NavigationItemTitle", comment: "")
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor(resource: .Color.textColorTitel)
         titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
         
-        fetchButton.tintColor = .black
+        fetchButton.tintColor = UIColor(resource: .Color.textColorTitel)
         fetchButton.setImage(UIImage(systemName: "goforward"), for: .normal)
         let symbolConfigurationAdd = UIImage.SymbolConfiguration(pointSize: 28)
         fetchButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)
         fetchButton.addTarget(self, action: #selector(fetchButtonTapped), for: .touchUpInside)
-        fetchButton.backgroundColor = .white
+        fetchButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         fetchButton.layer.cornerRadius = 27.5
         
-        settingsButton.tintColor = .black
+        settingsButton.tintColor = UIColor(resource: .Color.textColorTitel)
         settingsButton.setImage(UIImage(systemName: "gearshape"), for: .normal)
         let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 28)
         settingsButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
         settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
-        settingsButton.backgroundColor = .white
+        settingsButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         settingsButton.layer.cornerRadius = 27.5
 
         deleteButton.tintColor = .gray
@@ -136,19 +135,16 @@ final class BestCurrencyRatesViewController: UIViewController {
         let symbolConfigurationDelete = UIImage.SymbolConfiguration(pointSize: 18)
         deleteButton.setPreferredSymbolConfiguration(symbolConfigurationDelete, forImageIn: .normal)
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
-        deleteButton.backgroundColor = .white
+        deleteButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         deleteButton.layer.cornerRadius = 17.5
         
         lastUpdatedLabel.textColor = .gray
         lastUpdatedLabel.font = UIFont.manrope(ofSize: 13, style: .light)
         
         searchTextField.placeholder = NSLocalizedString("App.BestCurrencyRates.searchTextField", comment: "")
-        searchTextField.borderStyle = .roundedRect
-        searchTextField.layer.borderColor = UIColor.white.cgColor
-        searchTextField.layer.borderWidth = 1.0
         searchTextField.layer.cornerRadius = 22.5
         searchTextField.layer.masksToBounds = true
-        searchTextField.backgroundColor = .white//UIColor(red: 240/255, green: 241/255, blue: 243/255, alpha: 1.0)
+        searchTextField.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         searchTextField.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: searchTextField.frame.height))
         searchTextField.leftView = paddingView
