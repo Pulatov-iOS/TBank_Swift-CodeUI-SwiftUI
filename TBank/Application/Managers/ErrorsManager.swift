@@ -4,8 +4,8 @@ enum CoreDataError: Error {
     case saveError
     case castError
     case loadError
+    case updateError
     
-    //Creating the description of the error
     func description() -> String {
         switch self {
         case .appDelegateError:
@@ -18,6 +18,8 @@ enum CoreDataError: Error {
             return "Could not cast context"
         case .loadError:
             return "Could not load context"
+        case .updateError:
+            return "Could not update context"
         }
     }
 }

@@ -105,4 +105,9 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
         attributedString.addAttribute(.foregroundColor, value: rateNumbersColor, range: NSRange(location: 0, length: 4))
         return attributedString
     }
+    
+    func setInformation(bankBranchesSubject: BankBranch, rate: Double) {
+        currencyNameLabel.text = NSLocalizedString("App.Addresses.\(bankBranchesSubject.address ?? "")", comment: "")
+        rateLabel.text = "\(rate)"
+    }
 }

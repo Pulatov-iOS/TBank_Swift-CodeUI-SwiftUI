@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import Combine
 
 final class LocalizedCurrencyRatesViewController: UIViewController {
     
@@ -13,6 +14,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     private let tableView = UITableView()
     private let tabBar: TabBarItem
     private let backgroundTabBarView = UIView()
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     init(tabBar: TabBarItem) {
@@ -31,8 +33,8 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         addSubviews()
         configureConstraints()
         configureUI()
+        bind()
         configureTableView()
-        fetchExchangeRates()
     }
     
     // MARK: - Methods
@@ -101,16 +103,24 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         backgroundTabBarView.backgroundColor = UIColor(resource: .Color.TabBar.background)
     }
     
+    private func bind() {
+        viewModel.bankBranchesSubject
+            .sink(receiveValue: { [weak self] data in
+                self?.tableView.reloadData()
+            })
+            .store(in: &cancellables)
+    }
+    
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ExchangeRatesTableViewCell.self, forCellReuseIdentifier: "LocalizedCurrencyRatesTableViewCell")
+        tableView.register(LocalizedCurrencyRatesTableViewCell.self, forCellReuseIdentifier: "LocalizedCurrencyRatesTableViewCell")
     }
     
     private func showCurrencySelectionActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        for currencyRate in viewModel.currencyRates {
+        for currencyRate in viewModel.currencyRatesSubject.value {
             let action = UIAlertAction(title: currencyRate.abbreviation, style: .default) { [weak self] _ in
                 self?.handleCurrencySelection(currencyRate)
             }
@@ -126,24 +136,13 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         }
         present(actionSheet, animated: true, completion: nil)
     }
-
-    private func fetchExchangeRates() {
-        viewModel.fetchExchangeRates { [weak self] error in
-            if let error = error {
-                print("Failed to fetch exchange rates: \(error)")
-            } else {
-                self?.reloadCurrencyButton()
-            }
-        }
-    }
     
-    private func handleCurrencySelection(_ currencyRate: CurrencyRate) {
-        print("Selected currency abbreviation: \(currencyRate.abbreviation)")
+    private func handleCurrencySelection(_ currencyRate: CurrencyRateDTO) {
         сurrencyButton.setTitle(currencyRate.abbreviation, for: .normal)
     }
         
     private func reloadCurrencyButton() {
-        if let currencyRate = viewModel.currencyRates.first {
+        if let currencyRate = viewModel.currencyRatesSubject.value.first {
             сurrencyButton.setTitle(currencyRate.abbreviation, for: .normal)
         }
     }
@@ -153,7 +152,6 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     }
     
     @objc func currencyButtonTapped() {
-        print("tapOnCurrencyButton")
         showCurrencySelectionActionSheet()
     }
 }
@@ -162,13 +160,16 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
 extension LocalizedCurrencyRatesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        return viewModel.bankBranchesSubject.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocalizedCurrencyRatesTableViewCell", for: indexPath) as? LocalizedCurrencyRatesTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocalizedCurrencyRatesTableViewCell", for: indexPath) as? LocalizedCurrencyRatesTableViewCell else {
+            return UITableViewCell()
+        }
         
         cell.backgroundColor = .clear
+        cell.setInformation(bankBranchesSubject: viewModel.bankBranchesSubject.value[indexPath.row], rate: viewModel.getCurrencyRate(idBankBranch: Int(viewModel.bankBranchesSubject.value[indexPath.row].id)))
         return cell
     }
 

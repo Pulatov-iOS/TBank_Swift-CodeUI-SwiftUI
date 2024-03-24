@@ -123,11 +123,11 @@ final class ExchangeRatesTableViewCell: UITableViewCell {
     
 //MARK: - Grtting of current currency data
     
-    public func getData(with name: String, _ rate: Double, _ avr: Double, _ dynamic: Double) {
-        self.name = name
-        self.rateStr = String(rate)
-        self.avrStr = String(avr)
-        self.dynamicStatus = dynamic > 0 ? .positive : .negative
+    public func setExchangeRate(exchangeRate: CurrencyRateDTO) {
+        self.name = exchangeRate.curName
+        self.rateStr = String(exchangeRate.rate)
+        self.avrStr = String(exchangeRate.rate)
+        self.dynamicStatus = .positive
         updateUI()
     }
 }

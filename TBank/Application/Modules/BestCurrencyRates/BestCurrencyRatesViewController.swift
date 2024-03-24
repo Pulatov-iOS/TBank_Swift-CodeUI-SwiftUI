@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import Combine
 
 final class BestCurrencyRatesViewController: UIViewController {
     
@@ -9,18 +10,17 @@ final class BestCurrencyRatesViewController: UIViewController {
     // MARK: - UI Properties
     private let tabBar: TabBarItem
     private let titleLabel = UILabel()
-    private let addButton = UIButton()
+    private let fetchButton = UIButton()
     private let tableView = UITableView()
-    private var currencyRates: [CurrencyRate] = []
     private let lastUpdatedLabel = UILabel()
     private let searchTextField = UITextField()
     private let deleteButton = UIButton()
     private let backgroundTabBarView = UIView()
-    private let setupButton = UIButton()
-    private var filteredCurrencyRates: [CurrencyRate] = []
+    private let settingsButton = UIButton()
     private var isSearching: Bool {
         return !searchTextField.text!.isEmpty
     }
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - LyfeCycle
     init(tabBar: TabBarItem) {
@@ -34,63 +34,27 @@ final class BestCurrencyRatesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        hidesBottomBarWhenPushed = true
         view.addSubview(tabBar)
         addSubviews()
         configureConstraints()
         configureUI()
+        bind()
         setupTableView()
-        fetchExchangeRates()
         startLoadingAnimation()
     }
     
     // MARK: - Methods
     private func addSubviews() {
         view.addSubview(titleLabel)
-        view.addSubview(addButton)
+        view.addSubview(fetchButton)
         view.addSubview(tableView)
         view.addSubview(lastUpdatedLabel)
         view.addSubview(searchTextField)
         view.addSubview(deleteButton)
         view.addSubview(backgroundTabBarView)
         view.addSubview(tabBar)
-        view.addSubview(setupButton)
-    }
-    
-    private func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(BestCurrencyRatesTableViewCell.self, forCellReuseIdentifier: "BestCurrencyRatesTableViewCell")
-        tableView.rowHeight = 100
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .clear
-    }
-    
-    private func fetchExchangeRates() {
-        NetworkManagerCurrency.shared.fetchExchangeRates { [weak self] rates in
-            if let rates = rates {
- 
-                let filteredRates = rates.filter {
-                    $0.abbreviation == "USD" ||
-                    $0.abbreviation == "EUR" ||
-                    $0.abbreviation == "RUB" ||
-                    $0.abbreviation == "PLN" ||
-                    $0.abbreviation == "CNY"
-                }
-                DispatchQueue.main.async {
-                    self?.currencyRates = rates
-                    self?.tableView.reloadData()
-                    
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                    self?.lastUpdatedLabel.text = NSLocalizedString("App.BestCurrencyRates.lastUpdatedLabel", comment: "") + "\(dateFormatter.string(from: Date()))"
-                    
-                    self?.stopLoadingAnimation()
-                }
-            } else {
-                print("Failed to fetch exchange rates")
-            }
-        }
+        view.addSubview(settingsButton)
     }
     
     private func configureConstraints() {
@@ -98,13 +62,13 @@ final class BestCurrencyRatesViewController: UIViewController {
         titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        addButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26).isActive = true
+        fetchButton.translatesAutoresizingMaskIntoConstraints = false
+        fetchButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        fetchButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26).isActive = true
         
-        setupButton.translatesAutoresizingMaskIntoConstraints = false
-        setupButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        setupButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        settingsButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        settingsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
 
         lastUpdatedLabel.translatesAutoresizingMaskIntoConstraints = false
         lastUpdatedLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
@@ -143,23 +107,23 @@ final class BestCurrencyRatesViewController: UIViewController {
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         
-        addButton.tintColor = .black
-        addButton.setImage(UIImage(systemName: "goforward"), for: .normal)
+        fetchButton.tintColor = .black
+        fetchButton.setImage(UIImage(systemName: "goforward"), for: .normal)
         let symbolConfigurationAdd = UIImage.SymbolConfiguration(pointSize: 25)
-        addButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)
-        addButton.addTarget(self, action: #selector(tapOnAddButton), for: .touchUpInside)
+        fetchButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)
+        fetchButton.addTarget(self, action: #selector(fetchButtonTapped), for: .touchUpInside)
         
-        setupButton.tintColor = .black
-        setupButton.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        settingsButton.tintColor = .black
+        settingsButton.setImage(UIImage(systemName: "gearshape"), for: .normal)
         let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 25)
-        setupButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
-        setupButton.addTarget(self, action: #selector(tapOnSetupButton), for: .touchUpInside)
+        settingsButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
+        settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         
         deleteButton.tintColor = .gray
         deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         let symbolConfigurationDelete = UIImage.SymbolConfiguration(pointSize: 20)
         deleteButton.setPreferredSymbolConfiguration(symbolConfigurationDelete, forImageIn: .normal)
-        deleteButton.addTarget(self, action: #selector(tapOnDeleteButton), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         
         lastUpdatedLabel.textColor = .gray
         lastUpdatedLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -171,6 +135,25 @@ final class BestCurrencyRatesViewController: UIViewController {
         backgroundTabBarView.backgroundColor = UIColor(resource: .Color.TabBar.background)
     }
     
+    private func bind() {
+        viewModel.currencyRatesSubject
+            .sink { [weak self] _ in
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                self?.lastUpdatedLabel.text = NSLocalizedString("App.BestCurrencyRates.lastUpdatedLabel", comment: "") + "\(dateFormatter.string(from: Date()))"
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(BestCurrencyRatesTableViewCell.self, forCellReuseIdentifier: "BestCurrencyRatesTableViewCell")
+        tableView.rowHeight = 100
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+    }
     
     private func startLoadingAnimation() {
         let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -190,32 +173,30 @@ final class BestCurrencyRatesViewController: UIViewController {
         }
     }
     
-    private func filterCurrencyRates(with searchText: String) {
-        if searchText.isEmpty {
-            filteredCurrencyRates = currencyRates
-        } else {
-            filteredCurrencyRates = currencyRates.filter { $0.abbreviation.lowercased().contains(searchText.lowercased()) || $0.curName.lowercased().contains(searchText.lowercased())}
-        }
-        tableView.reloadData()
+//    private func filterCurrencyRates(with searchText: String) {
+//        if searchText.isEmpty {
+//            filteredCurrencyRates = currencyRates
+//        } else {
+//            filteredCurrencyRates = currencyRates.filter { $0.abbreviation.lowercased().contains(searchText.lowercased()) || $0.curName.lowercased().contains(searchText.lowercased())}
+//        }
+//        tableView.reloadData()
+//    }
+    
+    @objc func fetchButtonTapped() {
+        viewModel.fetchCurrencyRates()
     }
     
-    @objc func tapOnAddButton() {
-        fetchExchangeRates()
-        startLoadingAnimation()
-        print("update")
-    }
-    @objc func tapOnDeleteButton() {
+    @objc func deleteButtonTapped() {
         searchTextField.text = nil
-        filterCurrencyRates(with: "")
-        print("delete")
+//        filterCurrencyRates(with: "")
     }
-    @objc func tapOnSetupButton() {
-        print("tapOnSetupButton")
+    
+    @objc func settingsButtonTapped() {
+        viewModel.settingsButtonTapped()
     }
 
-    
     @objc private func searchTextFieldDidChange(_ textField: UITextField) {
-        filterCurrencyRates(with: textField.text!)
+//        filterCurrencyRates(with: textField.text!)
     }
 }
 
@@ -223,7 +204,7 @@ final class BestCurrencyRatesViewController: UIViewController {
 extension BestCurrencyRatesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearching ? filteredCurrencyRates.count : currencyRates.count
+        return viewModel.currencyRatesSubject.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -231,8 +212,8 @@ extension BestCurrencyRatesViewController: UITableViewDelegate, UITableViewDataS
             return UITableViewCell()
         }
         
-        let rate = isSearching ? filteredCurrencyRates[indexPath.row] : currencyRates[indexPath.row]
-        cell.configure(with: rate)
+        let rate = viewModel.currencyRatesSubject.value[indexPath.row]
+        cell.setInformation(with: rate)
         return cell
     }
 }
