@@ -31,13 +31,13 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     private func configureConstraints() {
         customView.translatesAutoresizingMaskIntoConstraints = false
         customView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
-        customView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
-        customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
+        customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
+        customView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
+        customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
         
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 17).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 24).isActive = true
         
         
         scaleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -46,26 +46,29 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
-        priceLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -17).isActive = true
+        priceLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -24).isActive = true
     }
     
     private func configureUI() {
         contentView.layer.masksToBounds = true
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = UIColor(red: 240/255, green: 241/255, blue: 243/255, alpha: 1.0)
     
-        customView.layer.borderWidth = 2.0
-        customView.layer.borderColor = UIColor.black.cgColor
-        customView.layer.cornerRadius = 5
+        customView.layer.cornerRadius = 40
         customView.backgroundColor = .white
+        customView.layer.shadowColor = UIColor.black.cgColor
+        customView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        customView.layer.shadowRadius = 5
+        customView.layer.shadowOpacity = 0.20
+
         
         nameLabel.textColor = .black
-        nameLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        nameLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
         
         priceLabel.textColor = .black
-        priceLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        priceLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
         
         scaleLabel.textColor = .black
-        scaleLabel.font = UIFont.systemFont(ofSize: 25, weight: .light)
+        scaleLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
     }
     
     // MARK: - Configuration
