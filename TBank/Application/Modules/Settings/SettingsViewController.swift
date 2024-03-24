@@ -57,6 +57,8 @@ final class SettingsViewController: UIViewController {
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
         backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
         termsOfUseView.translatesAutoresizingMaskIntoConstraints = false
         termsOfUseView.topAnchor.constraint(equalTo: backButton.safeAreaLayoutGuide.bottomAnchor, constant: 30).isActive = true
@@ -128,7 +130,8 @@ final class SettingsViewController: UIViewController {
         titleLabel.textColor = .black
         titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
         
-        backButton.tintColor = .black
+        backButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
+        backButton.adjustsImageWhenHighlighted = false
         backButton.setImage(UIImage(named: "roundedBack"), for: .normal)
         backButton.contentMode = .scaleAspectFit
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
@@ -170,8 +173,13 @@ final class SettingsViewController: UIViewController {
         termsOfUseView.layer.cornerRadius = termsOfUseView.frame.height / 2
         termsOfUseView.clipsToBounds = true
         privacyPolicyView.layer.cornerRadius = privacyPolicyView.frame.height / 2
+        privacyPolicyView.clipsToBounds = true
         iconTermsImageView.layer.cornerRadius = iconTermsImageView.frame.height / 2
+        iconTermsImageView.clipsToBounds = true
         iconPrivacyImageView.layer.cornerRadius = iconPrivacyImageView.frame.height / 2
+        iconPrivacyImageView.clipsToBounds = true
+        backButton.layer.cornerRadius = termsOfUseView.frame.height / 2
+        backButton.clipsToBounds = true
     }
     
     //MARK: - Actions
