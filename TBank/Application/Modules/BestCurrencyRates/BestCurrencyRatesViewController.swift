@@ -211,16 +211,22 @@ final class BestCurrencyRatesViewController: UIViewController {
 extension BestCurrencyRatesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.currencyRatesSubject.value.count
+        return viewModel.currencyRatesSubject.value.count + 1
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BestCurrencyRatesTableViewCell", for: indexPath) as? BestCurrencyRatesTableViewCell else {
-            return UITableViewCell()
+        if indexPath.row < viewModel.currencyRatesSubject.value.count {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BestCurrencyRatesTableViewCell", for: indexPath) as? BestCurrencyRatesTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            let rate = viewModel.currencyRatesSubject.value[indexPath.row]
+            cell.setInformation(with: rate)
+            return cell
+        } else {
+            let emptyCell = UITableViewCell()
+            emptyCell.backgroundColor = UIColor(resource: .Color.backgroundColorView)
+            return emptyCell
         }
-        
-        let rate = viewModel.currencyRatesSubject.value[indexPath.row]
-        cell.setInformation(with: rate)
-        return cell
     }
 }
