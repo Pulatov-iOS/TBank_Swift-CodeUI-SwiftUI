@@ -54,14 +54,18 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         
         settingsButton.translatesAutoresizingMaskIntoConstraints = false
         settingsButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        settingsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
+        settingsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24).isActive = true
+        settingsButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        settingsButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
 
         сurrencyButton.translatesAutoresizingMaskIntoConstraints = false
         сurrencyButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        сurrencyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 26).isActive = true
+        сurrencyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24).isActive = true
+        сurrencyButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        сurrencyButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 44).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -78,23 +82,28 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(resource: .Color.backgroundColorView)
+        tableView.showsVerticalScrollIndicator = false
         
         titleLabel.text = NSLocalizedString("App.LocalizedCurrencyRates.NavigationItemTitle", comment: "")
-        titleLabel.textColor = .black
-        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        titleLabel.textColor = UIColor(resource: .Color.textColorTitel)
+        titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
         
-        settingsButton.tintColor = .black
+        settingsButton.tintColor = UIColor(resource: .Color.textColorTitel)
         settingsButton.setImage(UIImage(systemName: "gearshape"), for: .normal)
-        let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 25)
+        let symbolConfigurationSetup = UIImage.SymbolConfiguration(pointSize: 28)
         settingsButton.setPreferredSymbolConfiguration(symbolConfigurationSetup, forImageIn: .normal)
         settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        settingsButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
+        settingsButton.layer.cornerRadius = 27.5
         
-        сurrencyButton.tintColor = .black
+        сurrencyButton.tintColor = UIColor(resource: .Color.textColorTitel)
         сurrencyButton.setTitle("USD", for: .normal)
-        сurrencyButton.setTitleColor(.black, for: .normal)
-        сurrencyButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        сurrencyButton.setTitleColor(UIColor(resource: .Color.textColorTitel), for: .normal)
+        сurrencyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         сurrencyButton.addTarget(self, action: #selector(currencyButtonTapped), for: .touchUpInside)
+        сurrencyButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
+        сurrencyButton.layer.cornerRadius = 27.5
         
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none

@@ -15,6 +15,7 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
     private let avrLabel = UILabel()
     private let avrCountLabel = UILabel()
     private let avrDynamicImageView = UIImageView()
+    private let mapImageView = UIImageView()
     private let rateLabel = UILabel()
     private var dynamicStatus: DynamicType = .negative
     
@@ -34,67 +35,79 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
     //MARK: - Methods
     private func addSubviews() {
         contentView.addSubviews(with: backgroundBaseView)
-        backgroundBaseView.addSubviews(with: currencyStackView, rateLabel)
-        currencyStackView.addArrangedSubviews(with: currencyNameLabel, currencyChangeRatingStackView)
-        currencyChangeRatingStackView.addArrangedSubviews(with: avrLabel, avrCountLabel, avrDynamicImageView)
+        backgroundBaseView.addSubviews(with: currencyStackView, rateLabel, mapImageView, avrLabel, avrCountLabel)
+        currencyStackView.addArrangedSubviews(with: currencyNameLabel)
+        currencyChangeRatingStackView.addArrangedSubviews(with: avrDynamicImageView)
     }
 
     private func setConstraintes() {
         backgroundBaseView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundBaseView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-        backgroundBaseView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 7).isActive = true
-        backgroundBaseView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -7).isActive = true
-        backgroundBaseView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        backgroundBaseView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        backgroundBaseView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
+        backgroundBaseView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
+        backgroundBaseView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        
+        mapImageView.translatesAutoresizingMaskIntoConstraints = false
+        mapImageView.centerYAnchor.constraint(equalTo: backgroundBaseView.centerYAnchor).isActive = true
+        mapImageView.leadingAnchor.constraint(equalTo: backgroundBaseView.leadingAnchor, constant: 20).isActive = true
+        mapImageView.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        mapImageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         currencyStackView.translatesAutoresizingMaskIntoConstraints = false
-        currencyStackView.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 5).isActive = true
-        currencyStackView.leadingAnchor.constraint(equalTo: backgroundBaseView.leadingAnchor, constant: 10).isActive = true
-        currencyStackView.bottomAnchor.constraint(equalTo: backgroundBaseView.bottomAnchor, constant: -15).isActive = true
-        currencyStackView.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.32).isActive = true
+        currencyStackView.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 18).isActive = true
+        currencyStackView.leadingAnchor.constraint(equalTo: mapImageView.trailingAnchor, constant: 8).isActive = true
+        currencyStackView.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.52).isActive = true
+        
+        avrLabel.translatesAutoresizingMaskIntoConstraints = false
+        avrLabel.topAnchor.constraint(equalTo: currencyStackView.bottomAnchor, constant: 5).isActive = true
+        avrLabel.leadingAnchor.constraint(equalTo: mapImageView.trailingAnchor, constant: 8).isActive = true
+        
+        avrCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        avrCountLabel.centerYAnchor.constraint(equalTo: avrLabel.centerYAnchor).isActive = true
+        avrCountLabel.leadingAnchor.constraint(equalTo: avrLabel.trailingAnchor, constant: 8).isActive = true
         
         avrDynamicImageView.translatesAutoresizingMaskIntoConstraints = false
         avrDynamicImageView.widthAnchor.constraint(equalToConstant: 5).isActive = true
         avrDynamicImageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
         
         rateLabel.translatesAutoresizingMaskIntoConstraints = false
-        rateLabel.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 5).isActive = true
-        rateLabel.trailingAnchor.constraint(equalTo: backgroundBaseView.trailingAnchor, constant: -10).isActive = true
-        rateLabel.bottomAnchor.constraint(equalTo: backgroundBaseView.bottomAnchor, constant: -15).isActive = true
-        rateLabel.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.32).isActive = true
+        rateLabel.centerYAnchor.constraint(equalTo: backgroundBaseView.centerYAnchor).isActive = true
+        rateLabel.trailingAnchor.constraint(equalTo: backgroundBaseView.trailingAnchor, constant: -24).isActive = true
     }
     
     private func configureUI() {
-        backgroundBaseView.backgroundColor = .systemGray6
-        backgroundBaseView.layer.cornerRadius = 10
+        backgroundBaseView.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
+        backgroundBaseView.layer.cornerRadius = 40
         backgroundBaseView.layer.borderColor = UIColor.black.cgColor
-        backgroundBaseView.layer.borderWidth = 1
+        backgroundBaseView.layer.borderWidth = 0
+        backgroundBaseView.layer.shadowColor = UIColor.black.cgColor
+        backgroundBaseView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        backgroundBaseView.layer.shadowRadius = 5
+        backgroundBaseView.layer.shadowOpacity = 0.20
         
         currencyStackView.axis = .vertical
         currencyStackView.distribution = .fillProportionally
         currencyStackView.spacing = 5
         
         currencyNameLabel.textAlignment = .left
-        currencyNameLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
+        currencyNameLabel.font = UIFont.manrope(ofSize: 15, style: .medium)
         currencyNameLabel.text = "USD"
-        
-        currencyChangeRatingStackView.axis = .horizontal
-        currencyChangeRatingStackView.distribution = .fillEqually
-        currencyChangeRatingStackView.spacing = 2
-        
+
         avrLabel.textAlignment = .left
-        avrLabel.font = UIFont.manrope(ofSize: 17, style: .semiBold)
-        avrLabel.text = "Avr."
+        avrLabel.font = UIFont.manrope(ofSize: 13, style: .medium)
+        avrLabel.text = "Пн - Пт"
         
         avrCountLabel.textAlignment = .left
         avrCountLabel.textColor = .lightGray
-        avrCountLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        avrCountLabel.text = "3.24"
+        avrCountLabel.font = UIFont.manrope(ofSize: 13, style: .medium)
+        avrCountLabel.text = "9:00 - 18:00"
         
-        avrDynamicImageView.image = dynamicStatus == .positive ? UIImage(resource: .Image.LocalizedCurrencyRates.BranchDetails.ExchangeRates.greenArrowUp) : UIImage(resource: .Image.LocalizedCurrencyRates.BranchDetails.ExchangeRates.redArrowDown)
-        avrDynamicImageView.contentMode = .scaleAspectFit
-        
+        let originalImage = UIImage(resource: .Image.LocalizedCurrencyRates.BranchDetails.ExchangeRates.map)
+        let tintedImage = originalImage.withTintColor(UIColor(resource: .Color.textColorTitel))
+        mapImageView.image = tintedImage
+    
         rateLabel.textAlignment = .left
-        rateLabel.font = UIFont.manrope(ofSize: 26, style: .extraBold)
+        rateLabel.font = UIFont.manrope(ofSize: 20, style: .medium)
         rateLabel.attributedText = setAttributedString(with: "3.24 byn", dynamicStatus)
     }
     
@@ -108,6 +121,6 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
     
     func setInformation(bankBranchesSubject: BankBranch, rate: Double) {
         currencyNameLabel.text = NSLocalizedString("App.Addresses.\(bankBranchesSubject.address ?? "")", comment: "")
-        rateLabel.text = "\(rate)"
+        rateLabel.text = String(format:"%.2f" + " BYN",(rate))
     }
 }
