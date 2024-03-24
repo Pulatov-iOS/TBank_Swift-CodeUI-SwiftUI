@@ -2,132 +2,78 @@ import UIKit
 
 final class ExchangeRatesTableViewCell: UITableViewCell {
 
-    //MARK: - Private Properties
-    private enum DynamicType {
-        case positive
-        case negative
-    }
+    // MARK: - UI Elements
+    private let customView = UIView()
+    private let nameLabel = UILabel()
+    private let priceLabel = UILabel()
+    private let scaleLabel = UILabel()
     
-    //MARK: - UI Properties
-    private let backgroundBaseView = UIView()
-    private let currencyStackView = UIStackView()
-    private let currencyNameLabel = UILabel()
-    private let currencyChangeRatingStackView = UIStackView()
-    private let avrLabel = UILabel()
-    private let avrCountLabel = UILabel()
-    private let avrDynamicImageView = UIImageView()
-    private let rateLabel = UILabel()
-    private var name: String = "No name"
-    private var rateStr: String = "0.0"
-    private var avrStr: String = "0.0"
-    private var dynamicStatus: DynamicType = .negative
-    
-    //MARK: - Init
+    // MARK: - Initialization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         addSubviews()
-        setConstraintes()
         configureUI()
+        configureConstraints()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
-    //MARK: - Adding of subViews
+    // MARK: - UI Setup
     private func addSubviews() {
-        contentView.addSubviews(with: backgroundBaseView)
-        backgroundBaseView.addSubviews(with: currencyStackView, rateLabel)
-        currencyStackView.addArrangedSubviews(with: currencyNameLabel, currencyChangeRatingStackView)
-        currencyChangeRatingStackView.addArrangedSubviews(with: avrLabel, avrCountLabel, avrDynamicImageView)
-    }
-
-    //MARK: - Setting of constraintes
-    private func setConstraintes() {
-        backgroundBaseView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundBaseView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
-        backgroundBaseView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 7).isActive = true
-        backgroundBaseView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -7).isActive = true
-        backgroundBaseView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        
-        currencyStackView.translatesAutoresizingMaskIntoConstraints = false
-        currencyStackView.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 5).isActive = true
-        currencyStackView.leadingAnchor.constraint(equalTo: backgroundBaseView.leadingAnchor, constant: 10).isActive = true
-        currencyStackView.bottomAnchor.constraint(equalTo: backgroundBaseView.bottomAnchor, constant: -15).isActive = true
-        currencyStackView.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.32).isActive = true
-        
-        avrDynamicImageView.translatesAutoresizingMaskIntoConstraints = false
-        avrDynamicImageView.widthAnchor.constraint(equalToConstant: 5).isActive = true
-        avrDynamicImageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        
-        rateLabel.translatesAutoresizingMaskIntoConstraints = false
-        rateLabel.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 5).isActive = true
-        rateLabel.trailingAnchor.constraint(equalTo: backgroundBaseView.trailingAnchor, constant: -10).isActive = true
-        rateLabel.bottomAnchor.constraint(equalTo: backgroundBaseView.bottomAnchor, constant: -15).isActive = true
-        rateLabel.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.32).isActive = true
+        contentView.addSubview(customView)
+        customView.addSubview(nameLabel)
+        customView.addSubview(priceLabel)
+        customView.addSubview(scaleLabel)
     }
     
-    //MARK: - Configuration of User Interface
+    private func configureConstraints() {
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        customView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        customView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
+        customView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24).isActive = true
+        customView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 24).isActive = true
+        
+        scaleLabel.translatesAutoresizingMaskIntoConstraints = false
+        scaleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+        scaleLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 10).isActive = true
+        
+        priceLabel.translatesAutoresizingMaskIntoConstraints = false
+        priceLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+        priceLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -24).isActive = true
+    }
+    
     private func configureUI() {
-        backgroundBaseView.backgroundColor = .systemGray6
-        backgroundBaseView.layer.cornerRadius = 10
-        backgroundBaseView.layer.borderColor = UIColor.black.cgColor
-        backgroundBaseView.layer.borderWidth = 1
+        contentView.layer.masksToBounds = true
+        contentView.backgroundColor = UIColor(resource: .Color.backgroundColorView)
+    
+        customView.layer.cornerRadius = 40
+        customView.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
+        customView.layer.shadowColor = UIColor.black.cgColor
+        customView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        customView.layer.shadowRadius = 5
+        customView.layer.shadowOpacity = 0.20
+
+        nameLabel.textColor = UIColor(resource: .Color.textColorTitel)
+        nameLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
         
-        currencyStackView.axis = .vertical
-        currencyStackView.distribution = .fillProportionally
-        currencyStackView.spacing = 5
+        priceLabel.textColor = UIColor(resource: .Color.textColorTitel)
+        priceLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
         
-        currencyNameLabel.textAlignment = .left
-        currencyNameLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
-        currencyNameLabel.text = name
-        
-        currencyChangeRatingStackView.axis = .horizontal
-        currencyChangeRatingStackView.distribution = .fillEqually
-        currencyChangeRatingStackView.spacing = 2
-        
-        avrLabel.textAlignment = .left
-        avrLabel.font = UIFont.manrope(ofSize: 17, style: .semiBold)
-        avrLabel.text = "Avr."
-        
-        avrCountLabel.textAlignment = .left
-        avrCountLabel.textColor = .lightGray
-        avrCountLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        avrCountLabel.text = avrStr
-        
-        avrDynamicImageView.image = dynamicStatus == .positive ? UIImage(resource: .Image.LocalizedCurrencyRates.BranchDetails.ExchangeRates.greenArrowUp) : UIImage(resource: .Image.LocalizedCurrencyRates.BranchDetails.ExchangeRates.redArrowDown)
-        avrDynamicImageView.contentMode = .scaleAspectFit
-        
-        rateLabel.textAlignment = .left
-        rateLabel.font = UIFont.manrope(ofSize: 26, style: .extraBold)
-        rateLabel.attributedText = setAttributedString(with: "\(rateStr) byn", dynamicStatus)
+        scaleLabel.textColor = UIColor(resource: .Color.textColorTitel)
+        scaleLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
     }
     
-    private func setAttributedString(with text: String, _ avrDynamic: DynamicType) -> NSAttributedString {
-        let text = text
-        let attributedString = NSMutableAttributedString(string: text)
-        let rateNumbersColor = avrDynamic == .positive ? UIColor(resource: .Color.LocalizedCurrencyRates.BranchDetails.ExchangeRates.customGreenER).cgColor : UIColor.red.cgColor
-        attributedString.addAttribute(.foregroundColor, value: rateNumbersColor, range: NSRange(location: 0, length: 4))
-        return attributedString
-    }
+    // MARK: - Configuration
     
-    private func updateUI() {
-        currencyNameLabel.text = name
-        avrCountLabel.text = avrStr
-        rateLabel.attributedText = setAttributedString(with: "\(rateStr) byn", dynamicStatus)
-        avrDynamicImageView.image = dynamicStatus == .positive ? UIImage(named: "greenArrowUp") : UIImage(named: "redArrowDown")
-    }
-    
-    
-    
-//MARK: - Grtting of current currency data
-    
-    public func setExchangeRate(exchangeRate: CurrencyRateDTO) {
-        self.name = exchangeRate.curName
-        self.rateStr = String(exchangeRate.rate)
-        self.avrStr = String(exchangeRate.rate)
-        self.dynamicStatus = .positive
-        updateUI()
+    func setInformation(with rate: BankBranchCurrencyRate) {
+        nameLabel.text = rate.abbreviation
+        priceLabel.text = String(format: "%.2f" + " BYN", rate.rate)
+        scaleLabel.text = String(format: "%.0f", rate.scale)
     }
 }

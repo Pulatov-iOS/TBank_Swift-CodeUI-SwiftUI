@@ -37,7 +37,7 @@ final class LocalizedCurrencyRatesCoordinator {
     
     private func showExchangeRatesScreen(_ currencyRates: [BankBranchCurrencyRate], _ bankBranche: BankBranch) {
         let view = ExchangeRatesViewController()
-        let viewModel = ExchangeRatesViewModel(currencyRates: currencyRates, bankBranche: bankBranche)
+        let viewModel = ExchangeRatesViewModel(currencyRates: currencyRates)
         view.viewModel = viewModel
         
         viewModel.showBankLocatorMapPage = { [weak self] in

@@ -7,11 +7,11 @@ final class ExchangeRatesViewController: UIViewController {
     var viewModel: ExchangeRatesViewModel!
     
     //MARK: - UI Properties
+    private let titleLabel = UILabel()
+    private let mapButton = UIButton()
     private let tableView = UITableView()
     private var cancellables = Set<AnyCancellable>()
-    
-    let delete = UIButton() // Удалить по окончанию!!!🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
-      
+          
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,42 +26,44 @@ final class ExchangeRatesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        configureNavBar()
-    }
-    
-    //MARK: - Configurations of Navigation bar
-    private func configureNavBar() {
-        self.title = "Exchange Rates"
-        delete.setTitle("dsde", for: .normal)
-        delete.addTarget(self, action: #selector(mapButtonTapped), for: .touchUpInside)
-        
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 21, weight: .bold)]
     }
     
     //MARK: - Adding of subViews
     private func addSubviews() {
-        view.addSubviews(with: tableView)
-        view.addSubview(delete)
+        view.addSubviews(with: titleLabel, mapButton, tableView)
     }
     
     //MARK: - Setting of constraintes
     private func setConstraintes() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
-        delete.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-        }
+        mapButton.translatesAutoresizingMaskIntoConstraints = false
+        mapButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        mapButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: mapButton.bottomAnchor, constant: 10).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     //MARK: - Configuration of User Interface
     private func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(resource: .Color.backgroundColorView)
         
-        tableView.backgroundColor = .clear
+        titleLabel.text = "Exchange Rates"
+        titleLabel.textColor = .black
+        titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
+        
+        mapButton.tintColor = .black
+        mapButton.setImage(UIImage(named: "map"), for: .normal)
+        mapButton.contentMode = .scaleAspectFit
+        mapButton.addTarget(self, action: #selector(mapButtonTapped), for: .touchUpInside)
+        
+        tableView.backgroundColor = UIColor(resource: .Color.backgroundColorView)
         tableView.separatorStyle = .none
         tableView.rowHeight = 100
     }
@@ -74,9 +76,6 @@ final class ExchangeRatesViewController: UIViewController {
     }
     
     private func bind() {
-        let mapButton = UIBarButtonItem(title: "fseesfse", style: .plain, target: self, action: #selector(mapButtonTapped))
-        self.navigationItem.rightBarButtonItem = mapButton
-        
 //        viewModel.currencyRatesSubject
 //            .sink { [weak self] data in
 //                self?.tableView.reloadData()
@@ -84,6 +83,7 @@ final class ExchangeRatesViewController: UIViewController {
 //            .store(in: &cancellables)
     }
     
+    //MARK: - Actions
     @objc func mapButtonTapped() {
         viewModel.mapButtonTapped()
     }
@@ -93,16 +93,22 @@ final class ExchangeRatesViewController: UIViewController {
 extension ExchangeRatesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5 //viewModel.currencyRatesSubject.value.count
+//        return 5
+//        return viewModel.currencyRatesSubject.value.count
+        return viewModel.currencyRates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currencyRate = CurrencyRateDTO(abbreviation: "", curName: "", rate: 2.2, lastRate: 2.2, scale: 2)//viewModel.currencyRatesSubject.value[indexPath.row]
+//        let currencyRate = CurrencyRateDTO(abbreviation: "USD", curName: "", rate: 2.23, lastRate: 2.21, scale: 2)
+//        viewModel.currencyRatesSubject.value[indexPath.row]
+        let currencyRate = viewModel.currencyRates[indexPath.row]
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeRatesTableViewCell", for: indexPath) as? ExchangeRatesTableViewCell else { return UITableViewCell() }
         
         cell.backgroundColor = .clear
-        cell.setExchangeRate(exchangeRate: currencyRate)
+        cell.selectionStyle = .none
+//        let rate = viewModel.currencyRatesSubject.value[indexPath.row]
+        cell.setInformation(with: currencyRate)
         return cell
     }
 }
