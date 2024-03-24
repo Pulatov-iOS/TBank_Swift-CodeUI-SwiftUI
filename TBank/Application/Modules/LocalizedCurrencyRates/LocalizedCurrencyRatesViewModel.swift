@@ -9,6 +9,7 @@ final class LocalizedCurrencyRatesViewModel {
     let bankBranchesSubject = CurrentValueSubject<[BankBranch], Never>([])
     let currencyRatesSubject = CurrentValueSubject<[CurrencyRateDTO], Never>([])
     let bankBranchCurrencyRateSubject = CurrentValueSubject<[BankBranchCurrencyRate], Never>([])
+    let bankBranchesCurrencyRateSubject = CurrentValueSubject<[BankBranchCurrencyRate], Never>([])
     
     // MARK: - Private properties
     private var networkManager: NetworkManagerCurrency
@@ -29,7 +30,7 @@ final class LocalizedCurrencyRatesViewModel {
     }
     
     func tableCellTapped(_ bankBranche: BankBranch) {
-        let filteredObjects = bankBranchCurrencyRateSubject.value.filter {
+        let filteredObjects = bankBranchesCurrencyRateSubject.value.filter {
             $0.idBankBranch == bankBranche.id
         }
         showExchangeRatesPage?(filteredObjects, bankBranche)
@@ -87,6 +88,7 @@ final class LocalizedCurrencyRatesViewModel {
             .sink { bankBranchCurrencyRate in
                 let filteredRates = bankBranchCurrencyRate.filter { $0.abbreviation == "EUR" }
                 self.bankBranchCurrencyRateSubject.send(filteredRates)
+                self.bankBranchesCurrencyRateSubject.send(bankBranchCurrencyRate)
             }
             .store(in: &cancellables)
     }

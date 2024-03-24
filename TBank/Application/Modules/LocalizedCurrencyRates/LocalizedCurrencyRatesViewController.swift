@@ -109,7 +109,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.rowHeight = 100
         
-        backgroundTabBarView.backgroundColor = UIColor(resource: .Color.TabBar.background)
+        backgroundTabBarView.backgroundColor = UIColor(resource: .Color.backgroundColorView)
     }
     
     private func bind() {
@@ -178,6 +178,7 @@ extension LocalizedCurrencyRatesViewController: UITableViewDelegate, UITableView
         }
         
         cell.backgroundColor = .clear
+        cell.selectionStyle = .none
         cell.setInformation(bankBranchesSubject: viewModel.bankBranchesSubject.value[indexPath.row], rate: viewModel.getCurrencyRate(idBankBranch: Int(viewModel.bankBranchesSubject.value[indexPath.row].id)))
         return cell
     }

@@ -22,11 +22,9 @@ final class TabBarItem: UIView {
     private let leftItem = UIImageView()
     private let centerItem = UIImageView()
     private let rightItem = UIImageView()
-    private let leftTextLabel = UILabel()
-    private let rightTextLabel = UILabel()
     private let leftImageView = UIImageView(image: .Image.TabBar.leftItem)
-    private let centerImageView = UIImageView(image: .Image.TabBar.centerItem)
-    private let rightImageView = UIImageView(image: .Image.TabBar.rightItem)
+    private let centerImageView = UIImageView(image: .Image.TabBar.centerItemDisabled)
+    private let rightImageView = UIImageView(image: .Image.TabBar.rightItemDisabled)
     private let backgroundView = UIView()
     
     // MARK: - Init
@@ -53,8 +51,6 @@ final class TabBarItem: UIView {
         rightItem.addSubview(rightImageView)
         addSubview(centerItem)
         centerItem.addSubview(centerImageView)
-        addSubview(leftTextLabel)
-        addSubview(rightTextLabel)
     }
     
     private func configureConstraints() {
@@ -70,10 +66,10 @@ final class TabBarItem: UIView {
         }
         
         leftImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(9)
+            make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(30)
-            make.width.equalTo(40)
-            make.height.equalTo(40)
+            make.width.equalTo(35)
+            make.height.equalTo(35)
         }
         
         centerItem.snp.makeConstraints { make in
@@ -83,32 +79,22 @@ final class TabBarItem: UIView {
         
         centerImageView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.equalTo(40)
-            make.height.equalTo(40)
+            make.width.equalTo(35)
+            make.height.equalTo(35)
         }
         
         rightItem.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().offset(-30)
+            make.trailing.equalToSuperview().offset(-15)
             make.centerY.equalToSuperview()
             make.width.equalTo(150)
             make.height.equalTo(75)
         }
         
         rightImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(9)
-            make.trailing.equalToSuperview().inset(30)
-            make.width.equalTo(39)
-            make.height.equalTo(39)
-        }
-        
-        leftTextLabel.snp.makeConstraints { make in
-            make.top.equalTo(leftItem.snp.top).offset(49)
-            make.centerX.equalTo(leftImageView)
-        }
-        
-        rightTextLabel.snp.makeConstraints { make in
-            make.top.equalTo(rightItem.snp.top).offset(49)
-            make.centerX.equalTo(rightImageView)
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(45)
+            make.width.equalTo(35)
+            make.height.equalTo(35)
         }
         
         backgroundView.snp.makeConstraints { make in
@@ -118,21 +104,11 @@ final class TabBarItem: UIView {
     }
     
     private func configureUI() {
-        leftTextLabel.text = NSLocalizedString("App.TabBar.CurrencyRatesItemTitle", comment: "Currency")
-        leftTextLabel.textColor = UIColor(resource: .Color.TabBar.textTitle)
-        rightTextLabel.textAlignment = .center
-        leftTextLabel.font = UIFont.systemFont(ofSize: 16)
-        
-        rightTextLabel.text = NSLocalizedString("App.TabBar.BestCurrencyRatesItemTitle", comment: "Currency")
-        rightTextLabel.textColor = UIColor(resource: .Color.TabBar.textTitle)
-        rightTextLabel.textAlignment = .center
-        rightTextLabel.font = UIFont.systemFont(ofSize: 16)
-        
         leftImageView.contentMode = .scaleAspectFit
         centerImageView.contentMode = .scaleAspectFit
         rightImageView.contentMode = .scaleAspectFit
         
-        backgroundView.backgroundColor = UIColor(resource: .Color.TabBar.background)
+        backgroundView.backgroundColor = UIColor(resource: .Color.backgroundColorView)
     }
     
     private func bind() {
@@ -164,14 +140,15 @@ final class TabBarItem: UIView {
     private func createTabBarItemImage(leftItemColor: UIColor, centerItemColor: UIColor, rightItemColor: UIColor) {
         
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: 135, y: 0))
-        path.addLine(to: CGPoint(x: 80, y: 0))
-        path.addQuadCurve(to: CGPoint(x: 55, y: 22), controlPoint: CGPoint(x: 60, y: 5))
-        path.addQuadCurve(to: CGPoint(x: 15, y: 75), controlPoint: CGPoint(x: 40, y: 62))
-        path.addLine(to: CGPoint(x: 132, y: 75))
-        path.addQuadCurve(to: CGPoint(x: 150, y: 57), controlPoint: CGPoint(x: 150, y: 75))
-        path.addLine(to: CGPoint(x: 150, y: 15))
-        path.addQuadCurve(to: CGPoint(x: 135, y: 0), controlPoint: CGPoint(x: 150, y: 0))
+        path.move(to: CGPoint(x: 115, y: 0))
+        path.addLine(to: CGPoint(x: 65, y: 0))
+        path.addQuadCurve(to: CGPoint(x: 40, y: 22), controlPoint: CGPoint(x: 45, y: 5))
+        path.addQuadCurve(to: CGPoint(x: 12, y: 65), controlPoint: CGPoint(x: 30, y: 55))
+        path.addQuadCurve(to: CGPoint(x: 20, y: 75), controlPoint: CGPoint(x: 5, y: 75))
+        path.addLine(to: CGPoint(x: 115, y: 75))
+        path.addQuadCurve(to: CGPoint(x: 135, y: 52), controlPoint: CGPoint(x: 135, y: 75))
+        path.addLine(to: CGPoint(x: 135, y: 20))
+        path.addQuadCurve(to: CGPoint(x: 115, y: 0), controlPoint: CGPoint(x: 135, y: 0))
         path.close()
         
         let path2 = UIBezierPath()
@@ -185,14 +162,15 @@ final class TabBarItem: UIView {
         path2.close()
         
         let path3 = UIBezierPath()
-        path3.move(to: CGPoint(x: 15, y: 0))
+        path3.move(to: CGPoint(x: 20, y: 0))
         path3.addLine(to: CGPoint(x: 70, y: 0))
         path3.addQuadCurve(to: CGPoint(x: 95, y: 22), controlPoint: CGPoint(x: 90, y: 5))
-        path3.addQuadCurve(to: CGPoint(x: 135, y: 75), controlPoint: CGPoint(x: 110, y: 62))
-        path3.addLine(to: CGPoint(x: 18, y: 75))
-        path3.addQuadCurve(to: CGPoint(x: 0, y: 57), controlPoint: CGPoint(x: 0, y: 75))
-        path3.addLine(to: CGPoint(x: 0, y: 15))
-        path3.addQuadCurve(to: CGPoint(x: 15, y: 0), controlPoint: CGPoint(x: 0, y: 0))
+        path3.addQuadCurve(to: CGPoint(x: 123, y: 65), controlPoint: CGPoint(x: 105, y: 55))
+        path3.addQuadCurve(to: CGPoint(x: 115, y: 75), controlPoint: CGPoint(x: 130, y: 75))
+        path3.addLine(to: CGPoint(x: 20, y: 75))
+        path3.addQuadCurve(to: CGPoint(x: 0, y: 52), controlPoint: CGPoint(x: 0, y: 75))
+        path3.addLine(to: CGPoint(x: 0, y: 20))
+        path3.addQuadCurve(to: CGPoint(x: 20, y: 0), controlPoint: CGPoint(x: 0, y: 0))
         path3.close()
         
         let tabBarItemImage = UIGraphicsImageRenderer(size: CGSize(width: 150, height: 75)).image { context in
@@ -219,10 +197,14 @@ final class TabBarItem: UIView {
         switch typeTabBar {
         case .left:
             createTabBarItemImage(leftItemColor: UIColor(resource: .Color.TabBar.selectedItem), centerItemColor: UIColor(resource: .Color.TabBar.disabledItem), rightItemColor: UIColor(resource: .Color.TabBar.disabledItem))
+            leftImageView.image = UIImage(resource: .Image.TabBar.leftItem)
+            rightImageView.image = UIImage(resource: .Image.TabBar.rightItemDisabled)
         case .center:
             break
         case .right:
             createTabBarItemImage(leftItemColor: UIColor(resource: .Color.TabBar.disabledItem), centerItemColor: UIColor(resource: .Color.TabBar.disabledItem), rightItemColor: UIColor(resource: .Color.TabBar.selectedItem))
+            leftImageView.image = UIImage(resource: .Image.TabBar.leftItemDisabled)
+            rightImageView.image = UIImage(resource: .Image.TabBar.rightItem)
         }
     }
     
