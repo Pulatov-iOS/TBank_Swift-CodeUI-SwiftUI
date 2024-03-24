@@ -5,30 +5,26 @@ import SnapKit
 
 final class SettingsViewController: UIViewController {
     
-    
     // MARK: - Public Properties
     var viewModel: SettingsViewModel!
 
     private let titleLabel = UILabel()
     private let backButton = UIButton()
 
-    let termsOfUseView = UIView()
-    let privacyPolicyView = UIView()
-    let iconTermsImageView = UIImageView()
-    let iconPrivacyImageView = UIImageView()
-    let termsLabel = UILabel()
-    let privacyLabel = UILabel()
-    let termsNextArrowImageView = UIImageView()
-    let privacyNextArrowImageView = UIImageView()
-    let termsOfUseButton = UIButton()
-    let privacyPolicyButton = UIButton()
-    
-    
+    private let termsOfUseView = UIView()
+    private let privacyPolicyView = UIView()
+    private let iconTermsImageView = UIImageView()
+    private let iconPrivacyImageView = UIImageView()
+    private let termsLabel = UILabel()
+    private let privacyLabel = UILabel()
+    private let termsNextArrowImageView = UIImageView()
+    private let privacyNextArrowImageView = UIImageView()
+    private let termsOfUseButton = UIButton()
+    private let privacyPolicyButton = UIButton()
     
     // MARK: - LyfeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         addSubviews()
         configureConstraints()
         configureUI()
@@ -37,36 +33,18 @@ final class SettingsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         setCornerRadius()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        configureNavBar()
-    }
-    
-    
-    
-//MARK: - Configurations of Navigation bar
-    
-    private func configureNavBar() {
-        self.title = "Settings"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 21, weight: .bold)]
-    }
-    
-    
     
     // MARK: - Add subviews
     
     private func addSubviews() {
         view.addSubviews(with: titleLabel, backButton, termsOfUseView, privacyPolicyView)
-        termsOfUseView.addSubviews(with: termsLabel, termsNextArrowImageView, iconTermsImageView, termsOfUseButton)
-        privacyPolicyView.addSubviews(with: privacyLabel, privacyNextArrowImageView, iconPrivacyImageView, privacyPolicyButton)
+        termsOfUseView.addSubviews(with: termsOfUseButton)
+        privacyPolicyView.addSubviews(with: privacyPolicyButton)
+        termsOfUseButton.addSubviews(with: termsLabel, termsNextArrowImageView, iconTermsImageView)
+        privacyPolicyButton.addSubviews(with: privacyLabel, privacyNextArrowImageView, iconPrivacyImageView)
     }
-    
-    
     
     //MARK: - Configure constraintes
     
@@ -141,16 +119,14 @@ final class SettingsViewController: UIViewController {
         privacyPolicyButton.bottomAnchor.constraint(equalTo: privacyPolicyView.bottomAnchor).isActive = true
     }
     
-    
-    
     //MARK: - Configure UI
     
     private func configureUI() {
-        view.backgroundColor = UIColor.white
-        
+        view.backgroundColor = UIColor(resource: .Color.backgroundColorView)
+
         titleLabel.text = "Settings"
         titleLabel.textColor = .black
-        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
         
         backButton.tintColor = .black
         backButton.setImage(UIImage(named: "roundedBack"), for: .normal)
@@ -183,10 +159,10 @@ final class SettingsViewController: UIViewController {
         privacyLabel.font = UIFont.manrope(ofSize: 20, style: .light)
         privacyLabel.text = "Privacy policy"
         
-        termsOfUseButton.backgroundColor = .clear
+        termsOfUseButton.backgroundColor = UIColor(resource: .Color.backgroundColorView)
         termsOfUseButton.addTarget(self, action: #selector(termsOfUseButtonTapped), for: .touchUpInside)
         
-        privacyPolicyButton.backgroundColor = .clear
+        privacyPolicyButton.backgroundColor = UIColor(resource: .Color.backgroundColorView)
         privacyPolicyButton.addTarget(self, action: #selector(privacyPolicyButtonTapped), for: .touchUpInside)
     }
     
@@ -198,23 +174,19 @@ final class SettingsViewController: UIViewController {
         iconPrivacyImageView.layer.cornerRadius = iconPrivacyImageView.frame.height / 2
     }
     
-    
-    
     //MARK: - Actions
     
     @objc private func termsOfUseButtonTapped() {
-        
+        print("Terms of Use")
     }
     
     @objc private func privacyPolicyButtonTapped() {
-        
+        print("Privacy policy")
     }
     
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
-
-    
     
     //MARK: - Bindings
     
