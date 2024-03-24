@@ -49,22 +49,22 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
         
         mapImageView.translatesAutoresizingMaskIntoConstraints = false
         mapImageView.centerYAnchor.constraint(equalTo: backgroundBaseView.centerYAnchor).isActive = true
-        mapImageView.leadingAnchor.constraint(equalTo: backgroundBaseView.leadingAnchor, constant: 24).isActive = true
-        mapImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        mapImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        mapImageView.leadingAnchor.constraint(equalTo: backgroundBaseView.leadingAnchor, constant: 20).isActive = true
+        mapImageView.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        mapImageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         currencyStackView.translatesAutoresizingMaskIntoConstraints = false
         currencyStackView.topAnchor.constraint(equalTo: backgroundBaseView.topAnchor, constant: 18).isActive = true
-        currencyStackView.leadingAnchor.constraint(equalTo: mapImageView.trailingAnchor, constant: 11).isActive = true
+        currencyStackView.leadingAnchor.constraint(equalTo: mapImageView.trailingAnchor, constant: 8).isActive = true
         currencyStackView.widthAnchor.constraint(equalTo: backgroundBaseView.widthAnchor, multiplier: 0.52).isActive = true
         
         avrLabel.translatesAutoresizingMaskIntoConstraints = false
         avrLabel.topAnchor.constraint(equalTo: currencyStackView.bottomAnchor, constant: 5).isActive = true
-        avrLabel.leadingAnchor.constraint(equalTo: mapImageView.trailingAnchor, constant: 11).isActive = true
+        avrLabel.leadingAnchor.constraint(equalTo: mapImageView.trailingAnchor, constant: 8).isActive = true
         
         avrCountLabel.translatesAutoresizingMaskIntoConstraints = false
         avrCountLabel.centerYAnchor.constraint(equalTo: avrLabel.centerYAnchor).isActive = true
-        avrCountLabel.leadingAnchor.constraint(equalTo: avrLabel.trailingAnchor, constant: 5).isActive = true
+        avrCountLabel.leadingAnchor.constraint(equalTo: avrLabel.trailingAnchor, constant: 8).isActive = true
         
         avrDynamicImageView.translatesAutoresizingMaskIntoConstraints = false
         avrDynamicImageView.widthAnchor.constraint(equalToConstant: 5).isActive = true
@@ -90,7 +90,7 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
         currencyStackView.spacing = 5
         
         currencyNameLabel.textAlignment = .left
-        currencyNameLabel.font = UIFont.manrope(ofSize: 16, style: .medium)
+        currencyNameLabel.font = UIFont.manrope(ofSize: 15, style: .medium)
         currencyNameLabel.text = "USD"
 
         avrLabel.textAlignment = .left
