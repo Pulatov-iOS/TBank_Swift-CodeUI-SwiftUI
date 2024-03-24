@@ -1,14 +1,11 @@
-//MARK: - Enum with errors and there descriptions for CoreData
-
 enum CoreDataError: Error {
     case appDelegateError
     case entityError
     case saveError
     case castError
     case loadError
+    case updateError
     
-    
-    //Creating the description of the error
     func description() -> String {
         switch self {
         case .appDelegateError:
@@ -21,6 +18,8 @@ enum CoreDataError: Error {
             return "Could not cast context"
         case .loadError:
             return "Could not load context"
+        case .updateError:
+            return "Could not update context"
         }
     }
 }

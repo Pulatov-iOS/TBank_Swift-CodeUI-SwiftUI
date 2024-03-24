@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Currencies" representedClassName="Currencies" syncable="YES" codeGenerationType="class">
-        <attribute name="avr" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="dynamic" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="name" attributeType="String"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22203.2" systemVersion="23B81" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BankBranch" representedClassName="BankBranch" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="branchNumber" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="workingDays" optional="YES" attributeType="String"/>
+        <attribute name="workingHours" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="BankBranchCurrencyRate" representedClassName="BankBranchCurrencyRate" syncable="YES" codeGenerationType="class">
+        <attribute name="abbreviation" attributeType="String"/>
+        <attribute name="curName" attributeType="String"/>
+        <attribute name="idBankBranch" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="rate" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="scale" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="CurrencyRate" representedClassName="CurrencyRate" syncable="YES" codeGenerationType="class">
+        <attribute name="abbreviation" attributeType="String"/>
+        <attribute name="curName" attributeType="String"/>
+        <attribute name="lastRate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rate" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="scale" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
 </model>

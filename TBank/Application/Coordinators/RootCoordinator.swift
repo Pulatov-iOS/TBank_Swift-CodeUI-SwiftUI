@@ -2,29 +2,59 @@ import UIKit
 
 final class RootCoordinator {
     
-    let window: UIWindow
-       
+    // MARK: - Private Properties
+    private let window: UIWindow
+    private let initialNavigationController = UINavigationController()
+    private let tabBar = TabBarItem()
+    private var selectedTabBarItem: TypeTabBar = .left
+    
+    private var locCurRatesTabCoordinator: LocalizedCurrencyRatesCoordinator?
+    private var currencyConverterCoordinator: CurrencyConverterCoordinator?
+    private var bestCurRatesCoordinator: BestCurrencyRatesCoordinator?
+    
     init(window: UIWindow) {
         self.window = window
     }
     
+    // MARK: - Methods
     func start() {
-        let tabBarController = UITabBarController()
-              
-        let LocCurRatesNavigationController = UINavigationController()
-        let LocCurRatesTabCoordinator = BranchDetailsCoordinator(navigationController: LocCurRatesNavigationController)
-        LocCurRatesNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("App.TabBar.CurrencyRatesItemTitle", comment: ""), image: nil, tag: 0)
-        LocCurRatesTabCoordinator.start()
+        tabBar.delegate = self
         
-        let BestCurRatesNavigationController = UINavigationController()
-        let BestCurRatesTabCoordinator = BestCurrencyRatesCoordinator(navigationController: BestCurRatesNavigationController)
-        BestCurRatesNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("App.TabBar.BestCurrencyRatesItemTitle", comment: ""), image: nil, tag: 0)
-        BestCurRatesTabCoordinator.start()
+        locCurRatesTabCoordinator = LocalizedCurrencyRatesCoordinator(navigationController: initialNavigationController, tabBar: tabBar)
+        currencyConverterCoordinator = CurrencyConverterCoordinator(navigationController: initialNavigationController)
+        bestCurRatesCoordinator = BestCurrencyRatesCoordinator(navigationController: initialNavigationController, tabBar: tabBar)
         
-        tabBarController.setViewControllers([LocCurRatesNavigationController, BestCurRatesNavigationController], animated: false)
+        if let coordinator = locCurRatesTabCoordinator {
+            coordinator.start()
+        }
         
-        window.rootViewController = tabBarController
+        window.rootViewController = initialNavigationController
         window.makeKeyAndVisible()
     }
+}
 
+extension RootCoordinator: TabBarItemDelegate {
+    
+    func leftItemTapped(_ cell: TabBarItem) {
+        if let coordinator = locCurRatesTabCoordinator, selectedTabBarItem != .left {
+            tabBar.selected(.left)
+            selectedTabBarItem = .left
+            coordinator.start()
+        }
+    }
+    
+    func centerItemTapped(_ cell: TabBarItem) {
+        if let coordinator = currencyConverterCoordinator {
+            selectedTabBarItem = .center
+            coordinator.start()
+        }
+    }
+    
+    func rightItemTapped(_ cell: TabBarItem) {
+        if let coordinator = bestCurRatesCoordinator, selectedTabBarItem != .right {
+            tabBar.selected(.right)
+            selectedTabBarItem = .right
+            coordinator.start()
+        }
+    }
 }
