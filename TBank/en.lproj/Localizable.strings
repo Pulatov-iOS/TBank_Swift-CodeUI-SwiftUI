@@ -15,8 +15,6 @@
 "App.BestCurrencyRates.NavigationItemTitle" = "Currency Rates";
 "App.BestCurrencyRates.lastUpdatedLabel" = "Last updated:";
 "App.BestCurrencyRates.searchTextField" = "Search Currency";
-"App.BestCurrencyRates.alertController.titel" = "Updated";
-"App.BestCurrencyRates.alertController.message" = "Currency rates updated ";
 
 // MARK: - CurrencyConverter
 

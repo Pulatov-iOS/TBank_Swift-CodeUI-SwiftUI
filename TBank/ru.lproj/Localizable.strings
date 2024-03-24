@@ -12,12 +12,9 @@
 // MARK: - LocalizedCurrencyRates/BranchDetails/BankLocatorMap
 
 // MARK: - BestCurrencyRates
-"App.BestCurrencyRates.NavigationItemTitle" = "Курсы валют";
+"App.BestCurrencyRates.NavigationItemTitle" = "Курс валют";
 "App.BestCurrencyRates.lastUpdatedLabel" = "Последнее обновление: ";
 "App.BestCurrencyRates.searchTextField" = "Поиск валюты";
-"App.BestCurrencyRates.alertController.titel" = "Обновлено";
-"App.BestCurrencyRates.alertController.message" = "Курсы валют обновлены ";
-
 
 
 // MARK: - CurrencyConverter
