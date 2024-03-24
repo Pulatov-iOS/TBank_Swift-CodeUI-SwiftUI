@@ -35,7 +35,7 @@ final class BestCurrencyRatesViewModel {
         }
     }
     
-    private func loadCurrencyRates() {
+    func loadCurrencyRates() {
         coreDataManager.currencyRatesSubject
             .sink { currencyRates in
                 self.currencyRatesSubject.send(currencyRates)
