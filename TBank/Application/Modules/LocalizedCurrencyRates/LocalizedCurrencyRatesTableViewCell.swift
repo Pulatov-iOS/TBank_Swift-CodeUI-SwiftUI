@@ -92,12 +92,7 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
         currencyNameLabel.textAlignment = .left
         currencyNameLabel.font = UIFont.manrope(ofSize: 16, style: .medium)
         currencyNameLabel.text = "USD"
-  /*
-        currencyChangeRatingStackView.axis = .horizontal
-        currencyChangeRatingStackView.distribution = .fillProportionally
-        currencyChangeRatingStackView.spacing = 0
-        currencyChangeRatingStackView.alignment = .leading
-*/
+
         avrLabel.textAlignment = .left
         avrLabel.font = UIFont.manrope(ofSize: 13, style: .medium)
         avrLabel.text = "Пн - Пт"
@@ -110,11 +105,7 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
         let originalImage = UIImage(resource: .Image.LocalizedCurrencyRates.BranchDetails.ExchangeRates.map)
         let tintedImage = originalImage.withTintColor(UIColor(resource: .Color.textColorTitel))
         mapImageView.image = tintedImage
-        
-        /*avrDynamicImageView.image = dynamicStatus == .positive ? UIImage(resource: .Image.LocalizedCurrencyRates.BranchDetails.ExchangeRates.greenArrowUp) : UIImage(resource: .Image.LocalizedCurrencyRates.BranchDetails.ExchangeRates.redArrowDown)
-        avrDynamicImageView.contentMode = .scaleAspectFit
-        */
-        
+    
         rateLabel.textAlignment = .left
         rateLabel.font = UIFont.manrope(ofSize: 20, style: .medium)
         rateLabel.attributedText = setAttributedString(with: "3.24 byn", dynamicStatus)
