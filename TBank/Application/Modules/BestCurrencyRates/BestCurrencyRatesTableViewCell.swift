@@ -70,7 +70,7 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     
     // MARK: - Configuration
     
-    func configure(with rate: CurrencyRate) {
+    func setInformation(with rate: CurrencyRateDTO) {
         nameLabel.text = rate.abbreviation
         priceLabel.text = String(format: "%.2f" + " BYN", rate.rate)
         scaleLabel.text = String(format: "%.0f", rate.scale)

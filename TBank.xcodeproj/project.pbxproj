@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112F1A1A2BAF500600235103 /* BankBranchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A192BAF500600235103 /* BankBranchDTO.swift */; };
+		112F1A1C2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A1B2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift */; };
 		11786BE72BAED61100BA999A /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11786BE62BAED61100BA999A /* TabBarItem.swift */; };
 		11786BE92BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11786BE82BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift */; };
 		11DA58312BAA3E4A00915F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58302BAA3E4A00915F6B /* AppDelegate.swift */; };
@@ -34,7 +36,7 @@
 		11DA58852BAA569B00915F6B /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58842BAA569B00915F6B /* CurrencyConverterViewController.swift */; };
 		11DA58872BAA56A600915F6B /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58862BAA56A600915F6B /* CurrencyConverterViewModel.swift */; };
 		11DA58892BAA56DF00915F6B /* CurrencyConverterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */; };
-		19F0C6D12BAC386400182B0A /* CurrencyRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6D02BAC386400182B0A /* CurrencyRate.swift */; };
+		19F0C6D12BAC386400182B0A /* CurrencyRateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6D02BAC386400182B0A /* CurrencyRateDTO.swift */; };
 		19F0C6D32BAC38B600182B0A /* NetworkManagerCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */; };
 		19F0C6EC2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0C6EB2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift */; };
 		2D250DFA2BADF965002DC479 /* ExchangeRaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DF92BADF965002DC479 /* ExchangeRaterTableViewCell.swift */; };
@@ -75,6 +77,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		112F1A192BAF500600235103 /* BankBranchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBranchDTO.swift; sourceTree = "<group>"; };
+		112F1A1B2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBranchCurrencyRateDTO.swift; sourceTree = "<group>"; };
 		11786BE62BAED61100BA999A /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		11786BE82BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedCurrencyRatesTableViewCell.swift; sourceTree = "<group>"; };
 		11DA582D2BAA3E4A00915F6B /* TBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +109,7 @@
 		11DA58842BAA569B00915F6B /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		11DA58862BAA56A600915F6B /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
 		11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterCoordinator.swift; sourceTree = "<group>"; };
-		19F0C6D02BAC386400182B0A /* CurrencyRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRate.swift; sourceTree = "<group>"; };
+		19F0C6D02BAC386400182B0A /* CurrencyRateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRateDTO.swift; sourceTree = "<group>"; };
 		19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerCurrency.swift; sourceTree = "<group>"; };
 		19F0C6EB2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestCurrencyRatesTableViewCell.swift; sourceTree = "<group>"; };
 		2D250DF92BADF965002DC479 /* ExchangeRaterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRaterTableViewCell.swift; sourceTree = "<group>"; };
@@ -320,8 +324,8 @@
 			isa = PBXGroup;
 			children = (
 				11DA586C2BAA4E2600915F6B /* ExchangeRatesViewController.swift */,
-				2D250DF92BADF965002DC479 /* ExchangeRaterTableViewCell.swift */,
 				11DA586E2BAA4E2F00915F6B /* ExchangeRatesViewModel.swift */,
+				2D250DF92BADF965002DC479 /* ExchangeRaterTableViewCell.swift */,
 			);
 			path = ExchangeRates;
 			sourceTree = "<group>";
@@ -329,7 +333,9 @@
 		2D250E012BADFCDA002DC479 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				19F0C6D02BAC386400182B0A /* CurrencyRate.swift */,
+				112F1A192BAF500600235103 /* BankBranchDTO.swift */,
+				19F0C6D02BAC386400182B0A /* CurrencyRateDTO.swift */,
+				112F1A1B2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -337,8 +343,8 @@
 		2D250E022BADFCF0002DC479 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				2D250E132BAE1F3D002DC479 /* CoreDataManager.swift */,
 				19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */,
+				2D250E132BAE1F3D002DC479 /* CoreDataManager.swift */,
 				2D250E152BAE22E5002DC479 /* ErrorsManager.swift */,
 			);
 			path = Managers;
@@ -444,7 +450,7 @@
 				2D250E122BADFD36002DC479 /* UIFont + Extension.swift in Sources */,
 				11DA58312BAA3E4A00915F6B /* AppDelegate.swift in Sources */,
 				11DA58832BAA563100915F6B /* SettingsViewModel.swift in Sources */,
-				19F0C6D12BAC386400182B0A /* CurrencyRate.swift in Sources */,
+				19F0C6D12BAC386400182B0A /* CurrencyRateDTO.swift in Sources */,
 				11DA586D2BAA4E2600915F6B /* ExchangeRatesViewController.swift in Sources */,
 				2D250DFC2BADF9C2002DC479 /* UIView + Extension.swift in Sources */,
 				2D250E162BAE22E6002DC479 /* ErrorsManager.swift in Sources */,
@@ -470,11 +476,13 @@
 				11786BE92BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift in Sources */,
 				11DA587F2BAA55D800915F6B /* SettingsCoordinator.swift in Sources */,
 				11DA587B2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift in Sources */,
+				112F1A1C2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift in Sources */,
 				11DA587D2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift in Sources */,
 				11DA58332BAA3E4A00915F6B /* SceneDelegate.swift in Sources */,
 				19F0C6EC2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift in Sources */,
 				11DA58692BAA4DCB00915F6B /* BranchDetailsViewModel.swift in Sources */,
 				11DA58812BAA562300915F6B /* SettingsViewController.swift in Sources */,
+				112F1A1A2BAF500600235103 /* BankBranchDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

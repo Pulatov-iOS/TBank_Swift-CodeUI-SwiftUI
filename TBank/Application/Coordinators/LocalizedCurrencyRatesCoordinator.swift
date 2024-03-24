@@ -10,7 +10,6 @@ final class LocalizedCurrencyRatesCoordinator {
     init(navigationController: UINavigationController, tabBar: TabBarItem) {
         self.navigationController = navigationController
         self.tabBar = tabBar
-        
         settingsCoordinator = SettingsCoordinator(navigationController: self.navigationController)
     }
     
@@ -19,10 +18,11 @@ final class LocalizedCurrencyRatesCoordinator {
     }
     
     private func showLocalizedCurrencyRatesScreen() {
-        let networkManager = NetworkManagerCurrency.shared
+        let networkManager = NetworkManagerCurrency.instance
+        let coreDataManager = CoreDataManager.instance
         
         let view = LocalizedCurrencyRatesViewController(tabBar: tabBar)
-        let viewModel = LocalizedCurrencyRatesViewModel(networkManager: networkManager)
+        let viewModel = LocalizedCurrencyRatesViewModel(networkManager: networkManager, coreDataManager: coreDataManager)
         view.viewModel = viewModel
         navigationController.setViewControllers([view], animated: false)
         

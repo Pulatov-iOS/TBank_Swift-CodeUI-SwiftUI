@@ -13,8 +13,10 @@ final class BranchDetailsCoordinator {
     }
     
     private func showLocalizedCurrencyRatesScreen() {
+        let coreDataManager = CoreDataManager.instance
+        
         let view = ExchangeRatesView()
-        let viewModel = ExchangeRatesViewModel()
+        let viewModel = ExchangeRatesViewModel(coreDataManager: coreDataManager)
         view.viewModel = viewModel
         navigationController.setViewControllers([view], animated: false)
     }

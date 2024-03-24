@@ -20,3 +20,25 @@
 // MARK: - CurrencyConverter
 
 // MARK: - Settings
+
+
+// MARK: - Working Days
+"App.WorkingDays.101" = "Пн - Пт";
+"App.WorkingDays.102" = "Пн - Сб";
+
+// MARK: - Addresses of Bank Branches
+"App.Addresses.101" = "пр. Дзержинского, 23";
+"App.Addresses.102" = "ул. Сурганова, 50";
+"App.Addresses.103" = "пр. Рокоссовского, 80";
+"App.Addresses.104" = "пр. Партизанский, 150А";
+"App.Addresses.105" = "ул. Будславская, 2";
+"App.Addresses.106" = "ул. Восточная, 183/4";
+"App.Addresses.107" = "пр. Независимости, 23";
+"App.Addresses.108" = "ул. Уборевича, 176";
+"App.Addresses.109" = "ул. Денисовская, 8";
+"App.Addresses.110" = "ул. Филимонова, 12";
+"App.Addresses.111" = "ул. Петра Мстиславца, 11";
+"App.Addresses.112" = "ул. Притыцкого, 156";
+"App.Addresses.113" = "пр. Победителей, 135Б";
+"App.Addresses.114" = "пр. Дзержинского, 100";
+"App.Addresses.115" = "ул. Корженевского, 26";

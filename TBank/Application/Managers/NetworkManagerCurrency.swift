@@ -3,13 +3,13 @@ import Foundation
 
 final class NetworkManagerCurrency: NSCopying {
     
-    static let shared = NetworkManagerCurrency()
+    static let instance = NetworkManagerCurrency()
     private let url = "https://www.nbrb.by/api/exrates/rates?periodicity=0"
     
-    private init() {}
+    private init() { }
     
-    func fetchExchangeRates(completion: @escaping ([CurrencyRate]?) -> Void) {
-        AF.request(url).responseDecodable(of: [CurrencyRate].self) { response in
+    func fetchCurrencyRates(completion: @escaping ([CurrencyRateDTO]?) -> Void) {
+        AF.request(url).responseDecodable(of: [CurrencyRateDTO].self) { response in
             switch response.result {
             case .success(let rates):
                 completion(rates)
@@ -21,6 +21,6 @@ final class NetworkManagerCurrency: NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return NetworkManagerCurrency.shared
+        return NetworkManagerCurrency.instance
     }
 }
