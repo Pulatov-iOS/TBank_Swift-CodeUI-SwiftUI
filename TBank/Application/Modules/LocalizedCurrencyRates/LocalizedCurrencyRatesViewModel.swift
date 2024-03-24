@@ -5,6 +5,7 @@ final class LocalizedCurrencyRatesViewModel {
     
     // MARK: - Public properties
     var showSettingsPage: (() -> Void)?
+    var showExchangeRatesPage: (([BankBranchCurrencyRate], BankBranch) -> Void)?
     let bankBranchesSubject = CurrentValueSubject<[BankBranch], Never>([])
     let currencyRatesSubject = CurrentValueSubject<[CurrencyRateDTO], Never>([])
     let bankBranchCurrencyRateSubject = CurrentValueSubject<[BankBranchCurrencyRate], Never>([])
@@ -25,6 +26,13 @@ final class LocalizedCurrencyRatesViewModel {
     // MARK: - Methods
     func settingsButtonTapped() {
         showSettingsPage?()
+    }
+    
+    func tableCellTapped(_ bankBranche: BankBranch) {
+        let filteredObjects = bankBranchCurrencyRateSubject.value.filter {
+            $0.idBankBranch == bankBranche.id
+        }
+        showExchangeRatesPage?(filteredObjects, bankBranche)
     }
     
     func getCurrencyRate(idBankBranch: Int) -> Double {

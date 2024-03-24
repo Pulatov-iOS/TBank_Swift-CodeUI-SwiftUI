@@ -2,24 +2,20 @@ import Combine
 
 final class ExchangeRatesViewModel {
     
-    //MARK: - Public Properties
-    let currencyRatesSubject = CurrentValueSubject<[CurrencyRateDTO], Never>([])
+    //MARK: - Private Properties
+    var showBankLocatorMapPage: (() -> Void)?
+    private let bankBranche: BankBranch
+    private let currencyRates: [BankBranchCurrencyRate]
     
     // MARK: - Private properties
-    private var coreDataManager: CoreDataManager
-    private var cancellables = Set<AnyCancellable>()
+
     
-    init(coreDataManager: CoreDataManager) {
-        self.coreDataManager = coreDataManager
+    init(currencyRates: [BankBranchCurrencyRate], bankBranche: BankBranch) {
+        self.bankBranche = bankBranche
+        self.currencyRates = currencyRates
     }
     
-    func loadCurrencyRates() {
-        coreDataManager.currencyRatesSubject
-            .sink { currencyRates in
-                self.currencyRatesSubject.send(currencyRates)
-            }
-            .store(in: &cancellables)
-        
-        coreDataManager.loadCurrencyRates()
+    func mapButtonTapped() {
+        showBankLocatorMapPage?()
     }
 }
