@@ -29,7 +29,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     // MARK: - LyfeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.isHidden = true
         addSubviews()
         configureConstraints()
         configureUI()
@@ -174,6 +174,7 @@ extension LocalizedCurrencyRatesViewController: UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(SettingsViewController(), animated: true)
+        let bankBranche = viewModel.bankBranchesSubject.value[indexPath.row]
+        viewModel.tableCellTapped(bankBranche)
     }
 }

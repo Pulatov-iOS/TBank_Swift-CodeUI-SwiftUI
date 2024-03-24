@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		112F1A1A2BAF500600235103 /* BankBranchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A192BAF500600235103 /* BankBranchDTO.swift */; };
 		112F1A1C2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A1B2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift */; };
+		112F1A1E2BB0842D00235103 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A1D2BB0842D00235103 /* SettingsViewController.swift */; };
 		11786BE72BAED61100BA999A /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11786BE62BAED61100BA999A /* TabBarItem.swift */; };
 		11786BE92BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11786BE82BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift */; };
 		11DA58312BAA3E4A00915F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58302BAA3E4A00915F6B /* AppDelegate.swift */; };
@@ -20,8 +21,6 @@
 		11DA58562BAA483F00915F6B /* LocalizedCurrencyRatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58552BAA483F00915F6B /* LocalizedCurrencyRatesViewController.swift */; };
 		11DA58582BAA484D00915F6B /* LocalizedCurrencyRatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58572BAA484D00915F6B /* LocalizedCurrencyRatesViewModel.swift */; };
 		11DA58612BAA4B4C00915F6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11DA58632BAA4B4C00915F6B /* Localizable.strings */; };
-		11DA58672BAA4DBF00915F6B /* BranchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58662BAA4DBF00915F6B /* BranchDetailsViewController.swift */; };
-		11DA58692BAA4DCB00915F6B /* BranchDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58682BAA4DCB00915F6B /* BranchDetailsViewModel.swift */; };
 		11DA586D2BAA4E2600915F6B /* ExchangeRatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA586C2BAA4E2600915F6B /* ExchangeRatesViewController.swift */; };
 		11DA586F2BAA4E2F00915F6B /* ExchangeRatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA586E2BAA4E2F00915F6B /* ExchangeRatesViewModel.swift */; };
 		11DA58712BAA4E3E00915F6B /* BankLocatorMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58702BAA4E3E00915F6B /* BankLocatorMapViewController.swift */; };
@@ -31,7 +30,6 @@
 		11DA587B2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA587A2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift */; };
 		11DA587D2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA587C2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift */; };
 		11DA587F2BAA55D800915F6B /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA587E2BAA55D800915F6B /* SettingsCoordinator.swift */; };
-		11DA58812BAA562300915F6B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58802BAA562300915F6B /* SettingsViewController.swift */; };
 		11DA58832BAA563100915F6B /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58822BAA563100915F6B /* SettingsViewModel.swift */; };
 		11DA58852BAA569B00915F6B /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58842BAA569B00915F6B /* CurrencyConverterViewController.swift */; };
 		11DA58872BAA56A600915F6B /* CurrencyConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58862BAA56A600915F6B /* CurrencyConverterViewModel.swift */; };
@@ -42,7 +40,6 @@
 		2D250DFA2BADF965002DC479 /* ExchangeRaterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DF92BADF965002DC479 /* ExchangeRaterTableViewCell.swift */; };
 		2D250DFC2BADF9C2002DC479 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DFB2BADF9C2002DC479 /* UIView + Extension.swift */; };
 		2D250DFE2BADF9EB002DC479 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DFD2BADF9EB002DC479 /* UIStackView + Extension.swift */; };
-		2D250E002BADFAA2002DC479 /* BranchDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D250DFF2BADFAA2002DC479 /* BranchDetailsCoordinator.swift */; };
 		2D250E0A2BADFD1F002DC479 /* Manrope-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E032BADFD1E002DC479 /* Manrope-ExtraLight.ttf */; };
 		2D250E0B2BADFD1F002DC479 /* Manrope-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E042BADFD1E002DC479 /* Manrope-Light.ttf */; };
 		2D250E0C2BADFD1F002DC479 /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D250E052BADFD1F002DC479 /* Manrope-Medium.ttf */; };
@@ -79,6 +76,7 @@
 /* Begin PBXFileReference section */
 		112F1A192BAF500600235103 /* BankBranchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBranchDTO.swift; sourceTree = "<group>"; };
 		112F1A1B2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBranchCurrencyRateDTO.swift; sourceTree = "<group>"; };
+		112F1A1D2BB0842D00235103 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		11786BE62BAED61100BA999A /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		11786BE82BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedCurrencyRatesTableViewCell.swift; sourceTree = "<group>"; };
 		11DA582D2BAA3E4A00915F6B /* TBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,8 +91,6 @@
 		11DA58572BAA484D00915F6B /* LocalizedCurrencyRatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedCurrencyRatesViewModel.swift; sourceTree = "<group>"; };
 		11DA58622BAA4B4C00915F6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		11DA58642BAA4B5900915F6B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		11DA58662BAA4DBF00915F6B /* BranchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchDetailsViewController.swift; sourceTree = "<group>"; };
-		11DA58682BAA4DCB00915F6B /* BranchDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchDetailsViewModel.swift; sourceTree = "<group>"; };
 		11DA586C2BAA4E2600915F6B /* ExchangeRatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesViewController.swift; sourceTree = "<group>"; };
 		11DA586E2BAA4E2F00915F6B /* ExchangeRatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesViewModel.swift; sourceTree = "<group>"; };
 		11DA58702BAA4E3E00915F6B /* BankLocatorMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankLocatorMapViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +100,6 @@
 		11DA587A2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestCurrencyRatesViewModel.swift; sourceTree = "<group>"; };
 		11DA587C2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestCurrencyRatesCoordinator.swift; sourceTree = "<group>"; };
 		11DA587E2BAA55D800915F6B /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
-		11DA58802BAA562300915F6B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		11DA58822BAA563100915F6B /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		11DA58842BAA569B00915F6B /* CurrencyConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewController.swift; sourceTree = "<group>"; };
 		11DA58862BAA56A600915F6B /* CurrencyConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterViewModel.swift; sourceTree = "<group>"; };
@@ -115,7 +110,6 @@
 		2D250DF92BADF965002DC479 /* ExchangeRaterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRaterTableViewCell.swift; sourceTree = "<group>"; };
 		2D250DFB2BADF9C2002DC479 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		2D250DFD2BADF9EB002DC479 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
-		2D250DFF2BADFAA2002DC479 /* BranchDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchDetailsCoordinator.swift; sourceTree = "<group>"; };
 		2D250E032BADFD1E002DC479 /* Manrope-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-ExtraLight.ttf"; sourceTree = "<group>"; };
 		2D250E042BADFD1E002DC479 /* Manrope-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Light.ttf"; sourceTree = "<group>"; };
 		2D250E052BADFD1F002DC479 /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
@@ -194,7 +188,6 @@
 			children = (
 				11DA58482BAA3E6500915F6B /* RootCoordinator.swift */,
 				11DA58762BAA52EE00915F6B /* LocalizedCurrencyRatesCoordinator.swift */,
-				2D250DFF2BADFAA2002DC479 /* BranchDetailsCoordinator.swift */,
 				11DA587C2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift */,
 				11DA58882BAA56DF00915F6B /* CurrencyConverterCoordinator.swift */,
 				11DA587E2BAA55D800915F6B /* SettingsCoordinator.swift */,
@@ -264,7 +257,7 @@
 		11DA58512BAA464000915F6B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				11DA58802BAA562300915F6B /* SettingsViewController.swift */,
+				112F1A1D2BB0842D00235103 /* SettingsViewController.swift */,
 				11DA58822BAA563100915F6B /* SettingsViewModel.swift */,
 			);
 			path = Settings;
@@ -303,8 +296,6 @@
 		11DA58652BAA4DA700915F6B /* BranchDetails */ = {
 			isa = PBXGroup;
 			children = (
-				11DA58662BAA4DBF00915F6B /* BranchDetailsViewController.swift */,
-				11DA58682BAA4DCB00915F6B /* BranchDetailsViewModel.swift */,
 				11DA586B2BAA4DEB00915F6B /* ExchangeRates */,
 				11DA586A2BAA4DDE00915F6B /* BankLocatorMap */,
 			);
@@ -449,6 +440,7 @@
 			files = (
 				2D250E122BADFD36002DC479 /* UIFont + Extension.swift in Sources */,
 				11DA58312BAA3E4A00915F6B /* AppDelegate.swift in Sources */,
+				112F1A1E2BB0842D00235103 /* SettingsViewController.swift in Sources */,
 				11DA58832BAA563100915F6B /* SettingsViewModel.swift in Sources */,
 				19F0C6D12BAC386400182B0A /* CurrencyRateDTO.swift in Sources */,
 				11DA586D2BAA4E2600915F6B /* ExchangeRatesViewController.swift in Sources */,
@@ -471,8 +463,6 @@
 				11DA58852BAA569B00915F6B /* CurrencyConverterViewController.swift in Sources */,
 				11DA58772BAA52EE00915F6B /* LocalizedCurrencyRatesCoordinator.swift in Sources */,
 				11DA583B2BAA3E4A00915F6B /* TBank.xcdatamodeld in Sources */,
-				2D250E002BADFAA2002DC479 /* BranchDetailsCoordinator.swift in Sources */,
-				11DA58672BAA4DBF00915F6B /* BranchDetailsViewController.swift in Sources */,
 				11786BE92BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift in Sources */,
 				11DA587F2BAA55D800915F6B /* SettingsCoordinator.swift in Sources */,
 				11DA587B2BAA54B000915F6B /* BestCurrencyRatesViewModel.swift in Sources */,
@@ -480,8 +470,6 @@
 				11DA587D2BAA554300915F6B /* BestCurrencyRatesCoordinator.swift in Sources */,
 				11DA58332BAA3E4A00915F6B /* SceneDelegate.swift in Sources */,
 				19F0C6EC2BAC39EA00182B0A /* BestCurrencyRatesTableViewCell.swift in Sources */,
-				11DA58692BAA4DCB00915F6B /* BranchDetailsViewModel.swift in Sources */,
-				11DA58812BAA562300915F6B /* SettingsViewController.swift in Sources */,
 				112F1A1A2BAF500600235103 /* BankBranchDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
