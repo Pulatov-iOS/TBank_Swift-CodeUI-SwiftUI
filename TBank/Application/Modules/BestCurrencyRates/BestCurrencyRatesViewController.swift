@@ -150,7 +150,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         searchTextField.leftView = paddingView
         searchTextField.leftViewMode = .always
 
-        backgroundTabBarView.backgroundColor = UIColor(resource: .Color.TabBar.background)
+        backgroundTabBarView.backgroundColor = UIColor(resource: .Color.backgroundColorView)
     }
     
     private func bind() {

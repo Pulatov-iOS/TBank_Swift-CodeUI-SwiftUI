@@ -1,7 +1,3 @@
-// MARK: - TabBar
-"App.TabBar.CurrencyRatesItemTitle" = "Branches";
-"App.TabBar.BestCurrencyRatesItemTitle" = "Rates";
-
 // MARK: - LocalizedCurrencyRates
 "App.LocalizedCurrencyRates.NavigationItemTitle" = "Branches";
 
