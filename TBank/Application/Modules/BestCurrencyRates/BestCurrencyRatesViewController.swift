@@ -109,6 +109,8 @@ final class BestCurrencyRatesViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = UIColor(red: 240/255, green: 241/255, blue: 243/255, alpha: 1.0)
         
+        tableView.showsVerticalScrollIndicator = false
+        
         titleLabel.text = NSLocalizedString("App.BestCurrencyRates.NavigationItemTitle", comment: "")
         titleLabel.textColor = .black
         titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
@@ -146,7 +148,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         searchTextField.layer.borderWidth = 1.0
         searchTextField.layer.cornerRadius = 22.5
         searchTextField.layer.masksToBounds = true
-        searchTextField.backgroundColor = UIColor(red: 240/255, green: 241/255, blue: 243/255, alpha: 1.0)
+        searchTextField.backgroundColor = .white//UIColor(red: 240/255, green: 241/255, blue: 243/255, alpha: 1.0)
         searchTextField.addTarget(self, action: #selector(searchTextFieldDidChange(_:)), for: .editingChanged)
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: searchTextField.frame.height))
         searchTextField.leftView = paddingView

@@ -39,7 +39,6 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         nameLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 24).isActive = true
         
-        
         scaleLabel.translatesAutoresizingMaskIntoConstraints = false
         scaleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
         scaleLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 10).isActive = true
@@ -60,7 +59,6 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
         customView.layer.shadowRadius = 5
         customView.layer.shadowOpacity = 0.20
 
-        
         nameLabel.textColor = .black
         nameLabel.font = UIFont.manrope(ofSize: 20, style: .regular)
         
