@@ -36,18 +36,6 @@ final class SettingsViewController: UIViewController {
         setCornerRadius()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureNavBar()
-    }
-    
-//MARK: - Configurations of Navigation bar
-    
-    private func configureNavBar() {
-        self.title = "Settings"
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.manrope(ofSize: 24, style: .bold)]
-    }
-    
     // MARK: - Add subviews
     
     private func addSubviews() {
@@ -138,7 +126,7 @@ final class SettingsViewController: UIViewController {
 
         titleLabel.text = "Settings"
         titleLabel.textColor = .black
-        titleLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
         
         backButton.tintColor = .black
         backButton.setImage(UIImage(named: "roundedBack"), for: .normal)
