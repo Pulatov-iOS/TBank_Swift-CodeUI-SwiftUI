@@ -169,22 +169,33 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
 extension LocalizedCurrencyRatesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.bankBranchesSubject.value.count
+        return viewModel.bankBranchesSubject.value.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocalizedCurrencyRatesTableViewCell", for: indexPath) as? LocalizedCurrencyRatesTableViewCell else {
-            return UITableViewCell()
+        if indexPath.row < viewModel.bankBranchesSubject.value.count {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocalizedCurrencyRatesTableViewCell", for: indexPath) as? LocalizedCurrencyRatesTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            cell.setInformation(bankBranchesSubject: viewModel.bankBranchesSubject.value[indexPath.row], rate: viewModel.getCurrencyRate(idBankBranch: Int(viewModel.bankBranchesSubject.value[indexPath.row].id)))
+            return cell
+        } else {
+            let emptyCell = UITableViewCell()
+            emptyCell.selectionStyle = .none
+            emptyCell.backgroundColor = UIColor(resource: .Color.backgroundColorView)
+            return emptyCell
         }
-        
-        cell.backgroundColor = .clear
-        cell.selectionStyle = .none
-        cell.setInformation(bankBranchesSubject: viewModel.bankBranchesSubject.value[indexPath.row], rate: viewModel.getCurrencyRate(idBankBranch: Int(viewModel.bankBranchesSubject.value[indexPath.row].id)))
-        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let bankBranche = viewModel.bankBranchesSubject.value[indexPath.row]
-        viewModel.tableCellTapped(bankBranche)
+        if indexPath.row < viewModel.bankBranchesSubject.value.count {
+            let bankBranche = viewModel.bankBranchesSubject.value[indexPath.row]
+            viewModel.tableCellTapped(bankBranche)
+        } else {
+        }
     }
+
 }
