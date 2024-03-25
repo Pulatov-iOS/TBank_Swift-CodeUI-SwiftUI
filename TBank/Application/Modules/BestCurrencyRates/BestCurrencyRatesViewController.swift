@@ -120,7 +120,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         fetchButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)
         fetchButton.addTarget(self, action: #selector(fetchButtonTapped), for: .touchUpInside)
         fetchButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
-        fetchButton.layer.cornerRadius = 27.5
+        fetchButton.layer.cornerRadius = 27.5//
         
         settingsButton.tintColor = UIColor(resource: .Color.textColorTitel)
         settingsButton.setImage(UIImage(systemName: "gearshape"), for: .normal)
