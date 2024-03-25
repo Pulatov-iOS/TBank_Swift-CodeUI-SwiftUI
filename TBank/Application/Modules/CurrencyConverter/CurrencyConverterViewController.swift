@@ -103,9 +103,9 @@ class CurrencyConverterViewController: UIViewController {
     }
     
     func configureUI() {
-        converterTitleLabel.text = "Конвертер"
+        converterTitleLabel.text = NSLocalizedString("App.CurrencyConverter.NavigationItemTitle", comment: "")
         converterTitleLabel.textAlignment = .center
-        converterTitleLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        converterTitleLabel.font = UIFont.manrope(ofSize: 25, style: .bold)
         
         firstCurrencyView.backgroundColor = .white
         firstCurrencyView.layer.cornerRadius = 35

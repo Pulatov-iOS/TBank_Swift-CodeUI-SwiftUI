@@ -119,8 +119,15 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
         return attributedString
     }
     
-    func setInformation(bankBranchesSubject: BankBranch, rate: Double) {
-        currencyNameLabel.text = NSLocalizedString("App.Addresses.\(bankBranchesSubject.address ?? "")", comment: "")
+    func setInformation(bankBranch: BankBranch, rate: Double) {
+        currencyNameLabel.text = NSLocalizedString("App.Addresses.\(bankBranch.address ?? "")", comment: "")
         rateLabel.text = String(format:"%.2f" + " BYN",(rate))
+        
+        if bankBranch.isFavorite {
+            backgroundBaseView.layer.borderWidth = 2.5
+            backgroundBaseView.layer.borderColor = UIColor(resource: .Color.LocalizedCurrencyRates.borderTableCell).cgColor
+        } else {
+            backgroundBaseView.layer.borderWidth = 0.0
+        }
     }
 }

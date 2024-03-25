@@ -14,9 +14,8 @@
 "App.BestCurrencyRates.alertController.titel" = "Обновлено";
 "App.BestCurrencyRates.alertController.message" = "Курсы валют обновлены ";
 
-
-
 // MARK: - CurrencyConverter
+"App.CurrencyConverter.NavigationItemTitle" = "Конвертер";
 
 // MARK: - Settings
 

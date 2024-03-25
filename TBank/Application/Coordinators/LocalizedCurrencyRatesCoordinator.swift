@@ -20,9 +20,10 @@ final class LocalizedCurrencyRatesCoordinator {
     private func showLocalizedCurrencyRatesScreen() {
         let networkManager = NetworkManagerCurrency.instance
         let coreDataManager = CoreDataManager.instance
+        let locationManager = LocationManager.instance
         
         let view = LocalizedCurrencyRatesViewController(tabBar: tabBar)
-        let viewModel = LocalizedCurrencyRatesViewModel(networkManager: networkManager, coreDataManager: coreDataManager)
+        let viewModel = LocalizedCurrencyRatesViewModel(networkManager: networkManager, coreDataManager: coreDataManager, locationManager: locationManager)
         view.viewModel = viewModel
         navigationController.setViewControllers([view], animated: false)
         
@@ -35,14 +36,14 @@ final class LocalizedCurrencyRatesCoordinator {
         }
     }
     
-    private func showExchangeRatesScreen(_ currencyRates: [BankBranchCurrencyRate], _ bankBranche: BankBranch) {
+    private func showExchangeRatesScreen(_ currencyRates: [BankBranchCurrencyRate], _ bankBranch: BankBranch) {
         let view = ExchangeRatesViewController()
-        let viewModel = ExchangeRatesViewModel(currencyRates: currencyRates)
+        let viewModel = ExchangeRatesViewModel(currencyRates: currencyRates, bankBranch: bankBranch)
         view.viewModel = viewModel
         
         viewModel.showBankLocatorMapPage = { [weak self] in
-            self?.navigationController.dismiss(animated: false)
-            self?.showBankLocatorMapScreen(currencyRates, bankBranche)
+            self?.navigationController.dismiss(animated: true)
+            self?.showBankLocatorMapScreen(currencyRates, bankBranch)
         }
     
         navigationController.modalPresentationStyle = .formSheet
@@ -56,11 +57,11 @@ final class LocalizedCurrencyRatesCoordinator {
         view.viewModel = viewModel
         
         viewModel.showExchangeRatesPage = { [weak self] in
-            self?.navigationController.dismiss(animated: false)
+            self?.navigationController.dismiss(animated: true)
             self?.showExchangeRatesScreen(currencyRates, bankBranche)
         }
         
         navigationController.modalPresentationStyle = .formSheet
-        navigationController.present(view, animated: false)
+        navigationController.present(view, animated: true)
     }
 }

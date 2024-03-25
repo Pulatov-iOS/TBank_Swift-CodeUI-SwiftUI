@@ -2,6 +2,12 @@ import UIKit
 import SnapKit
 import Combine
 
+enum TypeSorting: String {
+    case nearest
+    case bestCourse
+    case favorites
+}
+
 final class LocalizedCurrencyRatesViewController: UIViewController {
     
     // MARK: - Public Properties
@@ -11,6 +17,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     private let titleLabel = UILabel()
     private let settingsButton = UIButton()
     private let сurrencyButton = UIButton()
+    private let segmentedControl = UISegmentedControl(items: ["Nearest", "Best Course", "Favorites"])
     private let tableView = UITableView()
     private let tabBar: TabBarItem
     private let backgroundTabBarView = UIView()
@@ -29,6 +36,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     // MARK: - LyfeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+   
         navigationController?.navigationBar.isHidden = true
         addSubviews()
         configureConstraints()
@@ -37,11 +45,18 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         configureTableView()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        viewModel.saveCurrentTypeSorting()
+    }
+    
     // MARK: - Methods
     private func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(settingsButton)
         view.addSubview(сurrencyButton)
+        view.addSubview(segmentedControl)
         view.addSubview(tableView)
         view.addSubview(backgroundTabBarView)
         view.addSubview(tabBar)
@@ -64,8 +79,15 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         сurrencyButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
         сurrencyButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
         
+        segmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(22)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.height.equalTo(35)
+        }
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 44).isActive = true
+        tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 65).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -98,12 +120,27 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         settingsButton.layer.cornerRadius = 27.5
         
         сurrencyButton.tintColor = UIColor(resource: .Color.textColorTitel)
-        сurrencyButton.setTitle("USD", for: .normal)
+        сurrencyButton.setTitle(viewModel.currentCurrency, for: .normal)
         сurrencyButton.setTitleColor(UIColor(resource: .Color.textColorTitel), for: .normal)
         сurrencyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         сurrencyButton.addTarget(self, action: #selector(currencyButtonTapped), for: .touchUpInside)
         сurrencyButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         сurrencyButton.layer.cornerRadius = 27.5
+        
+        var selectedSegment = 0
+        switch viewModel.currentTypeSorting {
+        case .nearest:
+            selectedSegment = 0
+        case .bestCourse:
+            selectedSegment = 1
+        case .favorites:
+            selectedSegment = 2
+        }
+        
+        segmentedControl.backgroundColor = UIColor(resource: .Color.backgroundColorView)
+        segmentedControl.selectedSegmentTintColor = UIColor(resource: .Color.LocalizedCurrencyRates.buttonSegmentedControl)
+        segmentedControl.selectedSegmentIndex = selectedSegment
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.manrope(ofSize: 14, style: .bold), NSAttributedString.Key.foregroundColor: UIColor(resource: .Color.textColorTitel)], for: .normal)
         
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
@@ -113,7 +150,15 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     }
     
     private func bind() {
+        segmentedControl.addTarget(self, action: #selector(segmentedControlTypeSortingChanged(_:)), for: .valueChanged)
+        
         viewModel.bankBranchesSubject
+            .sink(receiveValue: { [weak self] data in
+                self?.tableView.reloadData()
+            })
+            .store(in: &cancellables)
+        
+        viewModel.bankBranchCurrencyRateSubject
             .sink(receiveValue: { [weak self] data in
                 self?.tableView.reloadData()
             })
@@ -148,6 +193,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     
     private func handleCurrencySelection(_ currencyRate: CurrencyRateDTO) {
         сurrencyButton.setTitle(currencyRate.abbreviation, for: .normal)
+        viewModel.changeCurrencyType(currencyRate.abbreviation)
     }
         
     private func reloadCurrencyButton() {
@@ -162,6 +208,19 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     
     @objc func currencyButtonTapped() {
         showCurrencySelectionActionSheet()
+    }
+    
+    @objc func segmentedControlTypeSortingChanged(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            viewModel.changeSortingType(typeOfSotring: .nearest)
+        case 1:
+            viewModel.changeSortingType(typeOfSotring: .bestCourse)
+        case 2:
+            viewModel.changeSortingType(typeOfSotring: .favorites)
+        default:
+            break
+        }
     }
 }
 
@@ -198,4 +257,20 @@ extension LocalizedCurrencyRatesViewController: UITableViewDelegate, UITableView
         }
     }
 
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+         let action = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
+              self.viewModel.favoritesButtonTapped(self.viewModel.bankBranchesSubject.value[indexPath.row])
+              completion(true)
+          }
+
+          action.backgroundColor = UIColor(resource: .Color.LocalizedCurrencyRates.backgroundButtonTableCell)
+          let originalImage = UIImage(resource: .Image.LocalizedCurrencyRates.buttonTableCell)
+          let scaledImage = originalImage.resized(to: CGSize(width: 32, height: 40))
+          action.image = scaledImage
+
+          let configuration = UISwipeActionsConfiguration(actions: [action])
+          configuration.performsFirstActionWithFullSwipe = false
+
+          return configuration
+     }
 }

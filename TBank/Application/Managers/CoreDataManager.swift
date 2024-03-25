@@ -202,6 +202,29 @@ final class CoreDataManager: NSCopying {
         }
     }
     
+    func updateBankBranchFavoriteStatus(bankBranch: BankBranch) {
+ 
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest: NSFetchRequest<BankBranch> = BankBranch.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %d", bankBranch.id)
+        
+        do {
+            let bankBranches = try managedContext.fetch(fetchRequest)
+            if let bankBranch = bankBranches.first {
+                bankBranch.isFavorite = !bankBranch.isFavorite
+                try managedContext.save()
+            }
+        } catch {
+            print("Failed to update BankBranch: \(error)")
+        }
+        
+        let _ = loadBankBranches()
+    }
+    
     func loadBankBranches() -> [BankBranch] {
         var bankBranch = [BankBranch]()
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [] }
@@ -347,6 +370,6 @@ final class CoreDataManager: NSCopying {
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
-        self
+        return CoreDataManager.instance
     }
 }

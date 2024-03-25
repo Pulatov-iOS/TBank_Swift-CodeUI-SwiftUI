@@ -10,6 +10,8 @@
 		112F1A1A2BAF500600235103 /* BankBranchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A192BAF500600235103 /* BankBranchDTO.swift */; };
 		112F1A1C2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A1B2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift */; };
 		112F1A1E2BB0842D00235103 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A1D2BB0842D00235103 /* SettingsViewController.swift */; };
+		112F1A202BB0F78800235103 /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A1F2BB0F78800235103 /* UIImage + Extension.swift */; };
+		112F1A222BB170F300235103 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F1A212BB170F300235103 /* LocationManager.swift */; };
 		11786BE72BAED61100BA999A /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11786BE62BAED61100BA999A /* TabBarItem.swift */; };
 		11786BE92BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11786BE82BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift */; };
 		11DA58312BAA3E4A00915F6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DA58302BAA3E4A00915F6B /* AppDelegate.swift */; };
@@ -77,6 +79,8 @@
 		112F1A192BAF500600235103 /* BankBranchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBranchDTO.swift; sourceTree = "<group>"; };
 		112F1A1B2BAF50AE00235103 /* BankBranchCurrencyRateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBranchCurrencyRateDTO.swift; sourceTree = "<group>"; };
 		112F1A1D2BB0842D00235103 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		112F1A1F2BB0F78800235103 /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		112F1A212BB170F300235103 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		11786BE62BAED61100BA999A /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		11786BE82BAEF5AE00BA999A /* LocalizedCurrencyRatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedCurrencyRatesTableViewCell.swift; sourceTree = "<group>"; };
 		11DA582D2BAA3E4A00915F6B /* TBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +229,7 @@
 				2D250DFB2BADF9C2002DC479 /* UIView + Extension.swift */,
 				2D250E112BADFD36002DC479 /* UIFont + Extension.swift */,
 				2D250DFD2BADF9EB002DC479 /* UIStackView + Extension.swift */,
+				112F1A1F2BB0F78800235103 /* UIImage + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */,
 				2D250E132BAE1F3D002DC479 /* CoreDataManager.swift */,
 				2D250E152BAE22E5002DC479 /* ErrorsManager.swift */,
+				112F1A212BB170F300235103 /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -451,9 +457,11 @@
 				2D250DFA2BADF965002DC479 /* ExchangeRaterTableViewCell.swift in Sources */,
 				11DA58792BAA54A600915F6B /* BestCurrencyRatesViewController.swift in Sources */,
 				11DA58582BAA484D00915F6B /* LocalizedCurrencyRatesViewModel.swift in Sources */,
+				112F1A202BB0F78800235103 /* UIImage + Extension.swift in Sources */,
 				2D250E142BAE1F3D002DC479 /* CoreDataManager.swift in Sources */,
 				11DA58892BAA56DF00915F6B /* CurrencyConverterCoordinator.swift in Sources */,
 				11DA58492BAA3E6500915F6B /* RootCoordinator.swift in Sources */,
+				112F1A222BB170F300235103 /* LocationManager.swift in Sources */,
 				11786BE72BAED61100BA999A /* TabBarItem.swift in Sources */,
 				11DA58562BAA483F00915F6B /* LocalizedCurrencyRatesViewController.swift in Sources */,
 				11DA58872BAA56A600915F6B /* CurrencyConverterViewModel.swift in Sources */,
