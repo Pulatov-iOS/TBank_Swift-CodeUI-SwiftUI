@@ -108,8 +108,9 @@ class CurrencyConverterViewController: UIViewController {
         converterTitleLabel.text = NSLocalizedString("App.CurrencyConverter.NavigationItemTitle", comment: "")
         converterTitleLabel.textAlignment = .center
         converterTitleLabel.font = UIFont.manrope(ofSize: 25, style: .bold)
+        converterTitleLabel.textColor = UIColor(resource: .Color.textColorTitel)
         
-        firstCurrencyView.backgroundColor = .white
+        firstCurrencyView.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         firstCurrencyView.layer.cornerRadius = 40
         firstCurrencyView.layer.shadowColor = UIColor.black.cgColor
         firstCurrencyView.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -120,8 +121,8 @@ class CurrencyConverterViewController: UIViewController {
         conversionResult.textAlignment = .center
         conversionResult.text = " "
         
-        littleView1.backgroundColor = .black
-        littleView2.backgroundColor = .black
+        littleView1.backgroundColor = UIColor(resource: .Color.textColorTitel)
+        littleView2.backgroundColor = UIColor(resource: .Color.textColorTitel)
         
         let configurationForChangeCurrencyButton = UIImage.SymbolConfiguration(pointSize: 40, weight: .semibold, scale: .default)
         let imageForChangeCurrencyButton = UIImage(systemName: "arrow.up.arrow.down", withConfiguration: configurationForChangeCurrencyButton)
@@ -129,7 +130,7 @@ class CurrencyConverterViewController: UIViewController {
         changeCurrencyButton.tintColor = UIColor(resource: .Color.colorArrow)
         changeCurrencyButton.addTarget(self, action: #selector(changeCurrencyButtonTapped), for: .touchUpInside)
         
-        secondCurrencyView.backgroundColor = .white
+        secondCurrencyView.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         secondCurrencyView.layer.cornerRadius = 40
         secondCurrencyView.layer.shadowColor = UIColor.black.cgColor
         secondCurrencyView.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -139,16 +140,16 @@ class CurrencyConverterViewController: UIViewController {
         amountTextFieldForFirstView.keyboardType = .numberPad
         
         currentCurrencyButton.setTitle(NSLocalizedString("App.CurrencyConverter.ChoiceTitle", comment: ""), for: .normal)
-        currentCurrencyButton.tintColor = .black
+        currentCurrencyButton.tintColor = UIColor(resource: .Color.textColorTitel)
         currentCurrencyButton.semanticContentAttribute = .forceRightToLeft
         currentCurrencyButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         currentCurrencyButton.titleLabel?.font = UIFont.manrope(ofSize: 20, style: .regular)
-        currentCurrencyButton.setTitleColor(.black, for: .normal)
+        currentCurrencyButton.setTitleColor(UIColor(resource: .Color.textColorTitel), for: .normal)
         currentCurrencyButton.addTarget(self, action: #selector(currentCurrencySelectionTapped), for: .touchUpInside)
         
         desiredCurrencyButton.setTitle("BYN", for: .normal)
         desiredCurrencyButton.titleLabel?.font = UIFont.manrope(ofSize: 20, style: .regular)
-        desiredCurrencyButton.setTitleColor(.black, for: .normal)
+        desiredCurrencyButton.setTitleColor(UIColor(resource: .Color.textColorTitel), for: .normal)
     }
     
     private func showCurrentCurrencySelectionActionSheet() {
