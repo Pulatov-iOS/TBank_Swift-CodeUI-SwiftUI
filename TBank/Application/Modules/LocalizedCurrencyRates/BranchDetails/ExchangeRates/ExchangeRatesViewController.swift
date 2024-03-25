@@ -41,7 +41,9 @@ final class ExchangeRatesViewController: UIViewController {
         
         mapButton.translatesAutoresizingMaskIntoConstraints = false
         mapButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        mapButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
+        mapButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24).isActive = true
+        mapButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        mapButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
         
         numberOfBankBranchLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
@@ -66,9 +68,13 @@ final class ExchangeRatesViewController: UIViewController {
         numberOfBankBranchLabel.font = UIFont.manrope(ofSize: 15, style: .bold)
         numberOfBankBranchLabel.textColor = UIColor(resource: .Color.LocalizedCurrencyRates.BranchDetails.ExchangeRates.secondTextTitle)
         
-        mapButton.tintColor = .black
-        mapButton.setImage(UIImage(named: "map"), for: .normal)
-        mapButton.contentMode = .scaleAspectFit
+        mapButton.tintColor = UIColor(resource: .Color.textColorTitel)
+        mapButton.setImage(UIImage(systemName: "mappin.and.ellipse"), for: .normal)
+        let symbolConfigurationDelete = UIImage.SymbolConfiguration(pointSize: 28)
+        mapButton.setPreferredSymbolConfiguration(symbolConfigurationDelete, forImageIn: .normal)
+        mapButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
+        mapButton.layer.cornerRadius = 27.5
+        //mapButton.contentMode = .scaleAspectFit
         mapButton.addTarget(self, action: #selector(mapButtonTapped), for: .touchUpInside)
         
         tableView.backgroundColor = UIColor(resource: .Color.backgroundColorView)
