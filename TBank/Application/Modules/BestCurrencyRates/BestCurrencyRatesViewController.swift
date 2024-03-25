@@ -132,7 +132,7 @@ final class BestCurrencyRatesViewController: UIViewController {
 
         deleteButton.tintColor = .gray
         deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        let symbolConfigurationDelete = UIImage.SymbolConfiguration(pointSize: 18)
+        let symbolConfigurationDelete = UIImage.SymbolConfiguration(pointSize: 18)//
         deleteButton.setPreferredSymbolConfiguration(symbolConfigurationDelete, forImageIn: .normal)
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         deleteButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
