@@ -22,7 +22,6 @@
 
 // MARK: - CurrencyConverter
 "App.CurrencyConverter.NavigationItemTitle" = "Converter";
-"App.CurrencyConverter.ChoiceTitle" = "Choice";
 
 // MARK: - Settings
 "App.Settings.NavigationItemTitle" = "Settings";

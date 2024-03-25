@@ -117,7 +117,7 @@ final class BestCurrencyRatesViewController: UIViewController {
         fetchButton.tintColor = UIColor(resource: .Color.textColorTitel)
         fetchButton.setImage(UIImage(systemName: "goforward"), for: .normal)
         let symbolConfigurationAdd = UIImage.SymbolConfiguration(pointSize: 28)
-        fetchButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)//
+        fetchButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)
         fetchButton.addTarget(self, action: #selector(fetchButtonTapped), for: .touchUpInside)
         fetchButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         fetchButton.layer.cornerRadius = 27.5//
