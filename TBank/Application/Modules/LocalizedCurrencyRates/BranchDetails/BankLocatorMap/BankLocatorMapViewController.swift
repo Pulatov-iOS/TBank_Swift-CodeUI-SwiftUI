@@ -39,12 +39,12 @@ final class BankLocatorMapViewController: UIViewController {
     
     private func configureConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 40).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         updateMapButton.snp.makeConstraints { make in
             make.centerY.equalTo(titleLabel).offset(10)
-            make.trailing.equalTo(view.snp.trailing).inset(26)
+            make.trailing.equalTo(view.snp.trailing).inset(24)
             make.width.equalTo(55)
             make.height.equalTo(55)
         }
@@ -55,7 +55,7 @@ final class BankLocatorMapViewController: UIViewController {
         }
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
-        mapView.topAnchor.constraint(equalTo: addressOfBankBranchLabel.bottomAnchor, constant: 11).isActive = true
+        mapView.topAnchor.constraint(equalTo: addressOfBankBranchLabel.bottomAnchor, constant: 20).isActive = true
         mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -71,14 +71,15 @@ final class BankLocatorMapViewController: UIViewController {
         view.backgroundColor = UIColor(resource: .Color.backgroundColorView)
         
         titleLabel.text = NSLocalizedString("App.LocalizedCurrencyRates.BankLocatorMap.NavigationItemTitle", comment: "")
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor(resource: .Color.textColorTitel)
         titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
         
-        updateMapButton.backgroundColor = .white
-        updateMapButton.tintColor = .black
+        updateMapButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
+                updateMapButton.tintColor = UIColor(resource: .Color.textColorTitel)
         updateMapButton.layer.cornerRadius = 27.5
-        updateMapButton.setImage(UIImage(resource: .Image.LocalizedCurrencyRates.BranchDetails.BankLocatorMap.exchangeRates), for: .normal)
-        updateMapButton.contentMode = .scaleAspectFit
+        updateMapButton.setImage(UIImage(systemName: "arrow.triangle.2.circlepath"), for: .normal)
+                let symbolConfigurationAdd = UIImage.SymbolConfiguration(pointSize: 28)
+                updateMapButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)
         updateMapButton.addTarget(self, action: #selector(rightBarButtonItemTapped), for: .touchUpInside)
         
         addressOfBankBranchLabel.text = "\(NSLocalizedString("App.LocalizedCurrencyRates.BankLocatorMap.SecondNavigationItemTitle", comment: "")) \(NSLocalizedString("App.Addresses.\(viewModel.bankBranch.address ?? "")", comment: ""))"
@@ -92,6 +93,7 @@ final class BankLocatorMapViewController: UIViewController {
         )
         let imageCurrentLocation = UIImage(systemName: "location.circle.fill", withConfiguration: configuratorForCurrentLocation)
         showLocationButton.setImage(imageCurrentLocation, for: .normal)
+        showLocationButton.tintColor = UIColor(resource: .Color.textColorTitel)
     }
     
     private func setStartLocation() {
