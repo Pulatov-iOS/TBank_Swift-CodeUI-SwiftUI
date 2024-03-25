@@ -125,7 +125,7 @@ final class LocalizedCurrencyRatesTableViewCell: UITableViewCell {
         
         if bankBranch.isFavorite {
             backgroundBaseView.layer.borderWidth = 2.5
-            backgroundBaseView.layer.borderColor = UIColor(resource: .Color.LocalizedCurrencyRates.borderTableCell).cgColor
+            backgroundBaseView.layer.borderColor = UIColor(resource: .Color.LocalizedCurrencyRates.buttonSegmentedControl).cgColor
         } else {
             backgroundBaseView.layer.borderWidth = 0.0
         }
