@@ -72,8 +72,20 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
     // MARK: - Configuration
     
     func setInformation(with rate: CurrencyRateDTO) {
-        nameLabel.text = rate.abbreviation
-        priceLabel.text = String(format: "%.2f" + " BYN", rate.rate)
-        scaleLabel.text = String(format: "%.0f", rate.scale)
-    }
+            nameLabel.text = rate.abbreviation
+            priceLabel.text = String(format: "%.2f" + " BYN", rate.rate)
+            scaleLabel.text = String(format: "%.0f", rate.scale)
+            
+            if let lastRate = rate.lastRate {
+                if lastRate < rate.rate {
+                    priceLabel.textColor = .green
+                } else if lastRate > rate.rate {
+                    priceLabel.textColor = .red
+                } else {
+                    priceLabel.textColor = .black
+                }
+            } else {
+                priceLabel.textColor = .black
+            }
+        }
 }
