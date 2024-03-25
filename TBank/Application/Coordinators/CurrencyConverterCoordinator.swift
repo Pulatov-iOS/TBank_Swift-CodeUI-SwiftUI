@@ -13,8 +13,10 @@ final class CurrencyConverterCoordinator {
     }
     
     private func showCurrencyConverterScreen() {
+        let coreDataManager = CoreDataManager.instance
+        
         let view = CurrencyConverterViewController()
-        let viewModel = CurrencyConverterViewModel()
+        let viewModel = CurrencyConverterViewModel(coreDataManager: coreDataManager)
         view.viewModel = viewModel
         
         navigationController.modalPresentationStyle = .formSheet

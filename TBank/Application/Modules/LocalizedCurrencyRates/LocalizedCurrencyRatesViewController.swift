@@ -228,39 +228,49 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
 extension LocalizedCurrencyRatesViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.bankBranchesSubject.value.count
+        return viewModel.bankBranchesSubject.value.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocalizedCurrencyRatesTableViewCell", for: indexPath) as? LocalizedCurrencyRatesTableViewCell else {
-            return UITableViewCell()
+        if indexPath.row < viewModel.bankBranchesSubject.value.count {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocalizedCurrencyRatesTableViewCell", for: indexPath) as? LocalizedCurrencyRatesTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            cell.setInformation(bankBranchesSubject: viewModel.bankBranchesSubject.value[indexPath.row], rate: viewModel.getCurrencyRate(idBankBranch: Int(viewModel.bankBranchesSubject.value[indexPath.row].id)))
+            return cell
+        } else {
+            let emptyCell = UITableViewCell()
+            emptyCell.selectionStyle = .none
+            emptyCell.backgroundColor = UIColor(resource: .Color.backgroundColorView)
+            return emptyCell
         }
-        
-        cell.backgroundColor = .clear
-        cell.selectionStyle = .none
-        cell.setInformation(bankBranch: viewModel.bankBranchesSubject.value[indexPath.row], rate: viewModel.getCurrencyRate(idBankBranch: Int(viewModel.bankBranchesSubject.value[indexPath.row].id)))
-        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let bankBranche = viewModel.bankBranchesSubject.value[indexPath.row]
-        viewModel.tableCellTapped(bankBranche)
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
-            self.viewModel.favoritesButtonTapped(self.viewModel.bankBranchesSubject.value[indexPath.row])
-            completion(true)
+        if indexPath.row < viewModel.bankBranchesSubject.value.count {
+            let bankBranche = viewModel.bankBranchesSubject.value[indexPath.row]
+            viewModel.tableCellTapped(bankBranche)
+        } else {
         }
-        
-        action.backgroundColor = UIColor(resource: .Color.LocalizedCurrencyRates.backgroundButtonTableCell)
-        let originalImage = UIImage(resource: .Image.LocalizedCurrencyRates.buttonTableCell)
-        let scaledImage = originalImage.resized(to: CGSize(width: 32, height: 40))
-        action.image = scaledImage
-        
-        let configuration = UISwipeActionsConfiguration(actions: [action])
-        configuration.performsFirstActionWithFullSwipe = false
-        
-        return configuration
     }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+         let action = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
+              self.viewModel.favoritesButtonTapped(self.viewModel.bankBranchesSubject.value[indexPath.row])
+              completion(true)
+          }
+
+          action.backgroundColor = UIColor(resource: .Color.LocalizedCurrencyRates.backgroundButtonTableCell)
+          let originalImage = UIImage(resource: .Image.LocalizedCurrencyRates.buttonTableCell)
+          let scaledImage = originalImage.resized(to: CGSize(width: 32, height: 40))
+          action.image = scaledImage
+
+          let configuration = UISwipeActionsConfiguration(actions: [action])
+          configuration.performsFirstActionWithFullSwipe = false
+
+          return configuration
+     }
 }

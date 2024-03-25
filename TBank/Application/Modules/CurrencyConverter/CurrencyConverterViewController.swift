@@ -3,16 +3,16 @@ import Combine
 
 class CurrencyConverterViewController: UIViewController {
     
-    var viewModel = CurrencyConverterViewModel()
+    var viewModel: CurrencyConverterViewModel!
     var cancallables = Set<AnyCancellable>()
     
     let converterTitleLabel = UILabel()
     let firstCurrencyView = UIView()
     let secondCurrencyView = UIView()
     let changeCurrencyButton = UIButton()
-    let currencyButtonForFirstView = UIButton(type: .system)
+    let currentCurrencyButton = UIButton(type: .system)
     let amountTextFieldForFirstView = UITextField()
-    let currencyButtonForSecondView = UIButton(type: .system)
+    let desiredCurrencyButton = UIButton(type: .system)
     let conversionResult = UILabel()
     let littleView1 = UIView()
     let littleView2 = UIView()
@@ -23,7 +23,7 @@ class CurrencyConverterViewController: UIViewController {
         addSubviews()
         constraints()
         configureUI()
-        amountTextFieldForFirstView.addTarget(self, action: #selector(editingChanged), for: .allEditingEvents)
+        textFieldSettings()
         
         bindings()
     }
@@ -32,19 +32,20 @@ class CurrencyConverterViewController: UIViewController {
         view.addSubview(converterTitleLabel)
         
         view.addSubview(firstCurrencyView)
-        firstCurrencyView.addSubview(currencyButtonForFirstView)
+        firstCurrencyView.addSubview(currentCurrencyButton)
         firstCurrencyView.addSubview(amountTextFieldForFirstView)
         firstCurrencyView.addSubview(littleView1)
         
         view.addSubview(changeCurrencyButton)
         
         view.addSubview(secondCurrencyView)
-        secondCurrencyView.addSubview(currencyButtonForSecondView)
+        secondCurrencyView.addSubview(desiredCurrencyButton)
         secondCurrencyView.addSubview(conversionResult)
         secondCurrencyView.addSubview(littleView2)
     }
     
     func constraints() {
+        
         converterTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         converterTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120).isActive = true
         converterTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21).isActive = true
@@ -57,9 +58,9 @@ class CurrencyConverterViewController: UIViewController {
         firstCurrencyView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -31).isActive = true
         firstCurrencyView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
-        currencyButtonForFirstView.translatesAutoresizingMaskIntoConstraints = false
-        currencyButtonForFirstView.leadingAnchor.constraint(equalTo: firstCurrencyView.leadingAnchor, constant: 20).isActive = true
-        currencyButtonForFirstView.centerYAnchor.constraint(equalTo: firstCurrencyView.centerYAnchor).isActive = true
+        currentCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
+        currentCurrencyButton.leadingAnchor.constraint(equalTo: firstCurrencyView.leadingAnchor, constant: 20).isActive = true
+        currentCurrencyButton.centerYAnchor.constraint(equalTo: firstCurrencyView.centerYAnchor).isActive = true
         
         amountTextFieldForFirstView.translatesAutoresizingMaskIntoConstraints = false
         amountTextFieldForFirstView.trailingAnchor.constraint(equalTo: firstCurrencyView.trailingAnchor, constant: -30).isActive = true
@@ -85,9 +86,9 @@ class CurrencyConverterViewController: UIViewController {
         secondCurrencyView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -31).isActive = true
         secondCurrencyView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
-        currencyButtonForSecondView.translatesAutoresizingMaskIntoConstraints = false
-        currencyButtonForSecondView.leadingAnchor.constraint(equalTo: secondCurrencyView.leadingAnchor, constant: 20).isActive = true
-        currencyButtonForSecondView.centerYAnchor.constraint(equalTo: secondCurrencyView.centerYAnchor).isActive = true
+        desiredCurrencyButton.translatesAutoresizingMaskIntoConstraints = false
+        desiredCurrencyButton.leadingAnchor.constraint(equalTo: secondCurrencyView.leadingAnchor, constant: 20).isActive = true
+        desiredCurrencyButton.centerYAnchor.constraint(equalTo: secondCurrencyView.centerYAnchor).isActive = true
         
         conversionResult.translatesAutoresizingMaskIntoConstraints = false
         conversionResult.trailingAnchor.constraint(equalTo: secondCurrencyView.trailingAnchor, constant: -30).isActive = true
@@ -120,10 +121,11 @@ class CurrencyConverterViewController: UIViewController {
         littleView1.backgroundColor = .black
         littleView2.backgroundColor = .black
         
-        let configurationForChangeCurrencyButton = UIImage.SymbolConfiguration(pointSize: 40, weight: .semibold, scale: .medium)
+        let configurationForChangeCurrencyButton = UIImage.SymbolConfiguration(pointSize: 40, weight: .semibold, scale: .default)
         let imageForChangeCurrencyButton = UIImage(systemName: "arrow.up.arrow.down", withConfiguration: configurationForChangeCurrencyButton)
         changeCurrencyButton.setImage(imageForChangeCurrencyButton, for: .normal)
         changeCurrencyButton.tintColor = .orange
+        changeCurrencyButton.addTarget(self, action: #selector(changeCurrencyTapped), for: .touchUpInside)
         
         secondCurrencyView.backgroundColor = .white
         secondCurrencyView.layer.cornerRadius = 35
@@ -132,12 +134,57 @@ class CurrencyConverterViewController: UIViewController {
         secondCurrencyView.layer.shadowRadius = 1
         secondCurrencyView.layer.shadowOpacity = 0.1
         
-        currencyButtonForFirstView.setTitle("USD", for: .normal)
-        currencyButtonForFirstView.titleLabel?.font = .systemFont(ofSize: 21, weight: .semibold)
-        currencyButtonForFirstView.setTitleColor(.label, for: .normal)
-        currencyButtonForSecondView.setTitle("BYN", for: .normal)
-        currencyButtonForSecondView.titleLabel?.font = .systemFont(ofSize: 21, weight: .semibold)
-        currencyButtonForSecondView.setTitleColor(.black, for: .normal)
+        currentCurrencyButton.setTitle("USD", for: .normal)
+        currentCurrencyButton.titleLabel?.font = .systemFont(ofSize: 21, weight: .semibold)
+        currentCurrencyButton.setTitleColor(.label, for: .normal)
+        currentCurrencyButton.addTarget(self, action: #selector(currentCurrencySelectionTapped), for: .touchUpInside)
+        
+        desiredCurrencyButton.setTitle("BYN", for: .normal)
+        desiredCurrencyButton.titleLabel?.font = .systemFont(ofSize: 21, weight: .semibold)
+        desiredCurrencyButton.setTitleColor(.black, for: .normal)
+        desiredCurrencyButton.addTarget(self, action: #selector(desiredCurrencySelectionTapped), for: .touchUpInside)
+    }
+    
+    private func showCurrentCurrencySelectionActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        for currencyRate in viewModel.currentCurrencySubject.value {
+            let action = UIAlertAction(title: currencyRate.abbreviation, style: .default) { [weak self] _ in
+                self?.currentCurrencySelection(currencyRate)
+            }
+            actionSheet.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        actionSheet.addAction(cancelAction)
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func currentCurrencySelection(_ currencyRate: CurrencyRateDTO) {
+        currentCurrencyButton.setTitle(currencyRate.abbreviation, for: .normal)
+    }
+    
+    private func showDesiredCurrencySelectionActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        for currencyRate in viewModel.desiredCurrencySubject.value {
+            let action = UIAlertAction(title: currencyRate.abbreviation, style: .default) { [weak self] _ in
+                self?.desiredCurrencySelection(currencyRate)
+            }
+            actionSheet.addAction(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+        actionSheet.addAction(cancelAction)
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func desiredCurrencySelection(_ currencyRate: CurrencyRateDTO) {
+        desiredCurrencyButton.setTitle(currencyRate.abbreviation, for: .normal)
+    }
+    
+    private func textFieldSettings() {
+        amountTextFieldForFirstView.addTarget(self, action: #selector(editingChanged), for: .allEditingEvents)
     }
     
     private func bindings() {
@@ -148,8 +195,21 @@ class CurrencyConverterViewController: UIViewController {
             .store(in: &cancallables)
     }
     
+    //MARK: - @OBJc methods
     @objc func editingChanged() {
         viewModel.changeTextField(enteredAmount: amountTextFieldForFirstView.text ?? "")
+    }
+    
+    @objc func currentCurrencySelectionTapped() {
+        showCurrentCurrencySelectionActionSheet()
+    }
+    
+    @objc func desiredCurrencySelectionTapped() {
+        showDesiredCurrencySelectionActionSheet()
+    }
+    
+    @objc func changeCurrencyTapped() {
+        viewModel.changeCurrencyButtonTapped()
     }
 }
 
