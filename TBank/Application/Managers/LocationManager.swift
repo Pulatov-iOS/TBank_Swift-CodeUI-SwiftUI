@@ -42,4 +42,21 @@ final class LocationManager: NSObject, NSCopying, CLLocationManagerDelegate {
     func copy(with zone: NSZone? = nil) -> Any {
         return LocationManager.instance
     }
+    
+    internal func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse, .authorizedAlways:
+            requestCurrentLocation()
+        case .notDetermined:
+            break
+        case .denied, .restricted:
+            break
+        @unknown default:
+            break
+        }
+    }
+      
+    internal func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkLocationAuthorization()
+    }
 }
