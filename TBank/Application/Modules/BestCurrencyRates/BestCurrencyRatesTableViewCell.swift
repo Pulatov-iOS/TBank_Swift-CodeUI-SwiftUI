@@ -82,10 +82,10 @@ final class BestCurrencyRatesTableViewCell: UITableViewCell {
                 } else if lastRate > rate.rate {
                     priceLabel.textColor = .red
                 } else {
-                    priceLabel.textColor = .black
+                    priceLabel.textColor = UIColor(resource: .Color.textColorTitel)
                 }
             } else {
-                priceLabel.textColor = .black
+                priceLabel.textColor = UIColor(resource: .Color.textColorTitel)
             }
         }
 }
