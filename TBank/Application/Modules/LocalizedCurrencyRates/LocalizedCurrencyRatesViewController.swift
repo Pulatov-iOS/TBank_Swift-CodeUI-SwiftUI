@@ -239,7 +239,7 @@ extension LocalizedCurrencyRatesViewController: UITableViewDelegate, UITableView
             
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
-            cell.setInformation(bankBranchesSubject: viewModel.bankBranchesSubject.value[indexPath.row], rate: viewModel.getCurrencyRate(idBankBranch: Int(viewModel.bankBranchesSubject.value[indexPath.row].id)))
+            cell.setInformation(bankBranch: viewModel.bankBranchesSubject.value[indexPath.row], rate: viewModel.getCurrencyRate(idBankBranch: Int(viewModel.bankBranchesSubject.value[indexPath.row].id)))
             return cell
         } else {
             let emptyCell = UITableViewCell()

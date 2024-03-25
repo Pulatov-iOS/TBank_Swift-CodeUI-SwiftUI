@@ -20,7 +20,6 @@ final class ExchangeRatesViewController: UIViewController {
         addSubviews()
         setConstraintes()
         configureUI()
-        bind()
         configureTableView()
     }
     
