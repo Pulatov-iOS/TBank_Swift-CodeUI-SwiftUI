@@ -1,19 +1,51 @@
-// MARK: - TabBar
-"App.TabBar.CurrencyRatesItemTitle" = "Branches";
-"App.TabBar.BestCurrencyRatesItemTitle" = "Currency rates";
-
 // MARK: - LocalizedCurrencyRates
 "App.LocalizedCurrencyRates.NavigationItemTitle" = "Branches";
+"App.LocalizedCurrencyRates.SegmentedControlItemNearest" = "Nearest";
+"App.LocalizedCurrencyRates.SegmentedControlItemBestCourse" = "Best Course";
+"App.LocalizedCurrencyRates.SegmentedControlItemFavorites" = "Favorites";
 
-// MARK: - LocalizedCurrencyRates/BranchDetails
+// MARK: - LocalizedCurrencyRates/ExchangeRates
+"App.LocalizedCurrencyRates.ExchangeRates.NavigationItemTitle" = "Exchange Rates";
+"App.LocalizedCurrencyRates.ExchangeRates.SecondNavigationItemTitle" = "Branch number:";
 
-// MARK: - LocalizedCurrencyRates/BranchDetails/ExchangeRates
-
-// MARK: - LocalizedCurrencyRates/BranchDetails/BankLocatorMap
+// MARK: - LocalizedCurrencyRates/BankLocatorMap
+"App.LocalizedCurrencyRates.BankLocatorMap.NavigationItemTitle" = "Location";
+"App.LocalizedCurrencyRates.BankLocatorMap.SecondNavigationItemTitle" = "Address:";
+"App.LocalizedCurrencyRates.BankLocatorMap.MapPointTitle" = "TBank branch - №";
 
 // MARK: - BestCurrencyRates
 "App.BestCurrencyRates.NavigationItemTitle" = "Currency Rates";
+"App.BestCurrencyRates.lastUpdatedLabel" = "Last updated:";
+"App.BestCurrencyRates.searchTextField" = "Search Currency";
+"App.BestCurrencyRates.alertController.titel" = "Updated";
+"App.BestCurrencyRates.alertController.message" = "Currency rates updated ";
 
 // MARK: - CurrencyConverter
+"App.CurrencyConverter.NavigationItemTitle" = "Converter";
+"App.CurrencyConverter.ChoiceTitle" = "Choice";
 
 // MARK: - Settings
+"App.Settings.NavigationItemTitle" = "Settings";
+"App.Settings.ItemTermsOfUse" = "Terms of Use";
+"App.Settings.ItemPrivacyPolicy" = "Privacy policy";
+
+// MARK: - Working Days
+"App.WorkingDays.101" = "Mon - Fri";
+"App.WorkingDays.102" = "Mon - Sat";
+
+// MARK: - Addresses of Bank Branches
+"App.Addresses.101" = "Dzerzhinsky Ave, 23";
+"App.Addresses.102" = "Surganova St, 50";
+"App.Addresses.103" = "Rokossovsky Ave, 80";
+"App.Addresses.104" = "Partizansky Ave, 150A";
+"App.Addresses.105" = "Budslavskaya St, 2";
+"App.Addresses.106" = "Vostochnaya St, 183/4";
+"App.Addresses.107" = "Independence Ave, 23";
+"App.Addresses.108" = "Uborevich St, 176";
+"App.Addresses.109" = "Denisovskaya St, 8";
+"App.Addresses.110" = "Filimonov St, 12";
+"App.Addresses.111" = "Petr Mstislavets St, 11";
+"App.Addresses.112" = "Pritytskogo St, 156";
+"App.Addresses.113" = "Pobediteley Ave, 135B";
+"App.Addresses.114" = "Dzerzhinsky Ave, 100";
+"App.Addresses.115" = "Korzhenevsky St, 26";

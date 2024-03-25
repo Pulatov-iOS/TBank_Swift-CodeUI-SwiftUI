@@ -1,19 +1,51 @@
-// MARK: - TabBar
-"App.TabBar.CurrencyRatesItemTitle" = "Отделения";
-"App.TabBar.BestCurrencyRatesItemTitle" = "Курс валют";
-
 // MARK: - LocalizedCurrencyRates
 "App.LocalizedCurrencyRates.NavigationItemTitle" = "Отделения";
+"App.LocalizedCurrencyRates.SegmentedControlItemNearest" = "Ближайший";
+"App.LocalizedCurrencyRates.SegmentedControlItemBestCourse" = "Лучший курс";
+"App.LocalizedCurrencyRates.SegmentedControlItemFavorites" = "Избранный";
 
-// MARK: - LocalizedCurrencyRates/BranchDetails
+// MARK: - LocalizedCurrencyRates/ExchangeRates
+"App.LocalizedCurrencyRates.ExchangeRates.NavigationItemTitle" = "Обменные курсы";
+"App.LocalizedCurrencyRates.ExchangeRates.SecondNavigationItemTitle" = "Номер отделения:";
 
-// MARK: - LocalizedCurrencyRates/BranchDetails/ExchangeRates
-
-// MARK: - LocalizedCurrencyRates/BranchDetails/BankLocatorMap
+// MARK: - LocalizedCurrencyRates/BankLocatorMap
+"App.LocalizedCurrencyRates.BankLocatorMap.NavigationItemTitle" = "Локация";
+"App.LocalizedCurrencyRates.BankLocatorMap.SecondNavigationItemTitle" = "Адрес:";
+"App.LocalizedCurrencyRates.BankLocatorMap.MapPointTitle" = "TBank отделение - №";
 
 // MARK: - BestCurrencyRates
-"App.BestCurrencyRates.NavigationItemTitle" = "Курс валют";
+"App.BestCurrencyRates.NavigationItemTitle" = "Курсы валют";
+"App.BestCurrencyRates.lastUpdatedLabel" = "Последнее обновление: ";
+"App.BestCurrencyRates.searchTextField" = "Поиск валюты";
+"App.BestCurrencyRates.alertController.titel" = "Обновлено";
+"App.BestCurrencyRates.alertController.message" = "Курсы валют обновлены ";
 
 // MARK: - CurrencyConverter
+"App.CurrencyConverter.NavigationItemTitle" = "Конвертер";
+"App.CurrencyConverter.ChoiceTitle" = "Выбор";
 
 // MARK: - Settings
+"App.Settings.NavigationItemTitle" = "Настройки";
+"App.Settings.ItemTermsOfUse" = "Условия использования";
+"App.Settings.ItemPrivacyPolicy" = "Политика конфиденциальности";
+
+// MARK: - Working Days
+"App.WorkingDays.101" = "Пн - Пт";
+"App.WorkingDays.102" = "Пн - Сб";
+
+// MARK: - Addresses of Bank Branches
+"App.Addresses.101" = "пр. Дзержинского, 23";
+"App.Addresses.102" = "ул. Сурганова, 50";
+"App.Addresses.103" = "пр. Рокоссовского, 80";
+"App.Addresses.104" = "пр. Партизанский, 150А";
+"App.Addresses.105" = "ул. Будславская, 2";
+"App.Addresses.106" = "ул. Восточная, 183/4";
+"App.Addresses.107" = "пр. Независимости, 23";
+"App.Addresses.108" = "ул. Уборевича, 176";
+"App.Addresses.109" = "ул. Денисовская, 8";
+"App.Addresses.110" = "ул. Филимонова, 12";
+"App.Addresses.111" = "ул. Петра Мстиславца, 11";
+"App.Addresses.112" = "ул. Притыцкого, 156";
+"App.Addresses.113" = "пр. Победителей, 135Б";
+"App.Addresses.114" = "пр. Дзержинского, 100";
+"App.Addresses.115" = "ул. Корженевского, 26";
