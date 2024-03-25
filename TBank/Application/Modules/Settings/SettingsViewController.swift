@@ -127,12 +127,15 @@ final class SettingsViewController: UIViewController {
         view.backgroundColor = UIColor(resource: .Color.backgroundColorView)
 
         titleLabel.text = NSLocalizedString("App.Settings.NavigationItemTitle", comment: "")
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor(resource: .Color.textColorTitel)
         titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
         
         backButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         backButton.adjustsImageWhenHighlighted = false
-        backButton.setImage(UIImage(named: "roundedBack"), for: .normal)
+        backButton.tintColor = UIColor(resource: .Color.textColorTitel)
+        let symbolConfigurationAdd = UIImage.SymbolConfiguration(pointSize: 28)
+        backButton.setPreferredSymbolConfiguration(symbolConfigurationAdd, forImageIn: .normal)
+        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         backButton.contentMode = .scaleAspectFit
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
@@ -145,21 +148,23 @@ final class SettingsViewController: UIViewController {
         iconTermsImageView.image = UIImage(named: "roundedTerms")
         iconTermsImageView.contentMode = .scaleAspectFit
         
-        termsNextArrowImageView.image = UIImage(named: "followArrow")
+        termsNextArrowImageView.tintColor = UIColor(resource: .Color.textColorTitel)
+        termsNextArrowImageView.image = UIImage(systemName: "chevron.forward")
         termsNextArrowImageView.contentMode = .scaleAspectFit
         
         termsLabel.textAlignment = .left
-        termsLabel.font = UIFont.manrope(ofSize: 20, style: .light)
+        termsLabel.font = UIFont.manrope(ofSize: 15, style: .light)
         termsLabel.text = NSLocalizedString("App.Settings.ItemTermsOfUse", comment: "")
         
         iconPrivacyImageView.image = UIImage(named: "roundedPrivacy")
         iconPrivacyImageView.contentMode = .scaleAspectFit
         
-        privacyNextArrowImageView.image = UIImage(named: "followArrow")
+        privacyNextArrowImageView.tintColor = UIColor(resource: .Color.textColorTitel)
+        privacyNextArrowImageView.image = UIImage(systemName: "chevron.forward")
         privacyNextArrowImageView.contentMode = .scaleAspectFit
         
         privacyLabel.textAlignment = .left
-        privacyLabel.font = UIFont.manrope(ofSize: 20, style: .light)
+        privacyLabel.font = UIFont.manrope(ofSize: 15, style: .light)
         privacyLabel.text = NSLocalizedString("App.Settings.ItemPrivacyPolicy", comment: "")
         
         termsOfUseButton.backgroundColor = UIColor(resource: .Color.backgroundColorView)
