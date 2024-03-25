@@ -126,7 +126,7 @@ final class SettingsViewController: UIViewController {
     private func configureUI() {
         view.backgroundColor = UIColor(resource: .Color.backgroundColorView)
 
-        titleLabel.text = "Settings"
+        titleLabel.text = NSLocalizedString("App.Settings.NavigationItemTitle", comment: "")
         titleLabel.textColor = .black
         titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
         
@@ -150,7 +150,7 @@ final class SettingsViewController: UIViewController {
         
         termsLabel.textAlignment = .left
         termsLabel.font = UIFont.manrope(ofSize: 20, style: .light)
-        termsLabel.text = "Terms of Use"
+        termsLabel.text = NSLocalizedString("App.Settings.ItemTermsOfUse", comment: "")
         
         iconPrivacyImageView.image = UIImage(named: "roundedPrivacy")
         iconPrivacyImageView.contentMode = .scaleAspectFit
@@ -160,7 +160,7 @@ final class SettingsViewController: UIViewController {
         
         privacyLabel.textAlignment = .left
         privacyLabel.font = UIFont.manrope(ofSize: 20, style: .light)
-        privacyLabel.text = "Privacy policy"
+        privacyLabel.text = NSLocalizedString("App.Settings.ItemPrivacyPolicy", comment: "")
         
         termsOfUseButton.backgroundColor = UIColor(resource: .Color.backgroundColorView)
         termsOfUseButton.addTarget(self, action: #selector(termsOfUseButtonTapped), for: .touchUpInside)

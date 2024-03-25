@@ -27,8 +27,8 @@ final class LocalizedCurrencyRatesCoordinator {
         view.viewModel = viewModel
         navigationController.setViewControllers([view], animated: false)
         
-        viewModel.showExchangeRatesPage = { [weak self] exchangeRates, bankBranche in
-            self?.showExchangeRatesScreen(exchangeRates, bankBranche)
+        viewModel.showExchangeRatesPage = { [weak self] exchangeRates, bankBranch, bankBranches in
+            self?.showExchangeRatesScreen(exchangeRates, bankBranch, bankBranches)
         }
         
         viewModel.showSettingsPage = { [weak self] in
@@ -36,29 +36,29 @@ final class LocalizedCurrencyRatesCoordinator {
         }
     }
     
-    private func showExchangeRatesScreen(_ currencyRates: [BankBranchCurrencyRate], _ bankBranch: BankBranch) {
+    private func showExchangeRatesScreen(_ currencyRates: [BankBranchCurrencyRate], _ bankBranch: BankBranch, _ bankBranches: [BankBranch]) {
         let view = ExchangeRatesViewController()
         let viewModel = ExchangeRatesViewModel(currencyRates: currencyRates, bankBranch: bankBranch)
         view.viewModel = viewModel
         
         viewModel.showBankLocatorMapPage = { [weak self] in
             self?.navigationController.dismiss(animated: true)
-            self?.showBankLocatorMapScreen(currencyRates, bankBranch)
+            self?.showBankLocatorMapScreen(currencyRates, bankBranch, bankBranches)
         }
     
         navigationController.modalPresentationStyle = .formSheet
         navigationController.present(view, animated: true)
     }
     
-    private func showBankLocatorMapScreen(_ currencyRates: [BankBranchCurrencyRate], _ bankBranche: BankBranch) {
+    private func showBankLocatorMapScreen(_ currencyRates: [BankBranchCurrencyRate], _ bankBranch: BankBranch, _ bankBranches: [BankBranch]) {
         
         let view = BankLocatorMapViewController()
-        let viewModel = BankLocatorMapViewModel(currencyRates: currencyRates, bankBranche: bankBranche)
+        let viewModel = BankLocatorMapViewModel(bankBranch: bankBranch, bankBranches)
         view.viewModel = viewModel
         
         viewModel.showExchangeRatesPage = { [weak self] in
             self?.navigationController.dismiss(animated: true)
-            self?.showExchangeRatesScreen(currencyRates, bankBranche)
+            self?.showExchangeRatesScreen(currencyRates, bankBranch, bankBranches)
         }
         
         navigationController.modalPresentationStyle = .formSheet

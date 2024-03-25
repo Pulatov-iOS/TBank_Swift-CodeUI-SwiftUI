@@ -58,11 +58,11 @@ final class ExchangeRatesViewController: UIViewController {
     //MARK: - Configuration of User Interface
     private func configureUI() {
         view.backgroundColor = UIColor(resource: .Color.backgroundColorView)
-        titleLabel.text = NSLocalizedString("App.LocalizedCurrencyRates.BranchDetails.ExchangeRates.NavigationItemTitle", comment: "")
+        titleLabel.text = NSLocalizedString("App.LocalizedCurrencyRates.ExchangeRates.NavigationItemTitle", comment: "")
         titleLabel.textColor = UIColor(resource: .Color.LocalizedCurrencyRates.BranchDetails.ExchangeRates.textTitle)
         titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
         
-        numberOfBankBranchLabel.text = "\(NSLocalizedString("App.LocalizedCurrencyRates.BranchDetails.ExchangeRates.SecondNavigationItemTitle", comment: "")) \(String(describing: viewModel.bankBranch.branchNumber!))"
+        numberOfBankBranchLabel.text = "\(NSLocalizedString("App.LocalizedCurrencyRates.ExchangeRates.SecondNavigationItemTitle", comment: "")) \(String(describing: viewModel.bankBranch.branchNumber!))"
         numberOfBankBranchLabel.font = UIFont.manrope(ofSize: 15, style: .bold)
         numberOfBankBranchLabel.textColor = UIColor(resource: .Color.LocalizedCurrencyRates.BranchDetails.ExchangeRates.secondTextTitle)
         

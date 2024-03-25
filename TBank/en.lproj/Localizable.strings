@@ -1,13 +1,14 @@
 // MARK: - LocalizedCurrencyRates
 "App.LocalizedCurrencyRates.NavigationItemTitle" = "Branches";
 
-// MARK: - LocalizedCurrencyRates/BranchDetails
+// MARK: - LocalizedCurrencyRates/ExchangeRates
+"App.LocalizedCurrencyRates.ExchangeRates.NavigationItemTitle" = "Exchange Rates";
+"App.LocalizedCurrencyRates.ExchangeRates.SecondNavigationItemTitle" = "Branch number:";
 
-// MARK: - LocalizedCurrencyRates/BranchDetails/ExchangeRates
-"App.LocalizedCurrencyRates.BranchDetails.ExchangeRates.NavigationItemTitle" = "Exchange Rates";
-"App.LocalizedCurrencyRates.BranchDetails.ExchangeRates.SecondNavigationItemTitle" = "Branch number:";
-
-// MARK: - LocalizedCurrencyRates/BranchDetails/BankLocatorMap
+// MARK: - LocalizedCurrencyRates/BankLocatorMap
+"App.LocalizedCurrencyRates.BankLocatorMap.NavigationItemTitle" = "Location";
+"App.LocalizedCurrencyRates.BankLocatorMap.SecondNavigationItemTitle" = "Address:";
+"App.LocalizedCurrencyRates.BankLocatorMap.MapPointTitle" = "TBank branch - №";
 
 // MARK: - BestCurrencyRates
 "App.BestCurrencyRates.NavigationItemTitle" = "Currency Rates";
@@ -20,7 +21,9 @@
 "App.CurrencyConverter.NavigationItemTitle" = "Converter";
 
 // MARK: - Settings
-
+"App.Settings.NavigationItemTitle" = "Settings";
+"App.Settings.ItemTermsOfUse" = "Terms of Use";
+"App.Settings.ItemPrivacyPolicy" = "Privacy policy";
 
 // MARK: - Working Days
 "App.WorkingDays.101" = "Mon - Fri";

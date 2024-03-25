@@ -2,16 +2,17 @@ import Combine
 
 final class BankLocatorMapViewModel {
     
+    //MARK: - Public Properties
+    let bankBranch: BankBranch
+    let bankBranches: [BankBranch]
+    
     //MARK: - Private Properties
     var showExchangeRatesPage: (() -> Void)?
-    private let bankBranche: BankBranch
-    private let currencyRates: [BankBranchCurrencyRate]
     
-    init(currencyRates: [BankBranchCurrencyRate], bankBranche: BankBranch) {
-        self.bankBranche = bankBranche
-        self.currencyRates = currencyRates
+    init(bankBranch: BankBranch, _ bankBranches: [BankBranch]) {
+        self.bankBranch = bankBranch
+        self.bankBranches = bankBranches
     }
-    
     
     func exchangeRatesButtonTapped() {
         showExchangeRatesPage?()

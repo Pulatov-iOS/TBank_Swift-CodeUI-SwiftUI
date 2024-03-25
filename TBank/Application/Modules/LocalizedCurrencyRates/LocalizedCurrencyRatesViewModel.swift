@@ -6,7 +6,7 @@ final class LocalizedCurrencyRatesViewModel {
     
     // MARK: - Public properties
     var showSettingsPage: (() -> Void)?
-    var showExchangeRatesPage: (([BankBranchCurrencyRate], BankBranch) -> Void)?
+    var showExchangeRatesPage: (([BankBranchCurrencyRate], BankBranch, [BankBranch]) -> Void)?
     let bankBranchesSubject = CurrentValueSubject<[BankBranch], Never>([])
     let currencyRatesSubject = CurrentValueSubject<[CurrencyRateDTO], Never>([])
     let bankBranchCurrencyRateSubject = CurrentValueSubject<[BankBranchCurrencyRate], Never>([])
@@ -41,7 +41,7 @@ final class LocalizedCurrencyRatesViewModel {
         let filteredObjects = bankBranchesCurrencyRateSubject.value.filter {
             $0.idBankBranch == bankBranche.id
         }
-        showExchangeRatesPage?(filteredObjects, bankBranche)
+        showExchangeRatesPage?(filteredObjects, bankBranche, originalBankBranches)
     }
     
     func getCurrencyRate(idBankBranch: Int) -> Double {

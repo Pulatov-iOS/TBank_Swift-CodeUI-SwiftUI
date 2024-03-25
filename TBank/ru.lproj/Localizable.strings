@@ -1,11 +1,14 @@
 // MARK: - LocalizedCurrencyRates
 "App.LocalizedCurrencyRates.NavigationItemTitle" = "Отделения";
 
-// MARK: - LocalizedCurrencyRates/BranchDetails
+// MARK: - LocalizedCurrencyRates/ExchangeRates
+"App.LocalizedCurrencyRates.ExchangeRates.NavigationItemTitle" = "Обменные курсы";
+"App.LocalizedCurrencyRates.ExchangeRates.SecondNavigationItemTitle" = "Номер отделения:";
 
-// MARK: - LocalizedCurrencyRates/BranchDetails/ExchangeRates
-
-// MARK: - LocalizedCurrencyRates/BranchDetails/BankLocatorMap
+// MARK: - LocalizedCurrencyRates/BankLocatorMap
+"App.LocalizedCurrencyRates.BankLocatorMap.NavigationItemTitle" = "Локация";
+"App.LocalizedCurrencyRates.BankLocatorMap.SecondNavigationItemTitle" = "Адрес:";
+"App.LocalizedCurrencyRates.BankLocatorMap.MapPointTitle" = "TBank отделение - №";
 
 // MARK: - BestCurrencyRates
 "App.BestCurrencyRates.NavigationItemTitle" = "Курсы валют";
@@ -18,7 +21,9 @@
 "App.CurrencyConverter.NavigationItemTitle" = "Конвертер";
 
 // MARK: - Settings
-
+"App.Settings.NavigationItemTitle" = "Настройки";
+"App.Settings.ItemTermsOfUse" = "Условия использования";
+"App.Settings.ItemPrivacyPolicy" = "Политика конфиденциальности";
 
 // MARK: - Working Days
 "App.WorkingDays.101" = "Пн - Пт";

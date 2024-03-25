@@ -341,8 +341,8 @@
 			children = (
 				19F0C6D22BAC38B600182B0A /* NetworkManagerCurrency.swift */,
 				2D250E132BAE1F3D002DC479 /* CoreDataManager.swift */,
-				2D250E152BAE22E5002DC479 /* ErrorsManager.swift */,
 				112F1A212BB170F300235103 /* LocationManager.swift */,
+				2D250E152BAE22E5002DC479 /* ErrorsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
