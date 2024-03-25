@@ -139,10 +139,10 @@ final class SettingsViewController: UIViewController {
         backButton.contentMode = .scaleAspectFit
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
-        termsOfUseView.layer.borderColor = UIColor.white.cgColor
+        termsOfUseView.layer.borderColor = UIColor(resource: .Color.textColorTitel).cgColor
         termsOfUseView.layer.borderWidth = 1
         
-        privacyPolicyView.layer.borderColor = UIColor.white.cgColor
+        privacyPolicyView.layer.borderColor = UIColor(resource: .Color.textColorTitel).cgColor
         privacyPolicyView.layer.borderWidth = 1
         
         iconTermsImageView.image = UIImage(named: "roundedTerms")
