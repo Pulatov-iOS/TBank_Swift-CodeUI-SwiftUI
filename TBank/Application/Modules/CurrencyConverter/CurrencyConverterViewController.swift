@@ -3,9 +3,11 @@ import Combine
 
 class CurrencyConverterViewController: UIViewController {
     
+    // MARK: - Publuc Properties
     var viewModel: CurrencyConverterViewModel!
     var cancallables = Set<AnyCancellable>()
     
+    // MARK: - UI Properties
     let converterTitleLabel = UILabel()
     let firstCurrencyView = UIView()
     let secondCurrencyView = UIView()
@@ -17,6 +19,7 @@ class CurrencyConverterViewController: UIViewController {
     let littleView1 = UIView()
     let littleView2 = UIView()
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +30,7 @@ class CurrencyConverterViewController: UIViewController {
         bindings()
     }
 
+    // MARK: - Methods
     func addSubviews() {
         view.addSubview(converterTitleLabel)
         view.addSubview(firstCurrencyView)
@@ -74,6 +78,7 @@ class CurrencyConverterViewController: UIViewController {
         changeCurrencyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         changeCurrencyButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         changeCurrencyButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        changeCurrencyButton.isEnabled = false
 
         secondCurrencyView.translatesAutoresizingMaskIntoConstraints = false
         secondCurrencyView.topAnchor.constraint(equalTo: changeCurrencyButton.bottomAnchor, constant: 25).isActive = true
@@ -151,6 +156,7 @@ class CurrencyConverterViewController: UIViewController {
         
         for currencyRate in viewModel.currentCurrencySubject.value {
             let action = UIAlertAction(title: currencyRate.abbreviation, style: .default) { [weak self] _ in
+                self?.changeCurrencyButton.isEnabled = true
                 self?.currentCurrencySelection(currencyRate)
             }
             actionSheet.addAction(action)
