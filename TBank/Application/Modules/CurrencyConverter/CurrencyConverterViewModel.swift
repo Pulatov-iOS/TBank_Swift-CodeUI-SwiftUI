@@ -65,6 +65,12 @@ final class CurrencyConverterViewModel {
         changingCurrenciesSubject.send(sideOfExchange)
     }
     
+    func isChangeCurrencyButtonTapped() {
+        if !sideOfExchange {
+            changeCurrencyButtonTapped()
+        }
+    }
+    
     private func update() {
         self.coreDataManager.loadCurrencyRates()
     }

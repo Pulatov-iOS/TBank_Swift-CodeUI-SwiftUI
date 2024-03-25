@@ -157,6 +157,8 @@ class CurrencyConverterViewController: UIViewController {
         for currencyRate in viewModel.currentCurrencySubject.value {
             let action = UIAlertAction(title: currencyRate.abbreviation, style: .default) { [weak self] _ in
                 self?.changeCurrencyButton.isEnabled = true
+                self?.desiredCurrencyButton.setTitle("BYN", for: .normal)
+                self?.viewModel.isChangeCurrencyButtonTapped()
                 self?.currentCurrencySelection(currencyRate)
             }
             actionSheet.addAction(action)
