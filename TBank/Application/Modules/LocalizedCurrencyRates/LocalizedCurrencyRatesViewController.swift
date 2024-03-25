@@ -86,7 +86,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         segmentedControl.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(22)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.9)
+            make.width.equalToSuperview().multipliedBy(0.8)
             make.height.equalTo(35)
         }
         
@@ -126,7 +126,7 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
         сurrencyButton.tintColor = UIColor(resource: .Color.textColorTitel)
         сurrencyButton.setTitle(viewModel.currentCurrency, for: .normal)
         сurrencyButton.setTitleColor(UIColor(resource: .Color.textColorTitel), for: .normal)
-        сurrencyButton.titleLabel?.font = UIFont.manrope(ofSize: 16, style: .bold)
+        сurrencyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         сurrencyButton.addTarget(self, action: #selector(currencyButtonTapped), for: .touchUpInside)
         сurrencyButton.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
         сurrencyButton.layer.cornerRadius = 27.5
@@ -141,13 +141,11 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
             selectedSegment = 2
         }
         
-        segmentedControl.backgroundColor = UIColor(resource: .Color.backgroundColorItem)
+        segmentedControl.backgroundColor = UIColor(resource: .Color.backgroundColorView)
         segmentedControl.selectedSegmentTintColor = UIColor(resource: .Color.LocalizedCurrencyRates.buttonSegmentedControl)
         segmentedControl.selectedSegmentIndex = selectedSegment
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.manrope(ofSize: 14, style: .regular), NSAttributedString.Key.foregroundColor: UIColor(resource: .Color.textColorTitel)], for: .normal)
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
-
-
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.manrope(ofSize: 14, style: .bold), NSAttributedString.Key.foregroundColor: UIColor(resource: .Color.textColorTitel)], for: .normal)
+        
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.rowHeight = 100
@@ -271,7 +269,7 @@ extension LocalizedCurrencyRatesViewController: UITableViewDelegate, UITableView
 
           action.backgroundColor = UIColor(resource: .Color.LocalizedCurrencyRates.backgroundButtonTableCell)
           let originalImage = UIImage(resource: .Image.LocalizedCurrencyRates.buttonTableCell)
-          let scaledImage = originalImage.resized(to: CGSize(width: 45, height: 45))
+          let scaledImage = originalImage.resized(to: CGSize(width: 32, height: 40))
           action.image = scaledImage
 
           let configuration = UISwipeActionsConfiguration(actions: [action])
