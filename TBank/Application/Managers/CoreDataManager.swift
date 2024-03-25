@@ -55,10 +55,13 @@ final class CoreDataManager: NSCopying {
             
             let curRate = NSManagedObject(entity: currancyRateEntity, insertInto: managedContext)
             
+            let randomPercent = Double.random(in: 0.95...1.1)
+            let lastRate = currencyRate.rate * randomPercent
+            
             curRate.setValue(currencyRate.abbreviation, forKey: "abbreviation")
             curRate.setValue(currencyRate.curName, forKey: "curName")
             curRate.setValue(currencyRate.rate, forKey: "rate")
-            curRate.setValue(1000000, forKey: "lastRate")
+            curRate.setValue(lastRate, forKey: "lastRate")
             curRate.setValue(currencyRate.scale, forKey: "scale")
             
             do {

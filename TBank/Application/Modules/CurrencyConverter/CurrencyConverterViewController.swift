@@ -143,7 +143,7 @@ class CurrencyConverterViewController: UIViewController {
         currentCurrencyButton.semanticContentAttribute = .forceRightToLeft
         currentCurrencyButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         currentCurrencyButton.titleLabel?.font = UIFont.manrope(ofSize: 20, style: .regular)
-        currentCurrencyButton.setTitleColor(.label, for: .normal)
+        currentCurrencyButton.setTitleColor(.black, for: .normal)
         currentCurrencyButton.addTarget(self, action: #selector(currentCurrencySelectionTapped), for: .touchUpInside)
         
         desiredCurrencyButton.setTitle("BYN", for: .normal)
