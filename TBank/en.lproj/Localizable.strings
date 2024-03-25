@@ -4,6 +4,8 @@
 // MARK: - LocalizedCurrencyRates/BranchDetails
 
 // MARK: - LocalizedCurrencyRates/BranchDetails/ExchangeRates
+"App.LocalizedCurrencyRates.BranchDetails.ExchangeRates.NavigationItemTitle" = "Exchange Rates";
+"App.LocalizedCurrencyRates.BranchDetails.ExchangeRates.SecondNavigationItemTitle" = "Branch number:";
 
 // MARK: - LocalizedCurrencyRates/BranchDetails/BankLocatorMap
 
@@ -15,6 +17,7 @@
 "App.BestCurrencyRates.alertController.message" = "Currency rates updated ";
 
 // MARK: - CurrencyConverter
+"App.CurrencyConverter.NavigationItemTitle" = "Converter";
 
 // MARK: - Settings
 

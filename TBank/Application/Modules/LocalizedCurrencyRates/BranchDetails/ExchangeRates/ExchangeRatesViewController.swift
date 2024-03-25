@@ -8,6 +8,7 @@ final class ExchangeRatesViewController: UIViewController {
     
     //MARK: - UI Properties
     private let titleLabel = UILabel()
+    private let numberOfBankBranchLabel = UILabel()
     private let mapButton = UIButton()
     private let tableView = UITableView()
     private var cancellables = Set<AnyCancellable>()
@@ -30,7 +31,7 @@ final class ExchangeRatesViewController: UIViewController {
     
     //MARK: - Adding of subViews
     private func addSubviews() {
-        view.addSubviews(with: titleLabel, mapButton, tableView)
+        view.addSubviews(with: titleLabel, mapButton, numberOfBankBranchLabel, tableView)
     }
     
     //MARK: - Setting of constraintes
@@ -43,8 +44,13 @@ final class ExchangeRatesViewController: UIViewController {
         mapButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
         mapButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -26).isActive = true
         
+        numberOfBankBranchLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.centerX.equalToSuperview()
+        }
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: mapButton.bottomAnchor, constant: 10).isActive = true
+        tableView.topAnchor.constraint(equalTo: numberOfBankBranchLabel.bottomAnchor, constant: 10).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -53,10 +59,13 @@ final class ExchangeRatesViewController: UIViewController {
     //MARK: - Configuration of User Interface
     private func configureUI() {
         view.backgroundColor = UIColor(resource: .Color.backgroundColorView)
-        
-        titleLabel.text = "Exchange Rates"
-        titleLabel.textColor = .black
+        titleLabel.text = NSLocalizedString("App.LocalizedCurrencyRates.BranchDetails.ExchangeRates.NavigationItemTitle", comment: "")
+        titleLabel.textColor = UIColor(resource: .Color.LocalizedCurrencyRates.BranchDetails.ExchangeRates.textTitle)
         titleLabel.font = UIFont.manrope(ofSize: 24, style: .bold)
+        
+        numberOfBankBranchLabel.text = "\(NSLocalizedString("App.LocalizedCurrencyRates.BranchDetails.ExchangeRates.SecondNavigationItemTitle", comment: "")) \(String(describing: viewModel.bankBranch.branchNumber!))"
+        numberOfBankBranchLabel.font = UIFont.manrope(ofSize: 15, style: .bold)
+        numberOfBankBranchLabel.textColor = UIColor(resource: .Color.LocalizedCurrencyRates.BranchDetails.ExchangeRates.secondTextTitle)
         
         mapButton.tintColor = .black
         mapButton.setImage(UIImage(named: "map"), for: .normal)
@@ -66,6 +75,7 @@ final class ExchangeRatesViewController: UIViewController {
         tableView.backgroundColor = UIColor(resource: .Color.backgroundColorView)
         tableView.separatorStyle = .none
         tableView.rowHeight = 100
+        tableView.showsVerticalScrollIndicator = false
     }
     
     //MARK: - TableView configuration
@@ -73,14 +83,6 @@ final class ExchangeRatesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ExchangeRatesTableViewCell.self, forCellReuseIdentifier: "ExchangeRatesTableViewCell")
-    }
-    
-    private func bind() {
-//        viewModel.currencyRatesSubject
-//            .sink { [weak self] data in
-//                self?.tableView.reloadData()
-//            }
-//            .store(in: &cancellables)
     }
     
     //MARK: - Actions
@@ -93,21 +95,16 @@ final class ExchangeRatesViewController: UIViewController {
 extension ExchangeRatesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 5
-//        return viewModel.currencyRatesSubject.value.count
         return viewModel.currencyRates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let currencyRate = CurrencyRateDTO(abbreviation: "USD", curName: "", rate: 2.23, lastRate: 2.21, scale: 2)
-//        viewModel.currencyRatesSubject.value[indexPath.row]
         let currencyRate = viewModel.currencyRates[indexPath.row]
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeRatesTableViewCell", for: indexPath) as? ExchangeRatesTableViewCell else { return UITableViewCell() }
         
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
-//        let rate = viewModel.currencyRatesSubject.value[indexPath.row]
         cell.setInformation(with: currencyRate)
         return cell
     }
