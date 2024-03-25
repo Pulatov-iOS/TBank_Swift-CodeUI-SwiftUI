@@ -1,5 +1,8 @@
 // MARK: - LocalizedCurrencyRates
 "App.LocalizedCurrencyRates.NavigationItemTitle" = "Отделения";
+"App.LocalizedCurrencyRates.SegmentedControlItemNearest" = "Ближайший";
+"App.LocalizedCurrencyRates.SegmentedControlItemBestCourse" = "Лучший курс";
+"App.LocalizedCurrencyRates.SegmentedControlItemFavorites" = "Избранный";
 
 // MARK: - LocalizedCurrencyRates/ExchangeRates
 "App.LocalizedCurrencyRates.ExchangeRates.NavigationItemTitle" = "Обменные курсы";

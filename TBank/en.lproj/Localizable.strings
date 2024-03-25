@@ -1,5 +1,8 @@
 // MARK: - LocalizedCurrencyRates
 "App.LocalizedCurrencyRates.NavigationItemTitle" = "Branches";
+"App.LocalizedCurrencyRates.SegmentedControlItemNearest" = "Nearest";
+"App.LocalizedCurrencyRates.SegmentedControlItemBestCourse" = "Best Course";
+"App.LocalizedCurrencyRates.SegmentedControlItemFavorites" = "Favorites";
 
 // MARK: - LocalizedCurrencyRates/ExchangeRates
 "App.LocalizedCurrencyRates.ExchangeRates.NavigationItemTitle" = "Exchange Rates";

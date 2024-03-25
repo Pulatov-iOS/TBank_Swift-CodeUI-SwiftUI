@@ -17,7 +17,11 @@ final class LocalizedCurrencyRatesViewController: UIViewController {
     private let titleLabel = UILabel()
     private let settingsButton = UIButton()
     private let сurrencyButton = UIButton()
-    private let segmentedControl = UISegmentedControl(items: ["Nearest", "Best Course", "Favorites"])
+    private let segmentedControl = UISegmentedControl(items: [
+        NSLocalizedString("App.LocalizedCurrencyRates.SegmentedControlItemNearest", comment: ""),
+        NSLocalizedString("App.LocalizedCurrencyRates.SegmentedControlItemBestCourse", comment: ""),
+        NSLocalizedString("App.LocalizedCurrencyRates.SegmentedControlItemFavorites", comment: "")
+    ])
     private let tableView = UITableView()
     private let tabBar: TabBarItem
     private let backgroundTabBarView = UIView()
