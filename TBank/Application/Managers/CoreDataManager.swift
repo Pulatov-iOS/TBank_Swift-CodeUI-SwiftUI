@@ -231,7 +231,7 @@ final class CoreDataManager: NSCopying {
     func loadBankBranches() -> [BankBranch] {
         var bankBranch = [BankBranch]()
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [] }
-        let managedContext  = appDelegate.persistentContainer.viewContext
+        let managedContext = appDelegate.persistentContainer.viewContext
         let feetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BankBranch")
         
         do {
