@@ -18,8 +18,10 @@ The graphical interface and navigation of the application are implemented using 
 ## Used libraries
 
 - [x] UIKit
+- [x] Combine
 - [x] CoreData
-- [x] WebKit
+- [x] Alamofire
+- [x] CoreLocation
 
 ## Features
 
