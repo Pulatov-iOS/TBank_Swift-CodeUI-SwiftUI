@@ -9,6 +9,8 @@ TBank - an iOS application that mimics the functionality of a banking app, displ
 
 ## Screenshots
 
+![Screenshots](Screenshots/demo.png)
+
 ## About
 
 The graphical interface and navigation of the application are implemented using code. The architecture of the application follows the MVVM architectural pattern, and a coordinator is used for assembling modules. CoreData is used for storing data. The application supports both light and dark themes.
@@ -41,7 +43,8 @@ This project is available under the MIT license. See the LICENSE file for more i
 
 ## Authors
 
-Aleksandr Pulatov: [https://www.linkedin.com/in/pulatov-aleksandr](https://www.linkedin.com/in/pulatov-aleksandr/), [pulatov.alexander@gmail.com](mailto:pulatov.alexander@gmail.com)\n
+Aleksandr Pulatov: [https://www.linkedin.com/in/pulatov-aleksandr](https://www.linkedin.com/in/pulatov-aleksandr/), [pulatov.alexander@gmail.com](mailto:pulatov.alexander@gmail.com)
+
 Daniil Yushkevich: [https://www.linkedin.com/in/dyushkevich](https://www.linkedin.com/in/dyushkevich/)
 Maks Marozau: [https://www.linkedin.com/in/maks-marozau](https://www.linkedin.com/in/maks-marozau-a806242b2/)
 Dima Timofeychik
