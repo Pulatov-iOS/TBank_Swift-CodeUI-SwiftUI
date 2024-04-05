@@ -41,4 +41,7 @@ This project is available under the MIT license. See the LICENSE file for more i
 
 ## Authors
 
-Aleksandr Pulatov, [https://www.linkedin.com/in/pulatov-aleksandr/](https://www.linkedin.com/in/pulatov-aleksandr/), [pulatov.alexander@gmail.com](mailto:pulatov.alexander@gmail.com)
+Aleksandr Pulatov: [https://www.linkedin.com/in/pulatov-aleksandr/](https://www.linkedin.com/in/pulatov-aleksandr), [pulatov.alexander@gmail.com](mailto:pulatov.alexander@gmail.com)
+Daniil Yushkevich: [https://www.linkedin.com/in/dyushkevich/](https://www.linkedin.com/in/dyushkevich)
+Maks Marozau: [https://www.linkedin.com/in/maks-marozau-a806242b2/](https://www.linkedin.com/in/maks-marozau)
+Dima Timofeychik
